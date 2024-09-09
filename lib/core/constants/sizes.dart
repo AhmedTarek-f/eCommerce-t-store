@@ -40,4 +40,8 @@ abstract class TSizes
 
 // Grid view spacing
   static const double gridViewSpacing = 16.0;
+
+  static const double defaultSpace = 24.0;
+  static const double spaceBetItems = 16.0;
+  static const double spaceBetSections = 32.0;
 }
