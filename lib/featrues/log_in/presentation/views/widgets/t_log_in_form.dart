@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:t_store/core/app_router.dart';
 
 class TLogInForm extends StatelessWidget {
   const TLogInForm({
@@ -23,6 +25,7 @@ class TLogInForm extends StatelessWidget {
                 ),
                 const SizedBox(height: 16,),
                 TextFormField(
+                  obscureText: true,
                   decoration: InputDecoration(
                       prefixIcon: const Icon(Iconsax.password_check),
                       label: Text("Password",style: Theme.of(context).textTheme.bodyMedium,),
@@ -57,7 +60,9 @@ class TLogInForm extends StatelessWidget {
         SizedBox(
           width:MediaQuery.sizeOf(context).width,
           child: OutlinedButton(
-            onPressed: (){},
+            onPressed: (){
+              GoRouter.of(context).push(AppRouter.kSignUpView);
+            },
             child: const Text("Create Account"),
           ),
         ),

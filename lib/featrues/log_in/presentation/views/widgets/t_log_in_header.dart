@@ -4,13 +4,11 @@ import 'package:t_store/core/constants/image_strings.dart';
 class TLogInHeader extends StatelessWidget {
   const TLogInHeader({
     super.key,
-    required this.isDark,
   });
-
-  final bool isDark;
 
   @override
   Widget build(BuildContext context) {
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

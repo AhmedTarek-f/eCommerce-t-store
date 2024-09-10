@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:t_store/common_widgets/t_form_divider.dart';
 import 'package:t_store/common_widgets/t_social_buttons.dart';
@@ -11,7 +9,6 @@ class LogInViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isDark = Theme.of(context).brightness == Brightness.dark;
     return  SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(
@@ -20,13 +17,13 @@ class LogInViewBody extends StatelessWidget {
           right: MediaQuery.sizeOf(context).width *0.0611,
           left: MediaQuery.sizeOf(context).width *0.0611,
         ),
-        child: Column(
+        child: const Column(
           children: [
-            TLogInHeader(isDark: isDark),
-            const TLogInForm(),
-             TFormDivider(isDark: isDark),
-            const SizedBox(height: 32,),
-            const TSocialButtons()
+             TLogInHeader(),
+             TLogInForm(),
+             TFormDivider(dividerText:"Or Sign In With"),
+             SizedBox(height: 32,),
+             TSocialButtons()
           ],
         ),
       ),
