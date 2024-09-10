@@ -17,7 +17,7 @@ class OnBoardingNextButton extends StatelessWidget {
       right: MediaQuery.sizeOf(context).width*0.0611,
       child: ElevatedButton(
         onPressed: (){
-          boardingProvider.nextPage();
+          boardingProvider.nextPage(context);
         },
         style: ElevatedButton.styleFrom(shape: const CircleBorder(),backgroundColor: isDark?TColors.primaryColor:Colors.black),
         child: const Icon(Icons.arrow_forward_ios_outlined),

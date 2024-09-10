@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:t_store/core/app_router.dart';
 import 'package:t_store/featrues/on_boarding/presentation/views_model/on_boarding_states.dart';
 
 class OnBoardingCubit extends Cubit<OnBoardingStates>
@@ -18,11 +20,11 @@ class OnBoardingCubit extends Cubit<OnBoardingStates>
     emit(OnBoardingDotNavigationIndexUpdateState());
   }
 
-  void nextPage()
+  void nextPage(BuildContext context)
   {
     if(currentPageIndex == 2)
       {
-
+        GoRouter.of(context).pushReplacement(AppRouter.kLogInView);
       }
     else
       {
