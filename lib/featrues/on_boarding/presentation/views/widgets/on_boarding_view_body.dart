@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/core/constants/text_strings.dart';
 import 'package:t_store/featrues/on_boarding/presentation/views/widgets/on_boarding_dot_navigation.dart';
@@ -10,7 +8,6 @@ import 'package:t_store/featrues/on_boarding/presentation/views/widgets/on_board
 import 'package:t_store/featrues/on_boarding/presentation/views/widgets/on_boarding_skip.dart';
 import 'package:t_store/featrues/on_boarding/presentation/views_model/on_boarding_cubit.dart';
 import 'package:t_store/featrues/on_boarding/presentation/views_model/on_boarding_states.dart';
-
 
 class OnBoardingViewBody extends StatelessWidget {
   const OnBoardingViewBody({super.key});

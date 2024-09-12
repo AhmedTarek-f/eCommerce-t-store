@@ -42,7 +42,7 @@ class TLogInForm extends StatelessWidget {
                         const Text("Remember Me")
                       ],
                     ),
-                    TextButton(onPressed: (){}, child: const Text("Forget Password?")),
+                    TextButton(onPressed: (){GoRouter.of(context).push(AppRouter.kForgetPasswordView);}, child: const Text("Forget Password?")),
                   ],
                 ),
               ],
@@ -52,8 +52,8 @@ class TLogInForm extends StatelessWidget {
         SizedBox(
           width:MediaQuery.sizeOf(context).width,
           child: ElevatedButton(
-            onPressed: (){},
-            child: const Text("Sign Up"),
+            onPressed: (){GoRouter.of(context).push(AppRouter.kNavigationMenuView);},
+            child: const Text("Sign In"),
           ),
         ),
         const SizedBox(height: 16,),
@@ -61,7 +61,7 @@ class TLogInForm extends StatelessWidget {
           width:MediaQuery.sizeOf(context).width,
           child: OutlinedButton(
             onPressed: (){
-              GoRouter.of(context).push(AppRouter.kSignUpView);
+              GoRouter.of(context).pushReplacement(AppRouter.kSignUpView);
             },
             child: const Text("Create Account"),
           ),
