@@ -21,4 +21,14 @@ abstract class TImages {
   static const String deliveredEmailIllustration = "assets/images/animations/sammy-line-man-receives-a-mail.png";
   static const verifyIllustration = "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
 
+  // -- Categories
+  static const sportIcon = "assets/icons/categories/icons8-bowling-64.png";
+  static const clothIcon = "assets/icons/categories/icons8-tailors-dummy-64.png";
+  static const shoeIcon = "assets/icons/categories/icons8-shoes-64.png";
+  static const cosmeticsIcon = "assets/icons/categories/icons8-cosmetics-64.png";
+  static const animalIcon = "assets/icons/categories/icons8-dog-heart-64.png";
+  static const toyIcon = "assets/icons/categories/icons8-wooden-toy-car-50.png";
+  static const furnitureIcon = "assets/icons/categories/icons8-dining-chair-64.png";
+  static const jeweleryIcon = "assets/icons/categories/icons8-sparkling-diamond-64.png";
+  static const electronicsIcon = "assets/icons/categories/icons8-smartphone-64.png";
 }
