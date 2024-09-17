@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/core/constants/colors.dart';
 
-class TCircularContainer extends StatelessWidget {
-  const TCircularContainer({
+class TRoundedContainer extends StatelessWidget {
+  const TRoundedContainer({
     super.key,
     this.width,
     this.height,
-    required this.radius,
-    this.padding=0,
+    this.radius =16,
+    this.padding=EdgeInsets.zero,
     this.child,
     this.backGroundColor = TColors.white,
     this.margin,
@@ -15,7 +15,7 @@ class TCircularContainer extends StatelessWidget {
   final double? width;
   final double? height;
   final double radius;
-  final double padding;
+  final EdgeInsetsGeometry? padding;
   final Widget? child;
   final Color backGroundColor;
   final EdgeInsetsGeometry? margin;
@@ -25,7 +25,7 @@ class TCircularContainer extends StatelessWidget {
       width: width,
       height: height,
       margin: margin,
-      padding: EdgeInsets.all(padding),
+      padding: padding,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(radius),
         color: backGroundColor,

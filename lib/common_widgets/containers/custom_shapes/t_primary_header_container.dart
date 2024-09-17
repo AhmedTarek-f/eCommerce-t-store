@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:t_store/common_widgets/containers/custom_shapes/t_circular_container.dart';
+import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/common_widgets/curved_edges/t_curved_edges_widget.dart';
 import 'package:t_store/core/constants/colors.dart';
 
@@ -21,7 +21,7 @@ class TPrimaryHeaderContainer extends StatelessWidget {
               Positioned(
                 right: -250,
                 top: -150,
-                child: TCircularContainer(
+                child: TRoundedContainer(
                   width: MediaQuery.sizeOf(context).width,
                   height: MediaQuery.sizeOf(context).height*0.42,
                   radius: MediaQuery.sizeOf(context).height*0.42,
@@ -31,7 +31,7 @@ class TPrimaryHeaderContainer extends StatelessWidget {
               Positioned(
                 top: 100,
                 right: -300,
-                child: TCircularContainer(
+                child: TRoundedContainer(
                   width: MediaQuery.sizeOf(context).width,
                   height: MediaQuery.sizeOf(context).height*0.42,
                   radius: MediaQuery.sizeOf(context).height*0.42,

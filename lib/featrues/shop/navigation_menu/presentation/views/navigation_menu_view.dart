@@ -22,10 +22,10 @@ class NavigationMenuView extends StatelessWidget {
           selectedIndex: navigationCubit.selectedIndex,
           onDestinationSelected: (value) => navigationCubit.changeSelectedIndex(value),
           destinations: const [
-            NavigationDestination(icon: Icon(Iconsax.home), label: "Home"),
-            NavigationDestination(icon: Icon(Iconsax.shop), label: "Store"),
-            NavigationDestination(icon: Icon(Iconsax.heart), label: "WishList"),
-            NavigationDestination(icon: Icon(Iconsax.user), label: "Profile"),
+            NavigationDestination(icon: Icon(Iconsax.home_copy), label: "Home"),
+            NavigationDestination(icon: Icon(Iconsax.shop_copy), label: "Store"),
+            NavigationDestination(icon: Icon(Iconsax.heart_copy), label: "WishList"),
+            NavigationDestination(icon: Icon(Iconsax.user_copy), label: "Profile"),
           ]
         ),
       ),
