@@ -8,15 +8,17 @@ class TSectionHeading extends StatelessWidget {
     required this.title,
     this.buttonTitle = "View all",
     this.onPressed,
+    this.padding,
   });
   final Color? titleColor;
   final bool showActionButton;
   final String title, buttonTitle;
   final void Function()? onPressed;
+  final EdgeInsetsGeometry? padding;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: MediaQuery.sizeOf(context).width*0.0611),
+      padding: padding ?? EdgeInsets.only(left: MediaQuery.sizeOf(context).width*0.0611),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

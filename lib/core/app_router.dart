@@ -7,6 +7,7 @@ import 'package:t_store/featrues/password_configuration/presentation/views/reset
 import 'package:t_store/featrues/shop/home/presentation/views/home_view.dart';
 import 'package:t_store/featrues/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
 import 'package:t_store/featrues/shop/navigation_menu/presentation/views_model/navigation_cubit.dart';
+import 'package:t_store/featrues/shop/store/presentation/views/store_view.dart';
 import 'package:t_store/featrues/sign_up/presentation/views/sign_up_view.dart';
 import 'package:t_store/featrues/verify_email/presentation/views/success_verification_view.dart';
 import 'package:t_store/featrues/verify_email/presentation/views/verify_email_view.dart';
@@ -22,6 +23,7 @@ abstract class AppRouter
   static const kResetPasswordView = "/ResetPasswordView";
   static const kNavigationMenuView = "/NavigationMenuView";
   static const kHomeView = "/HomeView";
+  static const kStoreView = "/StoreView";
   // static const kSuccessScreen = "/SuccessScreen";
   static final router = GoRouter(
       routes: [
@@ -63,6 +65,10 @@ abstract class AppRouter
         GoRoute(
           path: kHomeView,
           builder: (context, state) =>const HomeView(),
+        ),
+        GoRoute(
+          path: kStoreView,
+          builder: (context, state) =>const StoreView(),
         ),
       ]
   );
