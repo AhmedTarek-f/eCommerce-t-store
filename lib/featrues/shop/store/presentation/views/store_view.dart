@@ -9,15 +9,10 @@ class StoreView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        titleSpacing: 16,
+      appBar: TAppBar(
         title: Text("Store",style: Theme.of(context).textTheme.headlineMedium,),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: TCartCounterIcon(onPressed: (){}),
-          ),
+          TCartCounterIcon(onPressed: (){}),
         ],
       ),
       body: const StoreViewBody(),

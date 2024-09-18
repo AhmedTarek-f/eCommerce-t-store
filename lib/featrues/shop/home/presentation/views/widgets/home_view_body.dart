@@ -29,7 +29,8 @@ class HomeViewBody extends StatelessWidget {
                 SizedBox(height: 32,),
                 TSectionHeading(title: "Popular Categories",showActionButton: false,titleColor: Colors.white,),
                 SizedBox(height: 16,),
-                THomeCategories()
+                THomeCategories(),
+                SizedBox(height: 32,)
               ],
             ),
           ),

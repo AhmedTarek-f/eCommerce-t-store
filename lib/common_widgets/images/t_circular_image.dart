@@ -12,6 +12,7 @@ class TCircularImage extends StatelessWidget {
     this.fit =BoxFit.cover,
     this.overlayColor,
     this.backgroundColor,
+    this.isOverLayColor = true,
   });
   final double width,height;
   final EdgeInsetsGeometry? padding;
@@ -20,6 +21,7 @@ class TCircularImage extends StatelessWidget {
   final BoxFit? fit;
   final Color? overlayColor;
   final Color? backgroundColor;
+  final bool isOverLayColor;
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
@@ -33,7 +35,7 @@ class TCircularImage extends StatelessWidget {
       ),
       child: isNetworkImage ? Image.network(image,fit:fit,) :Image.asset(
         image,
-        color:overlayColor?? (isDarkMode?TColors.white:TColors.black),
+        color:isOverLayColor? overlayColor?? (isDarkMode?TColors.white:TColors.black): null,
       ),
     );
   }

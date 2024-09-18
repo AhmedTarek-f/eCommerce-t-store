@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:t_store/featrues/personalization/settings/presentation/views/settings_view.dart';
 import 'package:t_store/featrues/shop/home/presentation/views/home_view.dart';
 import 'package:t_store/featrues/shop/navigation_menu/presentation/views_model/navigation_states.dart';
 import 'package:t_store/featrues/shop/store/presentation/views/store_view.dart';
+import 'package:t_store/featrues/shop/wishlist/presentation/views/wishlist_view.dart';
 
 class NavigationCubit extends Cubit<NavigationStates>
 {
@@ -16,7 +18,7 @@ class NavigationCubit extends Cubit<NavigationStates>
   final List<Widget> screens = [
     const HomeView(),
     const StoreView(),
-    Container(color: Colors.yellowAccent,),
-    Container(color: Colors.purpleAccent,),
+    const WishlistView(),
+    const SettingsView(),
   ];
 }
