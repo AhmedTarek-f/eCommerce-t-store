@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_primary_header_container.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
+import 'package:t_store/core/app_router.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/featrues/personalization/settings/presentation/views/widgets/t_user_profile_title.dart';
 
@@ -20,7 +22,7 @@ class SettingsViewBody extends StatelessWidget {
                   TAppBar(
                     title: Text("Account",style: Theme.of(context).textTheme.headlineMedium!.apply(color: TColors.white),),
                   ),
-                  const TUserProfileTitle(),
+                  TUserProfileTitle(onPressed: (){GoRouter.of(context).push(AppRouter.kProfileView);},),
                   const SizedBox(height: 32,),
                 ],
               ),

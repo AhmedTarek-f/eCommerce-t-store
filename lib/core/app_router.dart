@@ -4,6 +4,7 @@ import 'package:t_store/featrues/log_in/presentation/views/log_in_view.dart';
 import 'package:t_store/featrues/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:t_store/featrues/password_configuration/presentation/views/forget_password_view.dart';
 import 'package:t_store/featrues/password_configuration/presentation/views/reset_password_view.dart';
+import 'package:t_store/featrues/personalization/profile/presentation/views/profile_view.dart';
 import 'package:t_store/featrues/personalization/settings/presentation/views/settings_view.dart';
 import 'package:t_store/featrues/shop/home/presentation/views/home_view.dart';
 import 'package:t_store/featrues/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
@@ -28,6 +29,7 @@ abstract class AppRouter
   static const kStoreView = "/StoreView";
   static const kWishlistView = "/WishlistView";
   static const kSettingsView = "/SettingsView";
+  static const kProfileView = "/ProfileView";
   // static const kSuccessScreen = "/SuccessScreen";
   static final router = GoRouter(
       routes: [
@@ -81,6 +83,10 @@ abstract class AppRouter
         GoRoute(
           path: kSettingsView,
           builder: (context, state) =>const SettingsView(),
+        ),
+        GoRoute(
+          path: kProfileView,
+          builder: (context, state) =>const ProfileView(),
         ),
       ]
   );
