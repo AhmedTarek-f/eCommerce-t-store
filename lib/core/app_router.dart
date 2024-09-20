@@ -9,6 +9,7 @@ import 'package:t_store/featrues/personalization/settings/presentation/views/set
 import 'package:t_store/featrues/shop/home/presentation/views/home_view.dart';
 import 'package:t_store/featrues/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
 import 'package:t_store/featrues/shop/navigation_menu/presentation/views_model/navigation_cubit.dart';
+import 'package:t_store/featrues/shop/product_details/presentation/views/product_details_view.dart';
 import 'package:t_store/featrues/shop/store/presentation/views/store_view.dart';
 import 'package:t_store/featrues/shop/wishlist/presentation/views/wishlist_view.dart';
 import 'package:t_store/featrues/sign_up/presentation/views/sign_up_view.dart';
@@ -30,6 +31,7 @@ abstract class AppRouter
   static const kWishlistView = "/WishlistView";
   static const kSettingsView = "/SettingsView";
   static const kProfileView = "/ProfileView";
+  static const kProductDetailsView = "/ProductDetailsView";
   // static const kSuccessScreen = "/SuccessScreen";
   static final router = GoRouter(
       routes: [
@@ -87,6 +89,10 @@ abstract class AppRouter
         GoRoute(
           path: kProfileView,
           builder: (context, state) =>const ProfileView(),
+        ),
+        GoRoute(
+          path: kProductDetailsView,
+          builder: (context, state) =>const ProductDetailsView(),
         ),
       ]
   );
