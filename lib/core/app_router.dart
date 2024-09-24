@@ -13,6 +13,9 @@ import 'package:t_store/features/personalization/my_address/presentation/views/m
 import 'package:t_store/features/personalization/my_orders/presentation/views/my_orders_view.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/profile_view.dart';
 import 'package:t_store/features/personalization/settings/presentation/views/settings_view.dart';
+import 'package:t_store/features/shop/all_brands/presentation/views/all_brands_view.dart';
+import 'package:t_store/features/shop/all_products/presentation/views/all_products_view.dart';
+import 'package:t_store/features/shop/brand_products/presentation/views/brand_products_view.dart';
 import 'package:t_store/features/shop/cart/presentation/views/cart_view.dart';
 import 'package:t_store/features/shop/checkout/presentation/views/checkout_view.dart';
 import 'package:t_store/features/shop/home/presentation/views/home_view.dart';
@@ -21,6 +24,7 @@ import 'package:t_store/features/shop/navigation_menu/presentation/views_model/n
 import 'package:t_store/features/shop/product_details/presentation/views/product_details_view.dart';
 import 'package:t_store/features/shop/product_review/presentation/views/product_review_view.dart';
 import 'package:t_store/features/shop/store/presentation/views/store_view.dart';
+import 'package:t_store/features/shop/sub_categories/presentation/views/sub_categories_view.dart';
 import 'package:t_store/features/shop/wishlist/presentation/views/wishlist_view.dart';
 
 abstract class AppRouter
@@ -46,6 +50,10 @@ abstract class AppRouter
   static const kCheckoutView = "/CheckoutView";
   static const kSuccessScreen = "/SuccessScreen";
   static const kMyOrdersView = "/MyOrdersView";
+  static const kSubCategoriesView = "/SubCategoriesView";
+  static const kAllProductsView = "/AllProductsView";
+  static const kAllBrandsView = "/AllBrandsView";
+  static const kBrandProductsView = "/BrandProductsView";
   static final router = GoRouter(
       routes: [
         GoRoute(
@@ -148,6 +156,22 @@ abstract class AppRouter
         GoRoute(
           path: kMyOrdersView,
           builder: (context, state) =>const MyOrdersView(),
+        ),
+        GoRoute(
+          path: kSubCategoriesView,
+          builder: (context, state) =>const SubCategoriesView(),
+        ),
+        GoRoute(
+          path: kAllProductsView,
+          builder: (context, state) =>const AllProductsView(),
+        ),
+        GoRoute(
+          path: kAllBrandsView,
+          builder: (context, state) =>const AllBrandsView(),
+        ),
+        GoRoute(
+          path: kBrandProductsView,
+          builder: (context, state) =>const BrandProductsView(),
         ),
       ]
   );

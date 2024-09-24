@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:t_store/common_widgets/image_text_widgets/t_vertical_image_text.dart';
+import 'package:t_store/core/app_router.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/features/shop/home/model/category_model.dart';
 
@@ -26,7 +28,13 @@ class THomeCategories extends StatelessWidget {
           itemCount: categoriesList.length,
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
-          itemBuilder:(context, index) => TVerticalImageText(title:categoriesList[index].categoryName ,image: categoriesList[index].categoryImg,),
+          itemBuilder:(context, index) => TVerticalImageText(
+            title:categoriesList[index].categoryName ,
+            image: categoriesList[index].categoryImg,
+            onTap: (){
+              GoRouter.of(context).push(AppRouter.kSubCategoriesView);
+            },
+          ),
           separatorBuilder: (context, index) => const SizedBox(width: 16,),
         ),
       ),

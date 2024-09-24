@@ -95,7 +95,7 @@ class TProductCardVertical extends StatelessWidget {
                     height:38.4 ,
                     child:  Center(child: Icon(Iconsax.add_copy,color: TColors.white,)),
                   ),
-                )
+                ),
               ],
             ),
           ],
