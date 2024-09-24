@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
 import 'package:t_store/core/app_router.dart';
 import 'package:t_store/core/constants/image_strings.dart';
-import 'package:t_store/featrues/shop/checkout/presentation/views/widgets/checkout_view_body.dart';
+import 'package:t_store/features/shop/checkout/presentation/views/widgets/checkout_view_body.dart';
 
 class CheckoutView extends StatelessWidget {
   const CheckoutView({super.key});

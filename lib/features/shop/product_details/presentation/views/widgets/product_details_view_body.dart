@@ -4,10 +4,10 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:readmore/readmore.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/app_router.dart';
-import 'package:t_store/featrues/shop/product_details/presentation/views/widgets/t_product_attributes.dart';
-import 'package:t_store/featrues/shop/product_details/presentation/views/widgets/t_product_image_slider.dart';
-import 'package:t_store/featrues/shop/product_details/presentation/views/widgets/t_product_meta_data.dart';
-import 'package:t_store/featrues/shop/product_details/presentation/views/widgets/t_rating_and_share.dart';
+import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_product_attributes.dart';
+import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_product_image_slider.dart';
+import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_product_meta_data.dart';
+import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_rating_and_share.dart';
 
 class ProductDetailsViewBody extends StatelessWidget {
   const ProductDetailsViewBody({super.key});

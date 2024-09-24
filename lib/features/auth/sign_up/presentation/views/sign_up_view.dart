@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:t_store/core/app_router.dart';
-import 'package:t_store/featrues/sign_up/presentation/views/widgets/sign_up_view_body.dart';
+import 'package:t_store/features/auth/sign_up/presentation/views/widgets/sign_up_view_body.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});

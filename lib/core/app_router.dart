@@ -1,26 +1,27 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:t_store/common_widgets/success_screen.dart';
-import 'package:t_store/featrues/log_in/presentation/views/log_in_view.dart';
-import 'package:t_store/featrues/on_boarding/presentation/views/on_boarding_view.dart';
-import 'package:t_store/featrues/password_configuration/presentation/views/forget_password_view.dart';
-import 'package:t_store/featrues/password_configuration/presentation/views/reset_password_view.dart';
-import 'package:t_store/featrues/personalization/my_address/presentation/views/add_new_address_view.dart';
-import 'package:t_store/featrues/personalization/my_address/presentation/views/my_address_view.dart';
-import 'package:t_store/featrues/personalization/profile/presentation/views/profile_view.dart';
-import 'package:t_store/featrues/personalization/settings/presentation/views/settings_view.dart';
-import 'package:t_store/featrues/shop/cart/presentation/views/cart_view.dart';
-import 'package:t_store/featrues/shop/checkout/presentation/views/checkout_view.dart';
-import 'package:t_store/featrues/shop/home/presentation/views/home_view.dart';
-import 'package:t_store/featrues/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
-import 'package:t_store/featrues/shop/navigation_menu/presentation/views_model/navigation_cubit.dart';
-import 'package:t_store/featrues/shop/product_details/presentation/views/product_details_view.dart';
-import 'package:t_store/featrues/shop/product_review/presentation/views/product_review_view.dart';
-import 'package:t_store/featrues/shop/store/presentation/views/store_view.dart';
-import 'package:t_store/featrues/shop/wishlist/presentation/views/wishlist_view.dart';
-import 'package:t_store/featrues/sign_up/presentation/views/sign_up_view.dart';
-import 'package:t_store/featrues/verify_email/presentation/views/success_verification_view.dart';
-import 'package:t_store/featrues/verify_email/presentation/views/verify_email_view.dart';
+import 'package:t_store/features/auth/log_in/presentation/views/log_in_view.dart';
+import 'package:t_store/features/auth/password_configuration/presentation/views/forget_password_view.dart';
+import 'package:t_store/features/auth/password_configuration/presentation/views/reset_password_view.dart';
+import 'package:t_store/features/auth/sign_up/presentation/views/sign_up_view.dart';
+import 'package:t_store/features/auth/verify_email/presentation/views/success_verification_view.dart';
+import 'package:t_store/features/auth/verify_email/presentation/views/verify_email_view.dart';
+import 'package:t_store/features/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:t_store/features/personalization/my_address/presentation/views/add_new_address_view.dart';
+import 'package:t_store/features/personalization/my_address/presentation/views/my_address_view.dart';
+import 'package:t_store/features/personalization/my_orders/presentation/views/my_orders_view.dart';
+import 'package:t_store/features/personalization/profile/presentation/views/profile_view.dart';
+import 'package:t_store/features/personalization/settings/presentation/views/settings_view.dart';
+import 'package:t_store/features/shop/cart/presentation/views/cart_view.dart';
+import 'package:t_store/features/shop/checkout/presentation/views/checkout_view.dart';
+import 'package:t_store/features/shop/home/presentation/views/home_view.dart';
+import 'package:t_store/features/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
+import 'package:t_store/features/shop/navigation_menu/presentation/views_model/navigation_cubit.dart';
+import 'package:t_store/features/shop/product_details/presentation/views/product_details_view.dart';
+import 'package:t_store/features/shop/product_review/presentation/views/product_review_view.dart';
+import 'package:t_store/features/shop/store/presentation/views/store_view.dart';
+import 'package:t_store/features/shop/wishlist/presentation/views/wishlist_view.dart';
 
 abstract class AppRouter
 {
@@ -44,6 +45,7 @@ abstract class AppRouter
   static const kCartView = "/CartView";
   static const kCheckoutView = "/CheckoutView";
   static const kSuccessScreen = "/SuccessScreen";
+  static const kMyOrdersView = "/MyOrdersView";
   static final router = GoRouter(
       routes: [
         GoRoute(
@@ -142,6 +144,10 @@ abstract class AppRouter
               onPressed: onPressed,
             );
           },
+        ),
+        GoRoute(
+          path: kMyOrdersView,
+          builder: (context, state) =>const MyOrdersView(),
         ),
       ]
   );

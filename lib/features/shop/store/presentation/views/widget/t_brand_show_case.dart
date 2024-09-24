@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/featrues/shop/store/presentation/views/widget/t_brand_card.dart';
+import 'package:t_store/features/shop/store/presentation/views/widget/t_brand_card.dart';
 
 class TBrandShowCase extends StatelessWidget {
   const TBrandShowCase({

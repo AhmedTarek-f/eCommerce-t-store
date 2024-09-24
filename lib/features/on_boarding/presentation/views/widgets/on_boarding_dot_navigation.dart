@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/featrues/on_boarding/presentation/views_model/on_boarding_cubit.dart';
+import 'package:t_store/features/on_boarding/presentation/views_model/on_boarding_cubit.dart';
 
 class OnBoardingDotNavigation extends StatelessWidget {
   const OnBoardingDotNavigation({

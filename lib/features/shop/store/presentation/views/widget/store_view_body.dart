@@ -3,9 +3,9 @@ import 'package:t_store/common_widgets/containers/custom_shapes/t_search_contain
 import 'package:t_store/common_widgets/layouts/t_grid_layout.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/featrues/shop/store/presentation/views/widget/t_brand_card.dart';
-import 'package:t_store/featrues/shop/store/presentation/views/widget/t_category_tab.dart';
-import 'package:t_store/featrues/shop/store/presentation/views/widget/t_tab_bar.dart';
+import 'package:t_store/features/shop/store/presentation/views/widget/t_brand_card.dart';
+import 'package:t_store/features/shop/store/presentation/views/widget/t_category_tab.dart';
+import 'package:t_store/features/shop/store/presentation/views/widget/t_tab_bar.dart';
 
 class StoreViewBody extends StatelessWidget {
   const StoreViewBody({super.key});

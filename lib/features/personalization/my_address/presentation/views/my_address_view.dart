@@ -4,7 +4,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
 import 'package:t_store/core/app_router.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/featrues/personalization/my_address/presentation/views/widgets/my_address_view_body.dart';
+import 'package:t_store/features/personalization/my_address/presentation/views/widgets/my_address_view_body.dart';
 
 class MyAddressView extends StatelessWidget {
   const MyAddressView({super.key});

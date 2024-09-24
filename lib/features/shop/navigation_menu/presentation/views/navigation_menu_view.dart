@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/featrues/shop/navigation_menu/presentation/views_model/navigation_cubit.dart';
-import 'package:t_store/featrues/shop/navigation_menu/presentation/views_model/navigation_states.dart';
+import 'package:t_store/features/shop/navigation_menu/presentation/views_model/navigation_cubit.dart';
+import 'package:t_store/features/shop/navigation_menu/presentation/views_model/navigation_states.dart';
 
 class NavigationMenuView extends StatelessWidget {
   const NavigationMenuView({super.key});

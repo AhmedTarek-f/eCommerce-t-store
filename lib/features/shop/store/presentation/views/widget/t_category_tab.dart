@@ -3,7 +3,7 @@ import 'package:t_store/common_widgets/layouts/t_grid_layout.dart';
 import 'package:t_store/common_widgets/products/products_card/t_product_card_vertical.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/image_strings.dart';
-import 'package:t_store/featrues/shop/store/presentation/views/widget/t_brand_show_case.dart';
+import 'package:t_store/features/shop/store/presentation/views/widget/t_brand_show_case.dart';
 
 class TCategoryTab extends StatelessWidget {
   const TCategoryTab({

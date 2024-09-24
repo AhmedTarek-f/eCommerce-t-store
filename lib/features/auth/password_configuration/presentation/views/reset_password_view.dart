@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:t_store/featrues/password_configuration/presentation/views/widgets/reset_password_view_body.dart';
+import 'package:t_store/features/auth/password_configuration/presentation/views/widgets/reset_password_view_body.dart';
 
 class ResetPasswordView extends StatelessWidget {
   const ResetPasswordView({super.key});

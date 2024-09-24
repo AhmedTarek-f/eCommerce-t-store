@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/common_widgets/t_form_divider.dart';
 import 'package:t_store/common_widgets/t_social_buttons.dart';
-import 'package:t_store/featrues/log_in/presentation/views/widgets/t_log_in_form.dart';
-import 'package:t_store/featrues/log_in/presentation/views/widgets/t_log_in_header.dart';
+import 'package:t_store/features/auth/log_in/presentation/views/widgets/t_log_in_form.dart';
+import 'package:t_store/features/auth/log_in/presentation/views/widgets/t_log_in_header.dart';
+
 
 class LogInViewBody extends StatelessWidget {
   const LogInViewBody({super.key});

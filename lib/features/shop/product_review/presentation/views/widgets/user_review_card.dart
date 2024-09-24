@@ -3,7 +3,7 @@ import 'package:readmore/readmore.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/core/constants/image_strings.dart';
-import 'package:t_store/featrues/shop/product_review/presentation/views/widgets/t_rating_bar_indicator.dart';
+import 'package:t_store/features/shop/product_review/presentation/views/widgets/t_rating_bar_indicator.dart';
 
 class UserReviewCard extends StatelessWidget {
   const UserReviewCard({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/common_widgets/t_form_divider.dart';
 import 'package:t_store/common_widgets/t_social_buttons.dart';
-import 'package:t_store/featrues/sign_up/presentation/views/widgets/t_sign_up_form.dart';
+import 'package:t_store/features/auth/sign_up/presentation/views/widgets/t_sign_up_form.dart';
 
 class SignUpViewBody extends StatelessWidget {
   const SignUpViewBody ({super.key});

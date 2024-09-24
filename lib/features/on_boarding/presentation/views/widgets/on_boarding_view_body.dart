@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/core/constants/text_strings.dart';
-import 'package:t_store/featrues/on_boarding/presentation/views/widgets/on_boarding_dot_navigation.dart';
-import 'package:t_store/featrues/on_boarding/presentation/views/widgets/on_boarding_next_button.dart';
-import 'package:t_store/featrues/on_boarding/presentation/views/widgets/on_boarding_page.dart';
-import 'package:t_store/featrues/on_boarding/presentation/views/widgets/on_boarding_skip.dart';
-import 'package:t_store/featrues/on_boarding/presentation/views_model/on_boarding_cubit.dart';
-import 'package:t_store/featrues/on_boarding/presentation/views_model/on_boarding_states.dart';
+import 'package:t_store/features/on_boarding/presentation/views/widgets/on_boarding_dot_navigation.dart';
+import 'package:t_store/features/on_boarding/presentation/views/widgets/on_boarding_next_button.dart';
+import 'package:t_store/features/on_boarding/presentation/views/widgets/on_boarding_page.dart';
+import 'package:t_store/features/on_boarding/presentation/views/widgets/on_boarding_skip.dart';
+import 'package:t_store/features/on_boarding/presentation/views_model/on_boarding_cubit.dart';
+import 'package:t_store/features/on_boarding/presentation/views_model/on_boarding_states.dart';
 
 class OnBoardingViewBody extends StatelessWidget {
   const OnBoardingViewBody({super.key});

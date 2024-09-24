@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
 import 'package:t_store/core/app_router.dart';
-import 'package:t_store/featrues/shop/cart/presentation/views/widgets/cart_view_body.dart';
+import 'package:t_store/features/shop/cart/presentation/views/widgets/cart_view_body.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});

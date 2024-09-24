@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/core/app_router.dart';
-import 'package:t_store/featrues/sign_up/presentation/views/widgets/t_terms_and_conditions_check_box.dart';
+import 'package:t_store/features/auth/sign_up/presentation/views/widgets/t_terms_and_conditions_check_box.dart';
 
 class TSignUpForm extends StatelessWidget {
   const TSignUpForm({

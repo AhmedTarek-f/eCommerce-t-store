@@ -3,7 +3,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/common_widgets/images/t_circular_image.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/image_strings.dart';
-import 'package:t_store/featrues/personalization/profile/presentation/views/widgets/t_profile_menu.dart';
+import 'package:t_store/features/personalization/profile/presentation/views/widgets/t_profile_menu.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:t_store/core/app_router.dart';
-import 'package:t_store/featrues/on_boarding/presentation/views_model/on_boarding_states.dart';
+import 'package:t_store/features/on_boarding/presentation/views_model/on_boarding_states.dart';
 
 class OnBoardingCubit extends Cubit<OnBoardingStates>
 {

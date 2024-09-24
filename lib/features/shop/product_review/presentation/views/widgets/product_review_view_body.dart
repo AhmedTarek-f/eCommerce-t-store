@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:t_store/featrues/shop/product_review/presentation/views/widgets/t_over_all_product_rating.dart';
-import 'package:t_store/featrues/shop/product_review/presentation/views/widgets/t_rating_bar_indicator.dart';
-import 'package:t_store/featrues/shop/product_review/presentation/views/widgets/user_review_card.dart';
+import 'package:t_store/features/shop/product_review/presentation/views/widgets/t_over_all_product_rating.dart';
+import 'package:t_store/features/shop/product_review/presentation/views/widgets/t_rating_bar_indicator.dart';
+import 'package:t_store/features/shop/product_review/presentation/views/widgets/user_review_card.dart';
 
 class ProductReviewViewBody extends StatelessWidget {
   const ProductReviewViewBody({super.key});

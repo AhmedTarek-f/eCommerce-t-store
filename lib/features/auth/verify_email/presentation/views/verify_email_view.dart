@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:t_store/core/app_router.dart';
-import 'package:t_store/featrues/verify_email/presentation/views/widgets/verify_email_view_body.dart';
+import 'package:t_store/features/auth/verify_email/presentation/views/widgets/verify_email_view_body.dart';
 
 class VerifyEmailView extends StatelessWidget {
   const VerifyEmailView({super.key});

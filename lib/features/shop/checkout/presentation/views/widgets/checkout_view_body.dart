@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/featrues/shop/cart/presentation/views/widgets/t_cart_items.dart';
-import 'package:t_store/featrues/shop/checkout/presentation/views/widgets/t_billing_amount_section.dart';
-import 'package:t_store/featrues/shop/checkout/presentation/views/widgets/t_billing_payment_section.dart';
-import 'package:t_store/featrues/shop/checkout/presentation/views/widgets/t_coupon_code.dart';
+import 'package:t_store/features/shop/cart/presentation/views/widgets/t_cart_items.dart';
+import 'package:t_store/features/shop/checkout/presentation/views/widgets/t_billing_amount_section.dart';
+import 'package:t_store/features/shop/checkout/presentation/views/widgets/t_billing_payment_section.dart';
+import 'package:t_store/features/shop/checkout/presentation/views/widgets/t_coupon_code.dart';
 
 class CheckoutViewBody extends StatelessWidget {
   const CheckoutViewBody({super.key});

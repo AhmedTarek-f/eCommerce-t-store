@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/common_widgets/image_text_widgets/t_vertical_image_text.dart';
 import 'package:t_store/core/constants/image_strings.dart';
-import 'package:t_store/featrues/shop/home/model/category_model.dart';
+import 'package:t_store/features/shop/home/model/category_model.dart';
 
 class THomeCategories extends StatelessWidget {
   const THomeCategories({

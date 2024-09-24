@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/common_widgets/images/t_rounded_image.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/featrues/shop/home/presentation/views_model/home_cubit.dart';
-import 'package:t_store/featrues/shop/home/presentation/views_model/home_states.dart';
+import 'package:t_store/features/shop/home/presentation/views_model/home_cubit.dart';
+import 'package:t_store/features/shop/home/presentation/views_model/home_states.dart';
 
 class TPromoSlider extends StatelessWidget {
   const TPromoSlider({

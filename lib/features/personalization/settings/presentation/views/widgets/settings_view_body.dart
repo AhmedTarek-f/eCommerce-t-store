@@ -6,7 +6,7 @@ import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/app_router.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/featrues/personalization/settings/presentation/views/widgets/t_user_profile_title.dart';
+import 'package:t_store/features/personalization/settings/presentation/views/widgets/t_user_profile_title.dart';
 
 class SettingsViewBody extends StatelessWidget {
   const SettingsViewBody({super.key});

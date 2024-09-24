@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/common_widgets/texts/t_product_price_text.dart';
-import 'package:t_store/featrues/shop/cart/presentation/views/widgets/t_cart_item.dart';
-import 'package:t_store/featrues/shop/cart/presentation/views/widgets/t_product_quantity_with_add_remove_button.dart';
+import 'package:t_store/features/shop/cart/presentation/views/widgets/t_cart_item.dart';
+import 'package:t_store/features/shop/cart/presentation/views/widgets/t_product_quantity_with_add_remove_button.dart';
 
 class TCartItems extends StatelessWidget {
   const TCartItems({

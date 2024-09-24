@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:t_store/featrues/on_boarding/presentation/views/widgets/on_boarding_view_body.dart';
-import 'package:t_store/featrues/on_boarding/presentation/views_model/on_boarding_cubit.dart';
+import 'package:t_store/features/on_boarding/presentation/views/widgets/on_boarding_view_body.dart';
+import 'package:t_store/features/on_boarding/presentation/views_model/on_boarding_cubit.dart';
 
 class OnBoardingView extends StatelessWidget {
   const OnBoardingView({super.key});

@@ -5,9 +5,9 @@ import 'package:t_store/common_widgets/layouts/t_grid_layout.dart';
 import 'package:t_store/common_widgets/products/products_card/t_product_card_vertical.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/image_strings.dart';
-import 'package:t_store/featrues/shop/home/presentation/views/widgets/t_home_app_bar.dart';
-import 'package:t_store/featrues/shop/home/presentation/views/widgets/t_home_categories.dart';
-import 'package:t_store/featrues/shop/home/presentation/views/widgets/t_promo_slider.dart';
+import 'package:t_store/features/shop/home/presentation/views/widgets/t_home_app_bar.dart';
+import 'package:t_store/features/shop/home/presentation/views/widgets/t_home_categories.dart';
+import 'package:t_store/features/shop/home/presentation/views/widgets/t_promo_slider.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});

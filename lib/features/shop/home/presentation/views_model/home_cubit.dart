@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:t_store/featrues/shop/home/presentation/views_model/home_states.dart';
+import 'package:t_store/features/shop/home/presentation/views_model/home_states.dart';
 
 class HomeCubit extends Cubit<HomeStates>
 {

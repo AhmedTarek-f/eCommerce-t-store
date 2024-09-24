@@ -4,7 +4,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/common_widgets/icons/t_circular_icon.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
 import 'package:t_store/core/app_router.dart';
-import 'package:t_store/featrues/shop/wishlist/presentation/views/widgets/wishlist_view_body.dart';
+import 'package:t_store/features/shop/wishlist/presentation/views/widgets/wishlist_view_body.dart';
 
 class WishlistView extends StatelessWidget {
   const WishlistView({super.key});
