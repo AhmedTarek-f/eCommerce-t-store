@@ -1,15 +1,21 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:t_store/common_widgets/success_screen.dart';
 import 'package:t_store/featrues/log_in/presentation/views/log_in_view.dart';
 import 'package:t_store/featrues/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:t_store/featrues/password_configuration/presentation/views/forget_password_view.dart';
 import 'package:t_store/featrues/password_configuration/presentation/views/reset_password_view.dart';
+import 'package:t_store/featrues/personalization/my_address/presentation/views/add_new_address_view.dart';
+import 'package:t_store/featrues/personalization/my_address/presentation/views/my_address_view.dart';
 import 'package:t_store/featrues/personalization/profile/presentation/views/profile_view.dart';
 import 'package:t_store/featrues/personalization/settings/presentation/views/settings_view.dart';
+import 'package:t_store/featrues/shop/cart/presentation/views/cart_view.dart';
+import 'package:t_store/featrues/shop/checkout/presentation/views/checkout_view.dart';
 import 'package:t_store/featrues/shop/home/presentation/views/home_view.dart';
 import 'package:t_store/featrues/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
 import 'package:t_store/featrues/shop/navigation_menu/presentation/views_model/navigation_cubit.dart';
 import 'package:t_store/featrues/shop/product_details/presentation/views/product_details_view.dart';
+import 'package:t_store/featrues/shop/product_review/presentation/views/product_review_view.dart';
 import 'package:t_store/featrues/shop/store/presentation/views/store_view.dart';
 import 'package:t_store/featrues/shop/wishlist/presentation/views/wishlist_view.dart';
 import 'package:t_store/featrues/sign_up/presentation/views/sign_up_view.dart';
@@ -32,7 +38,12 @@ abstract class AppRouter
   static const kSettingsView = "/SettingsView";
   static const kProfileView = "/ProfileView";
   static const kProductDetailsView = "/ProductDetailsView";
-  // static const kSuccessScreen = "/SuccessScreen";
+  static const kProductReviewView = "/ProductReviewView";
+  static const kMyAddressView = "/MyAddressView";
+  static const kAddNewAddressView = "/AddNewAddressView";
+  static const kCartView = "/CartView";
+  static const kCheckoutView = "/CheckoutView";
+  static const kSuccessScreen = "/SuccessScreen";
   static final router = GoRouter(
       routes: [
         GoRoute(
@@ -94,27 +105,45 @@ abstract class AppRouter
           path: kProductDetailsView,
           builder: (context, state) =>const ProductDetailsView(),
         ),
+        GoRoute(
+          path: kProductReviewView,
+          builder: (context, state) =>const ProductReviewView(),
+        ),
+        GoRoute(
+          path: kMyAddressView,
+          builder: (context, state) =>const MyAddressView(),
+        ),
+        GoRoute(
+          path: kAddNewAddressView,
+          builder: (context, state) =>const AddNewAddressView(),
+        ),
+        GoRoute(
+          path: kCartView,
+          builder: (context, state) =>const CartView(),
+        ),
+        GoRoute(
+          path: kCheckoutView,
+          builder: (context, state) =>const CheckoutView(),
+        ),
+        GoRoute(
+          path: kSuccessScreen,
+          builder: (context, state) {
+            // Extract the parameters from the extra object
+            final extra = state.extra as Map<String, dynamic>? ?? {};
+            final image = extra['image'] ?? 'assets/success.png';
+            final title = extra['title'] ?? 'Success!';
+            final subTitle = extra['subTitle'] ?? 'Operation completed successfully.';
+            final void Function()? onPressed = extra['onPressed'] ?? (){};
+
+            return SuccessScreen(
+              image: image,
+              title: title,
+              subTitle: subTitle,
+              onPressed: onPressed,
+            );
+          },
+        ),
       ]
   );
 }
 
-/*
-*    GoRoute(
-  path: kSuccessScreen,
-  builder: (context, state) {
-    // Extract the parameters from the extra object
-    final extra = state.extra as Map<String, dynamic>? ?? {};
-    final image = extra['image'] ?? 'assets/success.png';
-    final title = extra['title'] ?? 'Success!';
-    final subTitle = extra['subTitle'] ?? 'Operation completed successfully.';
-    final void Function()? onPressed = extra['onPressed'] ?? (){};
-
-    return SuccessScreen(
-      image: image,
-      title: title,
-      subTitle: subTitle,
-      onPressed: onPressed,
-    );
-  },
-),
-* */

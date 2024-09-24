@@ -38,7 +38,7 @@ class SettingsViewBody extends StatelessWidget {
               children: [
                 const TSectionHeading(title: "Account Settings",padding:EdgeInsets.zero ,showActionButton: false,),
                 const SizedBox(height: 16,),
-                TSettingsMenuTile(icon: Iconsax.safe_home_copy , title:"My Address" ,subTitle: "Set shopping delivery address", onTap: (){},),
+                TSettingsMenuTile(icon: Iconsax.safe_home_copy , title:"My Address" ,subTitle: "Set shopping delivery address", onTap: (){GoRouter.of(context).push(AppRouter.kMyAddressView);},),
                 TSettingsMenuTile(icon: Iconsax.shopping_cart_copy , title:"My Cart" ,subTitle: "Add, remove products and move to checkout ", onTap: (){},),
                 TSettingsMenuTile(icon: Iconsax.bag_tick_copy , title:"My Orders" ,subTitle: "In-progress and Completed Orders", onTap: (){},),
                 TSettingsMenuTile(icon: Iconsax.bank_copy , title:"Bank Account" ,subTitle: "Withdraw balance to registered bank account", onTap: (){},),

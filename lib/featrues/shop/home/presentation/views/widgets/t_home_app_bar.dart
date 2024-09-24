@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:t_store/common_widgets/products/cart/t_cart_counter_icon.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
+import 'package:t_store/core/app_router.dart';
 import 'package:t_store/core/constants/colors.dart';
 
 class THomeAppBar extends StatelessWidget {
@@ -19,7 +21,7 @@ class THomeAppBar extends StatelessWidget {
         ],
       ),
       actions: [
-        TCartCounterIcon( onPressed: (){},)
+        TCartCounterIcon( onPressed: (){ GoRouter.of(context).push(AppRouter.kCartView);},)
       ],
     );
   }
