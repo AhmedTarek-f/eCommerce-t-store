@@ -40,7 +40,7 @@ class SettingsViewBody extends StatelessWidget {
                 const SizedBox(height: 16,),
                 TSettingsMenuTile(icon: Iconsax.safe_home_copy , title:"My Address" ,subTitle: "Set shopping delivery address", onTap: (){GoRouter.of(context).push(AppRouter.kMyAddressView);},),
                 TSettingsMenuTile(icon: Iconsax.shopping_cart_copy , title:"My Cart" ,subTitle: "Add, remove products and move to checkout ", onTap: (){},),
-                TSettingsMenuTile(icon: Iconsax.bag_tick_copy , title:"My Orders" ,subTitle: "In-progress and Completed Orders", onTap: (){},),
+                TSettingsMenuTile(icon: Iconsax.bag_tick_copy , title:"My Orders" ,subTitle: "In-progress and Completed Orders", onTap: (){GoRouter.of(context).push(AppRouter.kMyOrdersView);},),
                 TSettingsMenuTile(icon: Iconsax.bank_copy , title:"Bank Account" ,subTitle: "Withdraw balance to registered bank account", onTap: (){},),
                 TSettingsMenuTile(icon: Iconsax.discount_shape_copy , title:"My Coupons" ,subTitle: "List of all the discounted coupons", onTap: (){},),
                 TSettingsMenuTile(icon: Iconsax.notification_copy , title:"Notifications" ,subTitle: "Set and kind of notification message", onTap: (){},),
