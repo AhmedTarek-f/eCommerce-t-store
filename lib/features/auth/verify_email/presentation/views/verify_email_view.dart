@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:t_store/core/app_router.dart';
+import 'package:get/get.dart';
+import 'package:t_store/features/auth/log_in/presentation/views/log_in_view.dart';
 import 'package:t_store/features/auth/verify_email/presentation/views/widgets/verify_email_view_body.dart';
 
 class VerifyEmailView extends StatelessWidget {
@@ -13,7 +13,12 @@ class VerifyEmailView extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
-        IconButton(onPressed: (){GoRouter.of(context).pushReplacement(AppRouter.kLogInView);}, icon: const Icon(CupertinoIcons.clear))
+        IconButton(
+            onPressed: (){
+              Get.offAll(()=>const LogInView());
+              }
+              , icon: const Icon(CupertinoIcons.clear),
+        ),
       ],
       ),
       body:const VerifyEmailViewBody(),

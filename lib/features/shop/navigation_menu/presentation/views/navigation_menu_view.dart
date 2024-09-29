@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/features/shop/navigation_menu/presentation/views_model/navigation_cubit.dart';
-import 'package:t_store/features/shop/navigation_menu/presentation/views_model/navigation_states.dart';
+import 'package:t_store/features/shop/navigation_menu/presentation/views_model/navigation_controller.dart';
 
 class NavigationMenuView extends StatelessWidget {
   const NavigationMenuView({super.key});
@@ -11,27 +10,28 @@ class NavigationMenuView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    NavigationCubit navigationCubit = BlocProvider.of<NavigationCubit>(context);
     return  Scaffold(
-      bottomNavigationBar: BlocBuilder<NavigationCubit,NavigationStates>(
-        builder: (context, state) => NavigationBar(
+      bottomNavigationBar: GetBuilder<NavigationController>(
+        init: NavigationController(),
+      builder: (controller) => NavigationBar(
           backgroundColor: isDarkMode? TColors.black : TColors.white,
           indicatorColor: isDarkMode? TColors.white.withOpacity(0.1) : TColors.black.withOpacity(0.1),
           height: 70,
           elevation: 0,
-          selectedIndex: navigationCubit.selectedIndex,
-          onDestinationSelected: (value) => navigationCubit.changeSelectedIndex(value),
+          selectedIndex: controller.selectedIndex,
+          onDestinationSelected: (value) => controller.changeSelectedIndex(value),
           destinations: const [
             NavigationDestination(icon: Icon(Iconsax.home_copy), label: "Home"),
             NavigationDestination(icon: Icon(Iconsax.shop_copy), label: "Store"),
             NavigationDestination(icon: Icon(Iconsax.heart_copy), label: "WishList"),
             NavigationDestination(icon: Icon(Iconsax.user_copy), label: "Profile"),
           ]
-        ),
       ),
-      body: BlocBuilder<NavigationCubit,NavigationStates>(
-          builder: (context, state) => navigationCubit.screens[navigationCubit.selectedIndex],
       ),
+      body: GetBuilder<NavigationController>(
+        init: NavigationController(),
+        builder: (controller) => controller.screens[controller.selectedIndex],
+      )
     );
   }
 }

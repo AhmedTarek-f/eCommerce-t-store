@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common_widgets/layouts/t_grid_layout.dart';
-import 'package:t_store/common_widgets/products/products_card/t_product_card_vertical.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
-import 'package:t_store/core/app_router.dart';
+import 'package:t_store/features/shop/brand_products/presentation/views/brand_products_view.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/t_brand_card.dart';
 
 class AllBrandsViewBody extends StatelessWidget {
@@ -34,7 +32,11 @@ class AllBrandsViewBody extends StatelessWidget {
             TGridLayout(
               itemCount: 10,
               mainAxisExtent: 80,
-              itemBuilder: (context, index) => TBrandCard(showBorder: true,onTap: (){GoRouter.of(context).push(AppRouter.kBrandProductsView);},),
+              itemBuilder: (context, index) => TBrandCard(showBorder: true,
+                onTap: (){
+                Get.to(()=> const BrandProductsView());
+                },
+              ),
             ),
           ],
         ),

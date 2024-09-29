@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:readmore/readmore.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
-import 'package:t_store/core/app_router.dart';
 import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_product_attributes.dart';
 import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_product_image_slider.dart';
 import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_product_meta_data.dart';
 import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_rating_and_share.dart';
+import 'package:t_store/features/shop/product_review/presentation/views/product_review_view.dart';
 
 class ProductDetailsViewBody extends StatelessWidget {
   const ProductDetailsViewBody({super.key});
@@ -56,7 +56,12 @@ class ProductDetailsViewBody extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const TSectionHeading(title: "Reviews (199)",showActionButton: false, padding: EdgeInsets.all(0),),
-                    IconButton(onPressed: (){GoRouter.of(context).push(AppRouter.kProductReviewView);}, icon: const Icon(Iconsax.arrow_right_3_copy,size: 18,)),
+                    IconButton(
+                        onPressed: (){
+                          Get.to(()=> const ProductReviewView());
+                          },
+                        icon: const Icon(Iconsax.arrow_right_3_copy,size: 18,),
+                    ),
                   ],
                 ),
               ],

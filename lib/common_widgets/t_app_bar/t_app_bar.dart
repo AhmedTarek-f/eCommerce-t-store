@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/core/constants/colors.dart';
 
@@ -26,7 +26,7 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget{
       child: AppBar(
         automaticallyImplyLeading: false,
         leading: showBackArrow? IconButton(
-          onPressed: (){GoRouter.of(context).pop();},
+          onPressed: (){Get.back();},
           icon:Icon(Iconsax.arrow_left_copy,color: isDarkMode? TColors.white: TColors.dark,),
         ):leadingIcon!=null ? IconButton(onPressed: leadingOnPressed, icon: Icon(leadingIcon)):null,
         title:  title,

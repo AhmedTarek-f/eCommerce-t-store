@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_primary_header_container.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
-import 'package:t_store/core/app_router.dart';
 import 'package:t_store/core/constants/colors.dart';
+import 'package:t_store/features/personalization/my_address/presentation/views/my_address_view.dart';
+import 'package:t_store/features/personalization/my_orders/presentation/views/my_orders_view.dart';
+import 'package:t_store/features/personalization/profile/presentation/views/profile_view.dart';
 import 'package:t_store/features/personalization/settings/presentation/views/widgets/t_user_profile_title.dart';
 
 class SettingsViewBody extends StatelessWidget {
@@ -22,7 +24,10 @@ class SettingsViewBody extends StatelessWidget {
                   TAppBar(
                     title: Text("Account",style: Theme.of(context).textTheme.headlineMedium!.apply(color: TColors.white),),
                   ),
-                  TUserProfileTitle(onPressed: (){GoRouter.of(context).push(AppRouter.kProfileView);},),
+                  TUserProfileTitle(onPressed: (){
+                    Get.to(()=> const ProfileView());
+                    },
+                  ),
                   const SizedBox(height: 32,),
                 ],
               ),
@@ -38,9 +43,9 @@ class SettingsViewBody extends StatelessWidget {
               children: [
                 const TSectionHeading(title: "Account Settings",padding:EdgeInsets.zero ,showActionButton: false,),
                 const SizedBox(height: 16,),
-                TSettingsMenuTile(icon: Iconsax.safe_home_copy , title:"My Address" ,subTitle: "Set shopping delivery address", onTap: (){GoRouter.of(context).push(AppRouter.kMyAddressView);},),
+                TSettingsMenuTile(icon: Iconsax.safe_home_copy , title:"My Address" ,subTitle: "Set shopping delivery address", onTap: (){ Get.to(()=>const MyAddressView());},),
                 TSettingsMenuTile(icon: Iconsax.shopping_cart_copy , title:"My Cart" ,subTitle: "Add, remove products and move to checkout ", onTap: (){},),
-                TSettingsMenuTile(icon: Iconsax.bag_tick_copy , title:"My Orders" ,subTitle: "In-progress and Completed Orders", onTap: (){GoRouter.of(context).push(AppRouter.kMyOrdersView);},),
+                TSettingsMenuTile(icon: Iconsax.bag_tick_copy , title:"My Orders" ,subTitle: "In-progress and Completed Orders", onTap: (){Get.to(()=>const MyOrdersView());},),
                 TSettingsMenuTile(icon: Iconsax.bank_copy , title:"Bank Account" ,subTitle: "Withdraw balance to registered bank account", onTap: (){},),
                 TSettingsMenuTile(icon: Iconsax.discount_shape_copy , title:"My Coupons" ,subTitle: "List of all the discounted coupons", onTap: (){},),
                 TSettingsMenuTile(icon: Iconsax.notification_copy , title:"Notifications" ,subTitle: "Set and kind of notification message", onTap: (){},),

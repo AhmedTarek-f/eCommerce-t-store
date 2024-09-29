@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:t_store/core/app_router.dart';
+import 'package:get/get.dart';
 import 'package:t_store/core/constants/image_strings.dart';
+import 'package:t_store/features/auth/verify_email/presentation/views/success_verification_view.dart';
 
 class VerifyEmailViewBody extends StatelessWidget {
   const VerifyEmailViewBody({super.key});
@@ -38,7 +38,9 @@ class VerifyEmailViewBody extends StatelessWidget {
             SizedBox(
               width: MediaQuery.sizeOf(context).width,
               child: ElevatedButton(
-                  onPressed: (){GoRouter.of(context).pushReplacement(AppRouter.kSuccessVerificationView);},
+                  onPressed: (){
+                    Get.off(()=> const SuccessVerificationView());
+                    },
                   child: const Text("Continue"),
               ),
             ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:t_store/core/app_router.dart';
+import 'package:get/get.dart';
 import 'package:t_store/features/auth/sign_up/presentation/views/widgets/sign_up_view_body.dart';
 
 class SignUpView extends StatelessWidget {
@@ -12,7 +11,7 @@ class SignUpView extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
             onPressed: (){
-              GoRouter.of(context).pushReplacement(AppRouter.kLogInView);
+              Get.back();
               },
             icon: const Icon(Icons.arrow_back)
         ),

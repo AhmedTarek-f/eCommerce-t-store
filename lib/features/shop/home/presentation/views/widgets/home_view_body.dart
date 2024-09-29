@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_primary_header_container.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_search_container.dart';
 import 'package:t_store/common_widgets/layouts/t_grid_layout.dart';
 import 'package:t_store/common_widgets/products/products_card/t_product_card_vertical.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
-import 'package:t_store/core/app_router.dart';
 import 'package:t_store/core/constants/image_strings.dart';
+import 'package:t_store/features/shop/all_products/presentation/views/all_products_view.dart';
 import 'package:t_store/features/shop/home/presentation/views/widgets/t_home_app_bar.dart';
 import 'package:t_store/features/shop/home/presentation/views/widgets/t_home_categories.dart';
 import 'package:t_store/features/shop/home/presentation/views/widgets/t_promo_slider.dart';
@@ -47,7 +47,11 @@ class HomeViewBody extends StatelessWidget {
                 children: [
                    const TPromoSlider(banners: [TImages.promoBanner2,TImages.promoBanner3,TImages.promoBanner4,TImages.promoBanner1,TImages.promoBanner5,TImages.promoBanner6],),
                    const SizedBox(height: 32,),
-                   TSectionHeading(title: "Popular Products",onPressed: (){GoRouter.of(context).push(AppRouter.kAllProductsView);},),
+                   TSectionHeading(title: "Popular Products",
+                     onPressed: (){
+                     Get.to(()=> const AllProductsView());
+                     },
+                   ),
                    const SizedBox(height: 16,),
                    TGridLayout(
                      itemCount: 4,

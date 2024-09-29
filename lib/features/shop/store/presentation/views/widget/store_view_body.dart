@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_search_container.dart';
 import 'package:t_store/common_widgets/layouts/t_grid_layout.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
-import 'package:t_store/core/app_router.dart';
 import 'package:t_store/core/constants/colors.dart';
+import 'package:t_store/features/shop/all_brands/presentation/views/all_brands_view.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/t_brand_card.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/t_category_tab.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/t_tab_bar.dart';
@@ -45,7 +45,13 @@ class StoreViewBody extends StatelessWidget {
                         showBackGround: false,
                       ),
                       const SizedBox(height: 32,),
-                      TSectionHeading(title: "Featured Brands",onPressed: (){GoRouter.of(context).push(AppRouter.kAllBrandsView);},padding: EdgeInsets.zero,),
+                      TSectionHeading(
+                        title: "Featured Brands",
+                        onPressed: (){
+                          Get.to(()=> const AllBrandsView());
+                          },
+                        padding: EdgeInsets.zero,
+                      ),
                       const SizedBox(height: 10.5,),
                       TGridLayout(
                         itemCount: 4,

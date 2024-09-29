@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:t_store/core/app_router.dart';
+import 'package:t_store/features/auth/password_configuration/presentation/views/forget_password_view.dart';
+import 'package:t_store/features/auth/sign_up/presentation/views/sign_up_view.dart';
+import 'package:t_store/features/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
 
 class TLogInForm extends StatelessWidget {
   const TLogInForm({
@@ -42,7 +44,10 @@ class TLogInForm extends StatelessWidget {
                         const Text("Remember Me")
                       ],
                     ),
-                    TextButton(onPressed: (){GoRouter.of(context).push(AppRouter.kForgetPasswordView);}, child: const Text("Forget Password?")),
+                    TextButton(onPressed: (){
+                      Get.to(()=>const ForgetPasswordView());
+                      },
+                        child: const Text("Forget Password?")),
                   ],
                 ),
               ],
@@ -52,7 +57,9 @@ class TLogInForm extends StatelessWidget {
         SizedBox(
           width:MediaQuery.sizeOf(context).width,
           child: ElevatedButton(
-            onPressed: (){GoRouter.of(context).push(AppRouter.kNavigationMenuView);},
+            onPressed: (){
+              Get.to(()=>const NavigationMenuView(),);
+              },
             child: const Text("Sign In"),
           ),
         ),
@@ -61,7 +68,7 @@ class TLogInForm extends StatelessWidget {
           width:MediaQuery.sizeOf(context).width,
           child: OutlinedButton(
             onPressed: (){
-              GoRouter.of(context).pushReplacement(AppRouter.kSignUpView);
+              Get.to(()=>const SignUpView());
             },
             child: const Text("Create Account"),
           ),

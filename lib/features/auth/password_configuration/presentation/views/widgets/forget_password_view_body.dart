@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:t_store/core/app_router.dart';
+import 'package:t_store/features/auth/password_configuration/presentation/views/reset_password_view.dart';
 
 class ForgetPasswordViewBody extends StatelessWidget {
   const ForgetPasswordViewBody({super.key});
@@ -36,7 +36,11 @@ class ForgetPasswordViewBody extends StatelessWidget {
                 const SizedBox(height: 32,),
                 SizedBox(
                   width: MediaQuery.sizeOf(context).width,
-                  child: ElevatedButton(onPressed: (){GoRouter.of(context).pushReplacement(AppRouter.kResetPasswordView);}, child: const Text("Submit")),
+                  child: ElevatedButton(
+                      onPressed: (){
+                        Get.off(()=> const ResetPasswordView());
+                        },
+                      child: const Text("Submit")),
                 ),
 
               ],

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:t_store/core/app_router.dart';
 import 'package:t_store/features/auth/sign_up/presentation/views/widgets/t_terms_and_conditions_check_box.dart';
+import 'package:t_store/features/auth/verify_email/presentation/views/verify_email_view.dart';
 
 class TSignUpForm extends StatelessWidget {
   const TSignUpForm({
@@ -74,7 +74,7 @@ class TSignUpForm extends StatelessWidget {
             width: MediaQuery.sizeOf(context).width,
             child: ElevatedButton(
                 onPressed: (){
-                  GoRouter.of(context).pushReplacement(AppRouter.kVerifyEmailView);
+                  Get.off(()=> const VerifyEmailView());
                 },
                 child: const Text("Create Account",)
             ),

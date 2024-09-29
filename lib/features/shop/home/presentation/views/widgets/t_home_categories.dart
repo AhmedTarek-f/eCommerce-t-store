@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common_widgets/image_text_widgets/t_vertical_image_text.dart';
-import 'package:t_store/core/app_router.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/features/shop/home/model/category_model.dart';
+import 'package:t_store/features/shop/sub_categories/presentation/views/sub_categories_view.dart';
 
 class THomeCategories extends StatelessWidget {
   const THomeCategories({
@@ -32,7 +32,7 @@ class THomeCategories extends StatelessWidget {
             title:categoriesList[index].categoryName ,
             image: categoriesList[index].categoryImg,
             onTap: (){
-              GoRouter.of(context).push(AppRouter.kSubCategoriesView);
+              Get.to(()=> const SubCategoriesView());
             },
           ),
           separatorBuilder: (context, index) => const SizedBox(width: 16,),

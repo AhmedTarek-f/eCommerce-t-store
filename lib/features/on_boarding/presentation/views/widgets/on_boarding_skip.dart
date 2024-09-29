@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:t_store/features/on_boarding/presentation/views_model/on_boarding_cubit.dart';
+import 'package:t_store/features/on_boarding/presentation/views_model/on_boarding_controller.dart';
 
 class OnBoardingSkip extends StatelessWidget {
   const OnBoardingSkip({
@@ -9,13 +8,13 @@ class OnBoardingSkip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    OnBoardingCubit boardingProvider = BlocProvider.of<OnBoardingCubit>(context);
+    final OnBoardingController controller = OnBoardingController.instance;
     return Positioned(
       right:MediaQuery.sizeOf(context).width*0.0611,
       top:kToolbarHeight,
       child: TextButton(
         onPressed: (){
-          boardingProvider.skipPage();
+          controller.skipPage();
         },
         child: const Text(
           "Skip",

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:t_store/core/app_router.dart';
+import 'package:get/get.dart';
 import 'package:t_store/core/constants/image_strings.dart';
+import 'package:t_store/features/auth/log_in/presentation/views/log_in_view.dart';
 
 class SuccessVerificationViewBody extends StatelessWidget {
   const SuccessVerificationViewBody({super.key});
@@ -32,7 +32,9 @@ class SuccessVerificationViewBody extends StatelessWidget {
             SizedBox(
               width: MediaQuery.sizeOf(context).width,
               child: ElevatedButton(
-                onPressed: (){GoRouter.of(context).pushReplacement(AppRouter.kLogInView);},
+                onPressed: (){
+                  Get.offAll(()=>const LogInView());
+                  },
                 child: const Text("Continue"),
               ),
             ),

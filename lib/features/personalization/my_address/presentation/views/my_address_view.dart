@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
-import 'package:t_store/core/app_router.dart';
 import 'package:t_store/core/constants/colors.dart';
+import 'package:t_store/features/personalization/my_address/presentation/views/add_new_address_view.dart';
 import 'package:t_store/features/personalization/my_address/presentation/views/widgets/my_address_view_body.dart';
 
 class MyAddressView extends StatelessWidget {
@@ -17,7 +17,9 @@ class MyAddressView extends StatelessWidget {
         showBackArrow: true,
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: (){GoRouter.of(context).push(AppRouter.kAddNewAddressView);},
+          onPressed: (){
+            Get.to(()=> const AddNewAddressView());
+            },
         backgroundColor: TColors.primary,
         child: const Icon(Iconsax.add_copy,color: TColors.white,),
       ),
