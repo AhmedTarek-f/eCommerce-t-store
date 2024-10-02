@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({super.key, required this.image, required this.title, required this.subTitle, this.onPressed});
+  const SuccessScreen({super.key, required this.image, required this.title, required this.subTitle, this.onPressed, required this.isAnimation});
   final String image;
   final String title;
   final String subTitle;
+  final bool isAnimation;
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,10 @@ class SuccessScreen extends StatelessWidget {
           child:  Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
+              isAnimation?
+              Lottie.asset(
+                image,width: MediaQuery.sizeOf(context).width*0.6,
+              ) : Image.asset(
                 image,
                 width: MediaQuery.sizeOf(context).width*0.6,
               ),

@@ -3,9 +3,10 @@ import 'package:t_store/core/constants/image_strings.dart';
 
 class TSocialButtons extends StatelessWidget {
   const TSocialButtons({
-    super.key,
+    super.key, this.googleOnPressed, this.facebookOnPressed,
   });
-
+  final void Function()? googleOnPressed;
+  final void Function()? facebookOnPressed;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -14,7 +15,7 @@ class TSocialButtons extends StatelessWidget {
         Container(
           decoration:  BoxDecoration(border:Border.all(color: Colors.grey) ,borderRadius: BorderRadius.circular(100)),
           child: IconButton(
-            onPressed: (){},
+            onPressed: googleOnPressed,
             icon: Image.asset(
               TImages.google,
               width: MediaQuery.sizeOf(context).width*0.0611,
@@ -26,7 +27,7 @@ class TSocialButtons extends StatelessWidget {
         Container(
           decoration:  BoxDecoration(border: Border.all(color: Colors.grey),borderRadius: BorderRadius.circular(100)),
           child: IconButton(
-            onPressed: (){},
+            onPressed: facebookOnPressed,
             icon: Image.asset(
               TImages.facebook,
               width: 24,

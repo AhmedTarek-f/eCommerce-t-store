@@ -5,9 +5,11 @@ import 'package:t_store/common_widgets/containers/custom_shapes/t_primary_header
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/colors.dart';
+import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/features/personalization/my_address/presentation/views/my_address_view.dart';
 import 'package:t_store/features/personalization/my_orders/presentation/views/my_orders_view.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/profile_view.dart';
+import 'package:t_store/features/personalization/settings/presentation/views/widgets/t_settings_menu_title.dart';
 import 'package:t_store/features/personalization/settings/presentation/views/widgets/t_user_profile_title.dart';
 
 class SettingsViewBody extends StatelessWidget {
@@ -80,7 +82,7 @@ class SettingsViewBody extends StatelessWidget {
                 const SizedBox(height: 32,),
                 SizedBox(
                   width: MediaQuery.sizeOf(context).width,
-                  child: OutlinedButton(onPressed: (){}, child: const Text("Logout")),
+                  child: OutlinedButton(onPressed: ()async{await AuthenticationRepository.instance.logout();}, child: const Text("Logout")),
                 ),
               ],
             ),
@@ -92,30 +94,5 @@ class SettingsViewBody extends StatelessWidget {
   }
 }
 
-class TSettingsMenuTile extends StatelessWidget {
-  const TSettingsMenuTile({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.subTitle,
-    this.trailing,
-    this.onTap,
-  });
-  final IconData icon;
-  final String title;
-  final String subTitle;
-  final Widget? trailing;
-  final void Function()? onTap;
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(icon,size: 28,color: TColors.primary,),
-      title: Text(title,style: Theme.of(context).textTheme.titleMedium,),
-      subtitle: Text(subTitle, style: Theme.of(context).textTheme.labelMedium,),
-      trailing: trailing,
-      onTap: onTap,
-    );
-  }
-}
 
 

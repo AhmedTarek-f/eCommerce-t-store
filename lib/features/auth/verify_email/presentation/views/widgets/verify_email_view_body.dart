@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/features/auth/verify_email/presentation/views/success_verification_view.dart';
+import 'package:t_store/features/auth/verify_email/presentation/views_model/verify_email_controller.dart';
 
 class VerifyEmailViewBody extends StatelessWidget {
-  const VerifyEmailViewBody({super.key});
-
+  const VerifyEmailViewBody({super.key, required this.email});
+  final String? email;
   @override
   Widget build(BuildContext context) {
-    log(MediaQuery.sizeOf(context).width.toString());
-    log(MediaQuery.sizeOf(context).height.toString());
+    final VerifyEmailController verifyEmailController = Get.put(VerifyEmailController());
     return SingleChildScrollView(
       child:  Padding(
         padding: EdgeInsets.only(
@@ -30,7 +30,7 @@ class VerifyEmailViewBody extends StatelessWidget {
             const SizedBox(height: 32,),
             Text("Verify your email address!",style: Theme.of(context).textTheme.headlineMedium,textAlign: TextAlign.center,),
             const SizedBox(height: 16,),
-            Text("support@codingwitht.com",style: Theme.of(context).textTheme.labelLarge,textAlign: TextAlign.center,),
+            Text(email ?? "",style: Theme.of(context).textTheme.labelLarge,textAlign: TextAlign.center,),
             const SizedBox(height: 16,),
             Text("Congratulations! Your Account Awaits: Verify Your Email to Start Shopping and Experience a World Unrivaled Deals and Personalized Offers.",style: Theme.of(context).textTheme.labelMedium,textAlign: TextAlign.center,),
             const SizedBox(height: 32,),
@@ -38,9 +38,7 @@ class VerifyEmailViewBody extends StatelessWidget {
             SizedBox(
               width: MediaQuery.sizeOf(context).width,
               child: ElevatedButton(
-                  onPressed: (){
-                    Get.off(()=> const SuccessVerificationView());
-                    },
+                  onPressed: () => verifyEmailController.checkEmailVerificationStatus(),
                   child: const Text("Continue"),
               ),
             ),
@@ -48,7 +46,7 @@ class VerifyEmailViewBody extends StatelessWidget {
             SizedBox(
               width: MediaQuery.sizeOf(context).width,
               child: TextButton(
-                onPressed: (){},
+                onPressed: () => verifyEmailController.sendEmailVerification(),
                 child: const Text("Resend Email"),
               ),
             ),

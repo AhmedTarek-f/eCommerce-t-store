@@ -22,6 +22,7 @@ class CheckoutView extends StatelessWidget {
         child: ElevatedButton(
             onPressed: (){
               Get.to(()=> SuccessScreen(
+                isAnimation: false,
                 image: TImages.successfulPaymentIcon,
                 title: "Payment Success!",
                 subTitle: "Your item will be shipped soon!",
