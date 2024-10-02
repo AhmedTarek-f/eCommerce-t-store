@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common_widgets/t_form_divider.dart';
 import 'package:t_store/common_widgets/t_social_buttons.dart';
 import 'package:t_store/features/auth/sign_up/presentation/views/widgets/t_sign_up_form.dart';
+import 'package:t_store/features/auth/sign_up/presentation/views_model/sign_up_controller.dart';
 
 class SignUpViewBody extends StatelessWidget {
   const SignUpViewBody ({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final SignUpController signUpController = Get.put(SignUpController());
     return  SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(
@@ -25,7 +28,9 @@ class SignUpViewBody extends StatelessWidget {
             const SizedBox(height: 32,),
             const TFormDivider(dividerText: "Or Sign Up With"),
             const SizedBox(height: 32,),
-            const TSocialButtons(),
+            TSocialButtons(googleOnPressed: () {
+              signUpController.signUpWithGoogle();
+            },),
           ],
         ),
       ),

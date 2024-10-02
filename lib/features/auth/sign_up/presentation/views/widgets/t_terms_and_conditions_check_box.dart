@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/core/constants/colors.dart';
+import 'package:t_store/features/auth/sign_up/presentation/views_model/sign_up_controller.dart';
 
 class TTermsAndConditionsCheckBox extends StatelessWidget {
   const TTermsAndConditionsCheckBox({
@@ -14,7 +16,10 @@ class TTermsAndConditionsCheckBox extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(width:24,height: 24,child: Checkbox(value: true, onChanged: (value){})),
+          SizedBox(width:24,height: 24,child: GetBuilder<SignUpController>(
+              builder: (controller) => Checkbox(value: controller.checkBoxSign, onChanged: (value){
+                controller.checkBoxSignChange();
+              }),),),
           const SizedBox(width:16,),
           Text.rich(
             TextSpan(
