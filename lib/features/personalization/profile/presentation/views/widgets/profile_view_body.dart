@@ -1,8 +1,16 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:t_store/common_widgets/containers/custom_shapes/t_shimmer_effect.dart';
 import 'package:t_store/common_widgets/images/t_circular_image.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/image_strings.dart';
+import 'package:t_store/features/auth/log_in/presentation/views/log_in_view.dart';
+import 'package:t_store/features/personalization/controller/user_controller.dart';
+import 'package:t_store/features/personalization/profile/presentation/views/change_name_view.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/widgets/t_profile_menu.dart';
 
 class ProfileViewBody extends StatelessWidget {
@@ -10,6 +18,7 @@ class ProfileViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UserController controller = UserController.instance;
     return  SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(
@@ -24,8 +33,17 @@ class ProfileViewBody extends StatelessWidget {
               width: MediaQuery.sizeOf(context).width,
               child: Column(
                 children: [
-                  const TCircularImage(image: TImages.user,width: 80,height: 80,isOverLayColor: false,),
-                  TextButton(onPressed: (){}, child: const Text("Change Profile Picture"))
+                  Obx(
+                    () {
+                      final String networkImage = controller.user.value.profilePicture;
+                      final String image = networkImage.isNotEmpty? networkImage : TImages.user;
+                      log(image.toString());
+                      return controller.imageUploading.value?
+                      const TShimmerEffect(width: 100, height: 100 ,radius: 100,) :
+                      TCircularImage(image: image,width: 100,height: 100,isOverLayColor: false, isNetworkImage:networkImage.isNotEmpty ,);
+                    },
+                  ),
+                  TextButton(onPressed: ()async{await controller.uploadUserProfilePicture();}, child: const Text("Change Profile Picture"))
                 ],
               ),
             ),
@@ -35,8 +53,8 @@ class ProfileViewBody extends StatelessWidget {
             const TSectionHeading(title: "Profile Information" , showActionButton: false,padding: EdgeInsets.zero,),
             const SizedBox(height: 16,),
 
-            TProfileMenu( title: "Name", value: "Ahmed Tarek",onPressed: (){},),
-            TProfileMenu( title: "UserName", value: "ahmedTarek1",onPressed: (){},),
+            Obx(()=> controller.nameChangeLoading.value?TProfileMenu( title: "Name", value: "Updating...", onPressed: () {},) :TProfileMenu( title: "Name", value: controller.user.value.fullName,onPressed: (){Get.to(()=> const ChangeNameView());},)),
+            TProfileMenu( title: "UserName", value: controller.user.value.username,onPressed: (){},),
 
             const SizedBox(height: 16,),
             const Divider(),
@@ -45,9 +63,9 @@ class ProfileViewBody extends StatelessWidget {
             const TSectionHeading(title: "Personal Information" , showActionButton: false,padding: EdgeInsets.zero,),
             const SizedBox(height: 16,),
 
-            TProfileMenu( title: "User ID", value: "16874",onPressed: (){},icon: Iconsax.copy_copy,),
-            TProfileMenu( title: "E-mail", value: "o0ahmedtarek0o@gmail.com",onPressed: (){},),
-            TProfileMenu( title: "Phone Number", value: "01116811765",onPressed: (){},),
+            TProfileMenu( title: "User ID", value: controller.user.value.id,onPressed: (){},icon: Iconsax.copy_copy,),
+            TProfileMenu( title: "E-mail", value: controller.user.value.email,onPressed: (){},),
+            TProfileMenu( title: "Phone Number", value: controller.user.value.phoneNumber,onPressed: (){},),
             TProfileMenu( title: "Gender", value: "Male",onPressed: (){},),
             TProfileMenu( title: "Date of Birth", value: "7 Jun, 2001",onPressed: (){},),
 
@@ -56,7 +74,9 @@ class ProfileViewBody extends StatelessWidget {
 
             Center(
                 child: TextButton(
-                    onPressed: (){},
+                    onPressed: ()async{
+                      controller.deleteAccountWarningPopup();
+                    },
                     child: const Text("Close Account", style: TextStyle(color: Colors.red),),
                 ),
             ),
