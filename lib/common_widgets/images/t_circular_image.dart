@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:t_store/common_widgets/containers/custom_shapes/t_shimmer_effect.dart';
 import 'package:t_store/core/constants/colors.dart';
 
 class TCircularImage extends StatelessWidget {
@@ -33,10 +35,20 @@ class TCircularImage extends StatelessWidget {
         color:backgroundColor?? (isDarkMode? TColors.black : TColors.white),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: isNetworkImage ? Image.network(image,fit:fit,) :Image.asset(
-        image,
-        color:isOverLayColor? overlayColor?? (isDarkMode?TColors.white:TColors.black): null,
-      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
+        child: isNetworkImage ? CachedNetworkImage(
+          imageUrl: image ,
+          fit:fit,
+          color: overlayColor,
+          progressIndicatorBuilder: (context, url, progress) => const TShimmerEffect(width: 80, height: 80,radius: 80,),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
+        )
+            : Image.asset(
+          image,
+          color:isOverLayColor? overlayColor?? (isDarkMode?TColors.white:TColors.black): null,
+        ),
+      )
     );
   }
 }

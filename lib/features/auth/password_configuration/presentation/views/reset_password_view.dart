@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:t_store/features/auth/password_configuration/presentation/views/widgets/reset_password_view_body.dart';
 
 class ResetPasswordView extends StatelessWidget {
-  const ResetPasswordView({super.key});
-
+  const ResetPasswordView({super.key, required this.email});
+  final String email;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -20,7 +20,7 @@ class ResetPasswordView extends StatelessWidget {
           ),
         ],
       ),
-      body: const ResetPasswordViewBody(),
+      body: ResetPasswordViewBody(email:email ,),
     );
   }
 }

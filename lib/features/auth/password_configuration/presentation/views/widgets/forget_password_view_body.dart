@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/features/auth/password_configuration/presentation/views/reset_password_view.dart';
+import 'package:t_store/features/auth/password_configuration/presentation/views_model/forget_password_controller.dart';
 
 class ForgetPasswordViewBody extends StatelessWidget {
   const ForgetPasswordViewBody({super.key});
@@ -24,27 +25,47 @@ class ForgetPasswordViewBody extends StatelessWidget {
             Text("Don't worry sometimes people can forget too, enter your email and we will send you a password reset link.",style: Theme.of(context).textTheme.labelMedium,),
             const SizedBox(height: 64,),
 
-            Form(
+            GetBuilder<ForgetPasswordController>(
+              init:  ForgetPasswordController(),
+              builder: (controller) => Form(
+                key: controller.forgetPasswordKey,
+                autovalidateMode: controller.autoValidateMode,
                 child: Column(
-              children: [
-                TextFormField(
-                  decoration:  InputDecoration(
-                    label: Text("E-Mail",style: Theme.of(context).textTheme.bodyMedium,),
-                    prefixIcon: const Icon(Iconsax.direct_right)
-                  ),
-                ),
-                const SizedBox(height: 32,),
-                SizedBox(
-                  width: MediaQuery.sizeOf(context).width,
-                  child: ElevatedButton(
-                      onPressed: (){
-                        Get.off(()=> const ResetPasswordView());
-                        },
-                      child: const Text("Submit")),
-                ),
+                  children: [
+                    TextFormField(
+                      decoration:  InputDecoration(
+                          label: Text("E-Mail",style: Theme.of(context).textTheme.bodyMedium,),
+                          prefixIcon: const Icon(Iconsax.direct_right_copy)
+                      ),
+                      validator: (value) {
+                        final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                        if(value == null || value.isEmpty || value.trim() == ""){
+                          return "Email is required.";
+                        }
+                        else if(!emailRegExp.hasMatch(value))
+                        {
+                          return "Invalid email address.";
+                        }
+                        else
+                        {
+                          return null;
+                        }
+                      },
+                      controller: controller.email,
+                    ),
+                    const SizedBox(height: 32,),
+                    SizedBox(
+                      width: MediaQuery.sizeOf(context).width,
+                      child: ElevatedButton(
+                          onPressed: ()async{
+                            await controller.sendPasswordResetEmail();
+                          },
+                          child: const Text("Submit")),
+                    ),
 
-              ],
-            ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

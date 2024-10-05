@@ -96,9 +96,9 @@ class LogInController extends GetxController
   }
 
   @override
-  void dispose() {
-    super.dispose();
+  void onClose() {
     email.dispose();
     password.dispose();
+    super.onClose();
   }
 }

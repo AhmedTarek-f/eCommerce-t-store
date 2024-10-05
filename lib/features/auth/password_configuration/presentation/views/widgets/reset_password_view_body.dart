@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/features/auth/log_in/presentation/views/log_in_view.dart';
+import 'package:t_store/features/auth/password_configuration/presentation/views_model/reset_password_controller.dart';
 
 class ResetPasswordViewBody extends StatelessWidget {
-  const ResetPasswordViewBody({super.key});
-
+  const ResetPasswordViewBody({super.key, required this.email});
+  final String email;
   @override
   Widget build(BuildContext context) {
+    final ResetPasswordController controller = Get.put(ResetPasswordController());
     return  SingleChildScrollView(
         child:  Padding(
           padding: EdgeInsets.only(
@@ -42,7 +44,9 @@ class ResetPasswordViewBody extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.sizeOf(context).width,
                 child: TextButton(
-                  onPressed: (){},
+                  onPressed: ()async{
+                    await controller.resendPasswordResetEmail(email:email);
+                  },
                   child: const Text("Resend Email"),
                 ),
               ),

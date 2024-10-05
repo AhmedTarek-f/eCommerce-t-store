@@ -8,6 +8,7 @@ import 'package:t_store/core/utlis/exceptions/t_firebase_auth_exceptions.dart';
 import 'package:t_store/core/utlis/exceptions/t_firebase_exceptions.dart';
 import 'package:t_store/core/utlis/exceptions/t_format_exceptions.dart';
 import 'package:t_store/core/utlis/exceptions/t_platform_exceptions.dart';
+import 'package:t_store/data/repositories/user/user_repository.dart';
 import 'package:t_store/features/auth/log_in/presentation/views/log_in_view.dart';
 import 'package:t_store/features/auth/verify_email/presentation/views/verify_email_view.dart';
 import 'package:t_store/features/on_boarding/presentation/views/on_boarding_view.dart';
@@ -19,6 +20,7 @@ class AuthenticationRepository extends GetxController {
   // Variable
   final deviceStorage =GetStorage();
   final _auth = FirebaseAuth.instance;
+  User? get authUser => _auth.currentUser;
 
 
   // Called From main.dart on app launch
@@ -123,6 +125,31 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  // Forget Password
+  Future<void> sendPasswordResetEmail({required String email}) async
+  {
+    try{
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e)
+    {
+      throw TFirebaseAuthException(e.code).message;
+    }
+    on FirebaseException catch (e){
+      throw TFirebaseException(e.code).message;
+    }
+    on FormatException catch (_){
+      throw const TFormatException();
+    }
+    on PlatformException catch(e)
+    {
+      throw TPlatformException(e.code).message;
+    }
+    catch (e)
+    {
+      throw "Something went wrong, Please try again";
+    }
+  }
+
   // Login using Google
   Future<UserCredential> signInWithGoogle() async
   {
@@ -183,5 +210,56 @@ class AuthenticationRepository extends GetxController {
       throw "Something went wrong, Please try again";
     }
 
+  }
+
+  Future<void> reAuthenticateWithEmailAndPassword(String email,String password) async{
+    try{
+      AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    }
+    on FirebaseAuthException catch (e)
+    {
+      throw TFirebaseAuthException(e.code).message;
+    }
+    on FirebaseException catch (e){
+      throw TFirebaseException(e.code).message;
+    }
+    on FormatException catch (_){
+      throw const TFormatException();
+    }
+    on PlatformException catch(e)
+    {
+      throw TPlatformException(e.code).message;
+    }
+    catch (e)
+    {
+      throw "Something went wrong, Please try again";
+    }
+
+  }
+  
+  Future<void> deleteAccount() async{
+    try{
+      await UserRepository.instance.deleteAccount(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    }
+    on FirebaseAuthException catch (e)
+    {
+      throw TFirebaseAuthException(e.code).message;
+    }
+    on FirebaseException catch (e){
+      throw TFirebaseException(e.code).message;
+    }
+    on FormatException catch (_){
+      throw const TFormatException();
+    }
+    on PlatformException catch(e)
+    {
+      throw TPlatformException(e.code).message;
+    }
+    catch (e)
+    {
+      throw "Something went wrong, Please try again";
+    }
   }
 }
