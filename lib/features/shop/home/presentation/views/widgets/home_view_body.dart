@@ -45,7 +45,7 @@ class HomeViewBody extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                   const TPromoSlider(banners: [TImages.promoBanner2,TImages.promoBanner3,TImages.promoBanner4,TImages.promoBanner1,TImages.promoBanner5,TImages.promoBanner6],),
+                   const TPromoSlider(),
                    const SizedBox(height: 32,),
                    TSectionHeading(title: "Popular Products",
                      onPressed: (){

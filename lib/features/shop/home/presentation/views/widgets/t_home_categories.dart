@@ -1,43 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common_widgets/image_text_widgets/t_vertical_image_text.dart';
-import 'package:t_store/core/constants/image_strings.dart';
-import 'package:t_store/features/shop/home/model/category_model.dart';
+import 'package:t_store/features/shop/home/presentation/views/widgets/t_category_shimmer.dart';
 import 'package:t_store/features/shop/sub_categories/presentation/views/sub_categories_view.dart';
+import 'package:t_store/features/shop/home/presentation/views_model/category_controller.dart';
 
 class THomeCategories extends StatelessWidget {
   const THomeCategories({
     super.key,
   });
-  final List<CategoryModel> categoriesList =const [
-    CategoryModel(categoryName: "shoes Category", categoryImg: TImages.shoeIcon),
-    CategoryModel(categoryName: "cloth Category", categoryImg: TImages.clothIcon),
-    CategoryModel(categoryName: "animal Category", categoryImg: TImages.animalIcon),
-    CategoryModel(categoryName: "furniture Category", categoryImg: TImages.furnitureIcon),
-    CategoryModel(categoryName: "jewelery Category", categoryImg: TImages.jeweleryIcon),
-    CategoryModel(categoryName: "sport Category", categoryImg: TImages.sportIcon),
-    CategoryModel(categoryName: "electronics Category", categoryImg: TImages.electronicsIcon),
-  ];
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 80,
-      child: Padding(
-        padding: EdgeInsets.only(left: MediaQuery.sizeOf(context).width*0.0611),
-        child: ListView.separated(
-          itemCount: categoriesList.length,
-          scrollDirection: Axis.horizontal,
-          shrinkWrap: true,
-          itemBuilder:(context, index) => TVerticalImageText(
-            title:categoriesList[index].categoryName ,
-            image: categoriesList[index].categoryImg,
-            onTap: (){
-              Get.to(()=> const SubCategoriesView());
-            },
+    final CategoryController categoryController = Get.put(CategoryController());
+    
+    return Obx(() {
+      if(categoryController.isLoading.value)
+        {
+          return  const TCategoryShimmer();
+        }
+      else if(categoryController.featuredCategories.isEmpty){
+        return Center(child: Text("No Data Found",style:  Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white),),);
+      }
+      else {
+        return SizedBox(
+          height: 80,
+          child: Padding(
+            padding: EdgeInsets.only(left: MediaQuery.sizeOf(context).width*0.0611),
+            child: ListView.separated(
+              itemCount: categoryController.featuredCategories.length,
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemBuilder:(context, index) {
+                final category = categoryController.featuredCategories[index];
+                return TVerticalImageText(
+                  title: category.name ,
+                  image: category.image,
+                  onTap: (){
+                    Get.to(()=> const SubCategoriesView());
+                  },
+                );
+              } ,
+              separatorBuilder: (context, index) => const SizedBox(width: 16,),
+            ),
           ),
-          separatorBuilder: (context, index) => const SizedBox(width: 16,),
-        ),
-      ),
+        );
+      }
+    },
     );
   }
 }
+
