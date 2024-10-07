@@ -5,18 +5,21 @@ import 'package:t_store/common_widgets/layouts/t_grid_layout.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/features/shop/all_brands/presentation/views/all_brands_view.dart';
+import 'package:t_store/features/shop/home/model/category_model.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/t_brand_card.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/t_category_tab.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/t_tab_bar.dart';
+import 'package:t_store/features/shop/home/presentation/views_model/category_controller.dart';
 
 class StoreViewBody extends StatelessWidget {
   const StoreViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final RxList<CategoryModel> categories = CategoryController.instance.featuredCategories;
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return[
@@ -61,26 +64,15 @@ class StoreViewBody extends StatelessWidget {
                     ],
                   ),
                 ),
-                 bottom: const TTabBar(
-                     tabs: [
-                       Text("Sports"),
-                       Text("Furniture"),
-                       Text("Electronics"),
-                       Text("Clothes"),
-                       Text("Cosmetics"),
-                     ]
+                 bottom: TTabBar(
+                     tabs: categories.map((category) => Tab(child: Text(category.name),)).toList(),
                  ),
               ),
             ];
           },
-          body: const TabBarView(
-              children: [
-                TCategoryTab(),
-                TCategoryTab(),
-                TCategoryTab(),
-                TCategoryTab(),
-                TCategoryTab(),
-          ],
+          body: TabBarView(
+            children: categories.map((category) =>  TCategoryTab(category: category,)).toList(),
+
           ),
       ),
     );

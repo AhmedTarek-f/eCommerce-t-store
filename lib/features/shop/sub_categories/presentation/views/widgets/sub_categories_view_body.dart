@@ -19,7 +19,7 @@ class SubCategoriesViewBody extends StatelessWidget {
         ),
         child: Column(
           children: [
-            TRoundedImage(imageUrl: TImages.promoBanner5,width: MediaQuery.sizeOf(context).width,),
+            TRoundedImage(imageUrl: TImages.promoBanner3,width: MediaQuery.sizeOf(context).width,),
             const SizedBox(height: 32,),
 
             Column(

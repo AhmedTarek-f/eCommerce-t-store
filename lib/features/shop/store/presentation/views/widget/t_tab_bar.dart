@@ -17,13 +17,7 @@ class TTabBar extends StatelessWidget implements PreferredSizeWidget {
           indicatorColor: TColors.primary,
           unselectedLabelColor: TColors.darkerGrey,
           labelColor: isDarkMode?TColors.white : TColors.primary,
-          tabs: const [
-            Text("Sports"),
-            Text("Furniture"),
-            Text("Electronics"),
-            Text("Clothes"),
-            Text("Cosmetics"),
-          ]
+          tabs: tabs
       ),
     );
   }

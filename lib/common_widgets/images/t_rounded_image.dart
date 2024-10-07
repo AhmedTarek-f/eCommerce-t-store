@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:t_store/common_widgets/containers/custom_shapes/t_shimmer_effect.dart';
 import 'package:t_store/core/constants/colors.dart';
 
 class TRoundedImage extends StatelessWidget {
@@ -15,6 +17,8 @@ class TRoundedImage extends StatelessWidget {
     this.isNetworkImage = false,
     this.onPressed,
     this.borderRadius = 16,
+    this.shimmerWidth=300,
+    this.shimmerHeight=60,
   });
   final double? width, height;
   final String imageUrl;
@@ -26,6 +30,7 @@ class TRoundedImage extends StatelessWidget {
   final bool isNetworkImage;
   final VoidCallback? onPressed;
   final double borderRadius;
+  final double shimmerWidth , shimmerHeight;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -35,7 +40,16 @@ class TRoundedImage extends StatelessWidget {
         decoration: BoxDecoration(border: border,color: backgroundColor,borderRadius: BorderRadius.circular(borderRadius)),
         child: ClipRRect(
           borderRadius: applyImageRadius ? BorderRadius.circular(borderRadius) : BorderRadius.zero ,
-          child:isNetworkImage? Image.network(imageUrl) :Image.asset(
+          child:isNetworkImage?
+          CachedNetworkImage(
+            imageUrl: imageUrl,
+            width: width,
+            height: height,
+            fit: fit,
+            progressIndicatorBuilder: (context, url, progress) => TShimmerEffect(width: shimmerWidth, height: shimmerHeight),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          ):
+          Image.asset(
             imageUrl,
             fit: fit,
             width: width,

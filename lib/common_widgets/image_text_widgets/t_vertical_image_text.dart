@@ -1,14 +1,23 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:t_store/common_widgets/images/t_circular_image.dart';
 import 'package:t_store/core/constants/colors.dart';
 
 class TVerticalImageText extends StatelessWidget {
   const TVerticalImageText({
-    super.key, required this.image, required this.title, this.textColor = TColors.white, this.backGroundColor, this.onTap,
+    super.key,
+    required this.image,
+    required this.title,
+    this.textColor = TColors.white,
+    this.backGroundColor,
+    this.onTap,
+    this.isNetworkImage = true,
   });
   final String image , title;
   final Color textColor;
   final Color? backGroundColor;
   final void Function()? onTap;
+  final bool isNetworkImage ;
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
@@ -24,12 +33,11 @@ class TVerticalImageText extends StatelessWidget {
               color: backGroundColor ?? (isDarkMode? TColors.black : TColors.white),
               borderRadius: BorderRadius.circular(100),
             ),
-            child: Center(
-              child: Image.asset(
-                image,
-                fit: BoxFit.cover,
-                color:isDarkMode? TColors.light:TColors.dark,
-              ),
+            child: TCircularImage(
+              image: image,
+              isNetworkImage: isNetworkImage,
+              fit: BoxFit.fitWidth,
+              overlayColor: isDarkMode?TColors.light:TColors.dark,
             ),
           ),
 
