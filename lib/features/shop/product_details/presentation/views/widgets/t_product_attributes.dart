@@ -1,95 +1,142 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common_widgets/choice_chip/t_choice_chip.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/common_widgets/texts/t_product_price_text.dart';
 import 'package:t_store/common_widgets/texts/t_product_title_text.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/colors.dart';
+import 'package:t_store/features/shop/product_details/model/product_model.dart';
+import 'package:t_store/features/shop/product_details/presentation/views_model/variation_controller.dart';
 
 class TProductAttributes extends StatelessWidget {
-  const TProductAttributes({super.key});
-
+  const TProductAttributes({
+    super.key,
+    required this.product,
+  });
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    final VariationController controller = Get.put(VariationController());
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    return  Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TRoundedContainer(
-          padding: const EdgeInsets.all(16),
-          backGroundColor: isDarkMode?TColors.darkerGrey:TColors.grey,
-          child:  Column(
-            children: [
-              Row(
+    return Obx(
+      () => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (controller.selectedVariation.value.id.isNotEmpty)
+            TRoundedContainer(
+              padding: const EdgeInsets.all(16),
+              backGroundColor: isDarkMode ? TColors.darkerGrey : TColors.grey,
+              child: Column(
                 children: [
-                  const TSectionHeading(title: "Variation",showActionButton: false,padding: EdgeInsets.zero,),
-                  const SizedBox(width: 16,),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          const TProductTitleText(title: "Price: ",isSmallSize: true,),
-                          Text("\$25",style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),),
-                          const SizedBox(width: 16,),
-                          const TProductPriceText(price: "20",),
-                        ],
+                      const TSectionHeading(
+                        title: "Variation",
+                        showActionButton: false,
+                        padding: EdgeInsets.zero,
                       ),
-                      Row(
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const TProductTitleText(title: "Stock: ",isSmallSize: true,),
-                          Text("InStock",style: Theme.of(context).textTheme.titleMedium,),
+                          Row(
+                            children: [
+                              const TProductTitleText(
+                                title: "Price: ",
+                                isSmallSize: true,
+                              ),
+                              if (controller.selectedVariation.value.salePrice > 0)
+                                Text(
+                                  "\$${controller.selectedVariation.value.price}",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .apply(decoration: TextDecoration.lineThrough),
+                                ),
+                              if (controller.selectedVariation.value.salePrice > 0) const SizedBox(width: 16,),
+                              TProductPriceText(
+                                price: controller.getVariationPrice(),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const TProductTitleText(
+                                title: "Stock: ",
+                                isSmallSize: true,
+                              ),
+                              Text(
+                                controller.variationStockStatus.value,
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ],
                   ),
-
+                  TProductTitleText(
+                    title:
+                        controller.selectedVariation.value.description ?? "",
+                    isSmallSize: true,
+                    maxLines: 4,
+                  ),
                 ],
               ),
-              const TProductTitleText(
-                title: "This is the Description of the product and it can go up to max 4 lines",
-                isSmallSize: true,
-                maxLines: 4,
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 16,),
-
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TSectionHeading(title: "Colors",showActionButton: false,padding: EdgeInsets.all(0),),
-            const SizedBox(height: 10.5,),
-            Wrap(
-              spacing: 8,
-              children: [
-                TChoiceChip(text: 'green', selected: true, onSelected: (value){},),
-                TChoiceChip(text: 'red', selected: false, onSelected: (value){},),
-                TChoiceChip(text: 'blue', selected: false, onSelected: (value){},),
-              ],
             ),
-          ],
-        ),
+          const SizedBox(
+            height: 16,
+          ),
+          Column(
+            children: product.productAttributes!
+                .map(
+                  (attribute) => Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TSectionHeading(
+                          title: attribute.name ?? "",
+                          showActionButton: false,
+                          padding: const EdgeInsets.all(0),
+                        ),
+                        const SizedBox(
+                          height: 10.5,
+                        ),
+                        Obx(
+                          () => Wrap(
+                            spacing: 8,
+                            children: attribute.values!.map(
+                              (attributeValue) {
+                                final isSelected = controller.selectedAttributes[attribute.name] == attributeValue;
+                                final available = controller.getAttributesAvailabilityInVariation(product.productVariations!, attribute.name!)
+                                    .contains(attributeValue);
 
-        const SizedBox(height: 16,),
-
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TSectionHeading(title: "Size",showActionButton: false,padding: EdgeInsets.all(0),),
-            const SizedBox(height: 10.5,),
-            Wrap(
-              spacing: 8,
-              children: [
-                TChoiceChip(text: 'EU 34', selected: true, onSelected: (value){},),
-                TChoiceChip(text: 'EU 36', selected: false, onSelected: (value){},),
-                TChoiceChip(text: 'EU 38', selected: false, onSelected: (value){},),
-              ],
-            )
-          ],
-        ),
-      ],
+                                return TChoiceChip(
+                                  text: attributeValue,
+                                  selected: isSelected,
+                                  onSelected: available ? (selected) {
+                                    if (selected && available) {
+                                      controller.onAttributeSelected(product, attribute.name ?? "", attributeValue);
+                                      }
+                                    }
+                                      : null,
+                                );
+                              },
+                            ).toList(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+        ],
+      ),
     );
   }
 }

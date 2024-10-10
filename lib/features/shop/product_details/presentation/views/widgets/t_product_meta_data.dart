@@ -7,12 +7,16 @@ import 'package:t_store/common_widgets/texts/t_product_title_text.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/core/constants/enums.dart';
 import 'package:t_store/core/constants/image_strings.dart';
+import 'package:t_store/features/shop/product_details/model/product_model.dart';
+import 'package:t_store/features/shop/product_details/presentation/views_model/product_controller.dart';
 
 class TProductMetaData extends StatelessWidget {
-  const TProductMetaData({super.key});
-
+  const TProductMetaData({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    final ProductController controller = ProductController.instance;
+    final String? salesPercentage = controller.calculateSalePercentage(product.price, product.salePrice);
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return  Column(
@@ -24,12 +28,13 @@ class TProductMetaData extends StatelessWidget {
               radius: 8,
               backGroundColor: TColors.secondary.withOpacity(0.8),
               padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 4),
-              child: Text("25%", style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),),
+              child: Text("$salesPercentage%", style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),),
             ),
             const SizedBox(width: 16,),
-            Text("\$250",style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),),
-            const SizedBox(width: 16,),
-            const TProductPriceText(price: "175",isLarge: true,),
+            if(product.productType == ProductType.single.toString() && product.salePrice >0)
+            Text("\$${product.price}",style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),),
+            if(product.productType == ProductType.single.toString() && product.salePrice >0) const SizedBox(width: 16,),
+            TProductPriceText(price: controller.getProductPrice(product),isLarge: true,),
           ],
         ),
         const SizedBox(height: 10.5,),
@@ -40,20 +45,21 @@ class TProductMetaData extends StatelessWidget {
           children: [
             const TProductTitleText(title: "Status"),
             const SizedBox(width: 16,),
-            Text("In Stock",style: Theme.of(context).textTheme.titleMedium,)
+            Text(controller.getProductStockStatus(product.stock),style: Theme.of(context).textTheme.titleMedium,)
           ],
         ),
         const SizedBox(height: 10.5,),
         Row(
           children: [
             TCircularImage(
-              image: TImages.shoeIcon,
+              isNetworkImage: true,
+              image: product.brand?.image ?? "",
               width: 32,
               height: 32,
               overlayColor: isDarkMode? TColors.white:TColors.black,
             ),
             const SizedBox(width: 4,),
-            const TBrandTitleWithVerifiedIcon(title: "Nike",brandTextSize: TextSizes.medium,),
+            TBrandTitleWithVerifiedIcon(title: product.brand?.name ?? "",brandTextSize: TextSizes.medium,),
           ],
         ),
       ],

@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:readmore/readmore.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
+import 'package:t_store/core/constants/enums.dart';
+import 'package:t_store/features/shop/product_details/model/product_model.dart';
 import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_product_attributes.dart';
 import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_product_image_slider.dart';
 import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_product_meta_data.dart';
@@ -10,14 +14,14 @@ import 'package:t_store/features/shop/product_details/presentation/views/widgets
 import 'package:t_store/features/shop/product_review/presentation/views/product_review_view.dart';
 
 class ProductDetailsViewBody extends StatelessWidget {
-  const ProductDetailsViewBody({super.key});
-
+  const ProductDetailsViewBody({super.key, required this.product});
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return  SingleChildScrollView(
       child: Column(
         children: [
-          const TProductImageSlider(),
+          TProductImageSlider(product: product,),
 
           Padding(
             padding: EdgeInsets.only(
@@ -28,9 +32,10 @@ class ProductDetailsViewBody extends StatelessWidget {
             child: Column(
               children: [
                 const TRatingAndShare(),
-                const TProductMetaData(),
-                const TProductAttributes(),
-                const SizedBox(height: 32,),
+                TProductMetaData(product: product,),
+                if(product.productType == ProductType.variable.toString()) TProductAttributes(product: product,),
+                if(product.productType == ProductType.variable.toString()) const SizedBox(height: 16,),
+                if(product.productType == ProductType.single.toString()) const SizedBox(height: 16,),
                 SizedBox(
                   width: MediaQuery.sizeOf(context).width,
                     child: ElevatedButton(
@@ -41,14 +46,14 @@ class ProductDetailsViewBody extends StatelessWidget {
                 const SizedBox(height: 32,),
                 const TSectionHeading(title: "Description",showActionButton: false,padding: EdgeInsets.all(0),),
                 const SizedBox(height: 16,),
-                const ReadMoreText(
-                  "This is a product description for blue nike shoes. There are more things that can be added but I'm aaaaa adfff adfdsg sdfdsfffff afdsffffff dsf",
+                 ReadMoreText(
+                  product.description ?? "",
                   trimLength: 2,
                   trimMode: TrimMode.Line,
                   trimCollapsedText: "Show more",
                   trimExpandedText: "Less",
-                  moreStyle: TextStyle(fontSize: 14,fontWeight:  FontWeight.w800),
-                  lessStyle: TextStyle(fontSize: 14,fontWeight:  FontWeight.w800),
+                  moreStyle: const TextStyle(fontSize: 14,fontWeight:  FontWeight.w800),
+                  lessStyle: const TextStyle(fontSize: 14,fontWeight:  FontWeight.w800),
                 ),
                 const Divider(),
                 const SizedBox(height: 16,),
