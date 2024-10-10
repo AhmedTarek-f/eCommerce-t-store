@@ -26,7 +26,7 @@ class BrandProductsViewBody extends StatelessWidget {
           children: [
             const TBrandCard(showBorder: true),
             const SizedBox(height: 32,),
-            TSortableProducts(searchListOptions: searchListOptions )
+            TSortableProducts(searchListOptions: searchListOptions, products: [], )
           ],
         ),
       ),

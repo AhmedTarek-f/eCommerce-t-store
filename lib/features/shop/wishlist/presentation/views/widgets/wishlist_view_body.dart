@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/common_widgets/layouts/t_grid_layout.dart';
 import 'package:t_store/common_widgets/products/products_card/t_product_card_vertical.dart';
+import 'package:t_store/features/shop/product_details/model/product_model.dart';
 
 class WishlistViewBody extends StatelessWidget {
   const WishlistViewBody({super.key});
@@ -19,7 +20,7 @@ class WishlistViewBody extends StatelessWidget {
           children: [
             TGridLayout(
                 itemCount: 8,
-                itemBuilder: (context, index) => const TProductCardVertical(),
+                itemBuilder: (context, index) =>  TProductCardVertical(product: ProductModel.empty(),),
             ),
           ],
         ),

@@ -4,6 +4,7 @@ import 'package:t_store/common_widgets/products/products_card/t_product_card_ver
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/features/shop/home/model/category_model.dart';
+import 'package:t_store/features/shop/product_details/model/product_model.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/t_brand_show_case.dart';
 
 class TCategoryTab extends StatelessWidget {
@@ -32,7 +33,7 @@ class TCategoryTab extends StatelessWidget {
               const SizedBox(height: 16,),
               const TSectionHeading(title: "You might like"),
               const SizedBox(height: 16,),
-              TGridLayout(itemCount: 4, itemBuilder: (context, index) => const TProductCardVertical(),)
+              TGridLayout(itemCount: 4, itemBuilder: (context, index) =>  TProductCardVertical(product: ProductModel.empty(),),)
             ],
           ),
         ),

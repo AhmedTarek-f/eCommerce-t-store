@@ -23,13 +23,11 @@ abstract class AppRouters {
     GetPage(name: TRoutes.signIn, page: ()=> const LogInView()),
     GetPage(name: TRoutes.settings, page: ()=> const SettingsView()),
     GetPage(name: TRoutes.cart, page: ()=> const CartView()),
-    GetPage(name: TRoutes.allProducts, page: ()=> const AllProductsView()),
     GetPage(name: TRoutes.userProfile, page: ()=> const ProfileView()),
     GetPage(name: TRoutes.userAddress, page: ()=> const MyAddressView()),
     GetPage(name: TRoutes.subCategories, page: ()=> const SubCategoriesView()),
     GetPage(name: TRoutes.store, page: ()=> const StoreView()),
     GetPage(name: TRoutes.productReviews, page: ()=> const ProductReviewView()),
-    GetPage(name: TRoutes.productDetail, page: ()=> const ProductDetailsView()),
     GetPage(name: TRoutes.order, page: ()=> const MyOrdersView()),
     GetPage(name: TRoutes.onBoarding, page: ()=> const OnBoardingView()),
   ];

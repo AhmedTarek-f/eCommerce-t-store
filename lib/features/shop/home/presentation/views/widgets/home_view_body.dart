@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_primary_header_container.dart';
@@ -10,12 +11,15 @@ import 'package:t_store/features/shop/all_products/presentation/views/all_produc
 import 'package:t_store/features/shop/home/presentation/views/widgets/t_home_app_bar.dart';
 import 'package:t_store/features/shop/home/presentation/views/widgets/t_home_categories.dart';
 import 'package:t_store/features/shop/home/presentation/views/widgets/t_promo_slider.dart';
+import 'package:t_store/features/shop/home/presentation/views/widgets/t_vertical_product_shimmer.dart';
+import 'package:t_store/features/shop/product_details/presentation/views_model/product_controller.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final ProductController controller = Get.put(ProductController());
     return  SingleChildScrollView(
       child: Column(
         children: [
@@ -49,13 +53,31 @@ class HomeViewBody extends StatelessWidget {
                    const SizedBox(height: 32,),
                    TSectionHeading(title: "Popular Products",
                      onPressed: (){
-                     Get.to(()=> const AllProductsView());
+                     Get.to(()=> AllProductsView(
+                       title: "Popular Products",
+                       futureMethod: controller.fetchAllFeaturedProducts(),
+                         ),
+                       );
                      },
                    ),
                    const SizedBox(height: 16,),
-                   TGridLayout(
-                     itemCount: 4,
-                     itemBuilder: (context, index) => const TProductCardVertical(),
+                   Obx(
+                       (){
+                         if(controller.isLoading.value)
+                           {
+                             return const TVerticalProductShimmer();
+                           }
+                         else if (controller.featuredProductsList.isEmpty)
+                           {
+                             return Center(child: Text("No Data Found",style: Theme.of(context).textTheme.bodyMedium,));
+                           }
+                         else{
+                           return TGridLayout(
+                             itemCount: controller.featuredProductsList.length,
+                             itemBuilder: (context, index) => TProductCardVertical(product: controller.featuredProductsList[index],),
+                           );
+                         }
+                       }
                    ),
                 ],
               )
