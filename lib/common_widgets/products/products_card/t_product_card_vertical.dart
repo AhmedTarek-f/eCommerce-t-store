@@ -4,6 +4,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/common_widgets/icons/t_circular_icon.dart';
 import 'package:t_store/common_widgets/images/t_rounded_image.dart';
+import 'package:t_store/common_widgets/products/favorite_icon/t_favorite_icon.dart';
 import 'package:t_store/common_widgets/texts/t_brand_title_with_verified_icon.dart';
 import 'package:t_store/common_widgets/texts/t_product_price_text.dart';
 import 'package:t_store/common_widgets/texts/t_product_title_text.dart';
@@ -59,10 +60,10 @@ class TProductCardVertical extends StatelessWidget {
                       child: Text("$salePercentage%", style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),),
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     top: 0,
                     right: 0,
-                    child: TCircularIcon(icon: Iconsax.heart,color: Colors.red,),
+                    child: TFavoriteIcon(productId: product.id,),
                   )
                 ],
               ),
@@ -75,7 +76,7 @@ class TProductCardVertical extends StatelessWidget {
                 children: [
                   TProductTitleText(title: product.title,isSmallSize: true,),
                   const SizedBox(height: 8,),
-                  TBrandTitleWithVerifiedIcon(title: product.brand!.name,),
+                  TBrandTitleWithVerifiedIcon(title: product.brand?.name ?? "",),
                 ],
               ),
             ),
@@ -123,6 +124,7 @@ class TProductCardVertical extends StatelessWidget {
     );
   }
 }
+
 
 
 

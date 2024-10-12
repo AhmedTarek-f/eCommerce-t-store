@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
-import 'package:t_store/common_widgets/icons/t_circular_icon.dart';
 import 'package:t_store/common_widgets/images/t_rounded_image.dart';
+import 'package:t_store/common_widgets/products/favorite_icon/t_favorite_icon.dart';
 import 'package:t_store/common_widgets/texts/t_brand_title_with_verified_icon.dart';
 import 'package:t_store/common_widgets/texts/t_product_price_text.dart';
 import 'package:t_store/common_widgets/texts/t_product_title_text.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/core/constants/image_strings.dart';
+import 'package:t_store/core/constants/enums.dart';
+import 'package:t_store/features/shop/product_details/model/product_model.dart';
+import 'package:t_store/features/shop/product_details/presentation/views_model/product_controller.dart';
 
 class TProductCardHorizontal extends StatelessWidget {
-  const TProductCardHorizontal({super.key});
+  const TProductCardHorizontal({super.key, required this.product,});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final ProductController controller = ProductController.instance;
+    final salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
     return Container(
       width: MediaQuery.sizeOf(context).width*0.7893,
       padding:const EdgeInsets.all(1),
@@ -33,9 +38,10 @@ class TProductCardHorizontal extends StatelessWidget {
                 TRoundedImage(
                   height: MediaQuery.sizeOf(context).height*0.14,
                   width: MediaQuery.sizeOf(context).width*0.3055,
-                  imageUrl: TImages.productImage38,
+                  imageUrl: product.thumbnail,
                   applyImageRadius: true,
                   backgroundColor: isDarkMode? TColors.dark:TColors.white,
+                  isNetworkImage: true,
                 ),
                 Positioned(
                   top: 1,
@@ -43,13 +49,18 @@ class TProductCardHorizontal extends StatelessWidget {
                     radius: 8,
                     backGroundColor: TColors.secondary.withOpacity(0.8),
                     padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 4),
-                    child: Text("25%", style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),),
+                    child: Text("$salePercentage%", style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),),
                   ),
                 ),
                 Positioned(
                   top: 0,
                   right: 0,
-                  child: TCircularIcon(icon: Iconsax.heart,color: Colors.red,width: 35,height: 35,size: 20,backgroundColor: isDarkMode?TColors.darkerGrey:TColors.lightGrey,),
+                  child: TFavoriteIcon(
+                    width: 35,
+                    height: 35,
+                    size: 20,
+                    backgroundColor: isDarkMode?TColors.darkerGrey:TColors.lightGrey, productId: product.id,
+                  ),
                 )
               ],
             ),
@@ -61,19 +72,36 @@ class TProductCardHorizontal extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Column(
+                   Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
-                       TProductTitleText(title: "Green Nike Half Sleeves Shirt",isSmallSize: true,),
-                       SizedBox(height: 8,),
-                       TBrandTitleWithVerifiedIcon(title: "Nike",),
+                       TProductTitleText(title: product.title,isSmallSize: true,),
+                       const SizedBox(height: 8,),
+                       TBrandTitleWithVerifiedIcon(title: product.brand?.name?? "",),
                      ],
                    ),
                   const Expanded(child: SizedBox()),
                  Row(
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                    children: [
-                     const Flexible(child:TProductPriceText(price: "256.0")),
+                     Flexible(
+                       child: Column(
+                         children: [
+                           if(product.productType == ProductType.single.toString() && product.salePrice < 0)
+                             Padding(
+                               padding: const EdgeInsets.only(left: 8.0),
+                               child:  Text(
+                                 product.price.toString(),
+                                 style: Theme.of(context).textTheme.labelMedium!.apply(decoration: TextDecoration.lineThrough),
+                               ),
+                             ),
+                           Padding(
+                             padding:  const EdgeInsets.only(left: 8.0),
+                             child:  TProductPriceText(price: controller.getProductPrice(product),),
+                           ),
+                         ],
+                       ),
+                     ),
                      Container(
                        decoration: const BoxDecoration(
                          color: TColors.dark,
