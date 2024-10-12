@@ -32,12 +32,12 @@ class ProductAttributeModel {
     }
   }
 
-  factory ProductAttributeModel.fromSnapshot2(Map<String,dynamic> document) {
+  factory ProductAttributeModel.fromJson(Map<String,dynamic> document) {
 
       final Map<String,dynamic> snapshot = document;
       return ProductAttributeModel(
         name: snapshot["Name"] ?? "",
-        values: List<String>.from(snapshot["Values"]) ?? [],
+        values: List<String>.from(snapshot["Values"]),
       );
 
   }

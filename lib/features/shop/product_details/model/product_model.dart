@@ -82,13 +82,13 @@ class ProductModel {
         thumbnail: snapshot["Thumbnail"] ?? "",
         productType: snapshot["ProductType"] ?? "",
         isFeatured: snapshot["IsFeatured"] ?? false,
-        brand: BrandModel.fromSnapshot2(snapshot["Brand"]),
+        brand: BrandModel.fromJson(snapshot["Brand"]),
         categoryId: snapshot["CategoryId"] ?? "",
         date: snapshot["Date"],
         description: snapshot["Description"] ?? "",
         images: snapshot["Images"] != null ? List<String>.from(snapshot["Images"]) :[],
-        productAttributes: (snapshot["ProductAttributes"] as List<dynamic>).map((e) => ProductAttributeModel.fromSnapshot2(e)).toList(),
-        productVariations: (snapshot["ProductVariations"] as List<dynamic>).map((e)=> ProductVariationModel.fromSnapshot2(e)).toList(),
+        productAttributes: (snapshot["ProductAttributes"] as List<dynamic>).map((e) => ProductAttributeModel.fromJson(e)).toList(),
+        productVariations: (snapshot["ProductVariations"] as List<dynamic>).map((e)=> ProductVariationModel.fromJson(e)).toList(),
       );
     }
     else {
@@ -109,13 +109,13 @@ class ProductModel {
         thumbnail: snapshot["Thumbnail"] ?? "",
         productType: snapshot["ProductType"] ?? "",
         isFeatured: snapshot["IsFeatured"] ?? false,
-        brand: BrandModel.fromSnapshot2(snapshot["Brand"]),
+        brand: BrandModel.fromJson(snapshot["Brand"]),
         categoryId: snapshot["CategoryId"] ?? "",
         date: snapshot["Date"],
         description: snapshot["Description"] ?? "",
         images: snapshot["Images"] != null ? List<String>.from(snapshot["Images"]) :[],
-        productAttributes: (snapshot["ProductAttributes"] as List<dynamic>).map((e) => ProductAttributeModel.fromSnapshot2(e)).toList(),
-        productVariations: (snapshot["ProductVariations"] as List<dynamic>).map((e)=> ProductVariationModel.fromSnapshot2(e)).toList(),
+        productAttributes: (snapshot["ProductAttributes"] as List<dynamic>).map((e) => ProductAttributeModel.fromJson(e)).toList(),
+        productVariations: (snapshot["ProductVariations"] as List<dynamic>).map((e)=> ProductVariationModel.fromJson(e)).toList(),
       );
     }
     else {

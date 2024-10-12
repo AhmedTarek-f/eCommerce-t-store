@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/core/utlis/loaders/t_loaders.dart';
-import 'package:t_store/core/utlis/network_connection/network_manager.dart';
 import 'package:t_store/core/utlis/popups/t_full_screen_loader.dart';
 import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/data/repositories/user/user_repository.dart';

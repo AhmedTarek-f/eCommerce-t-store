@@ -10,14 +10,6 @@ class AllProductsViewBody extends StatelessWidget {
   const AllProductsViewBody({super.key, this.query, this.futureMethod});
   final Query? query;
   final Future<List<ProductModel>>? futureMethod;
-  final List<String> searchListOptions = const [
-    "Name",
-    "Higher Price",
-    "Lower Price",
-    "Sale",
-    "Newest",
-    "Popularity",
-  ];
   @override
   Widget build(BuildContext context) {
     final AllProductsController controller = Get.put(AllProductsController());
@@ -44,7 +36,7 @@ class AllProductsViewBody extends StatelessWidget {
                 }
               else{
                 final List<ProductModel> products = snapshot.data!;
-                return TSortableProducts(searchListOptions: searchListOptions, products: products,);
+                return TSortableProducts(products: products,);
               }
             },
         ),

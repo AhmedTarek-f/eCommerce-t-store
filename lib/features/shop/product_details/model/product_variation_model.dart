@@ -60,7 +60,7 @@ class ProductVariationModel{
     }
   }
 
-  factory ProductVariationModel.fromSnapshot2(Map<String,dynamic> document)
+  factory ProductVariationModel.fromJson(Map<String,dynamic> document)
   {
       final Map<String,dynamic> snapshot = document;
       return ProductVariationModel(

@@ -9,7 +9,7 @@ class AllBrandsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TAppBar(
-        title: Text("Brand",style: Theme.of(context).textTheme.headlineSmall,),
+        title: Text("All Brands",style: Theme.of(context).textTheme.headlineSmall,),
         showBackArrow: true,
       ),
       body: const AllBrandsViewBody(),

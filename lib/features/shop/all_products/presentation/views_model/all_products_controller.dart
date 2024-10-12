@@ -55,4 +55,9 @@ class AllProductsController extends GetxController {
         products.sort((a, b) => a.title.compareTo(b.title));
     }
   }
+
+  void assignProduct(List<ProductModel> products) {
+    this.products.assignAll(products);
+    sortProducts("Name");
+  }
 }

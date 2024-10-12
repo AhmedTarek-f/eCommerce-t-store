@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
-import 'package:t_store/common_widgets/containers/custom_shapes/t_shimmer_effect.dart';
+import 'package:t_store/common_widgets/shimmer/t_shimmer_effect.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/features/shop/home/presentation/views_model/banner_controller.dart';
 

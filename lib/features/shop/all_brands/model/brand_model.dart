@@ -44,8 +44,7 @@ class BrandModel {
     }
   }
 
-  factory BrandModel.fromSnapshot2(Map<String,dynamic> document){
-
+  factory BrandModel.fromJson(Map<String,dynamic> document){
       final Map<String, dynamic> snapshot = document;
       return BrandModel(
         id: snapshot["Id"] ?? "",

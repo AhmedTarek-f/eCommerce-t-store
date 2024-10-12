@@ -3,6 +3,7 @@ import 'package:t_store/common_widgets/images/t_rounded_image.dart';
 import 'package:t_store/common_widgets/products/products_card/t_product_card_horizontal.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/image_strings.dart';
+import 'package:t_store/features/shop/product_details/model/product_model.dart';
 
 class SubCategoriesViewBody extends StatelessWidget {
   const SubCategoriesViewBody({super.key});
@@ -30,7 +31,7 @@ class SubCategoriesViewBody extends StatelessWidget {
                   height: MediaQuery.sizeOf(context).height*0.14,
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => const TProductCardHorizontal(),
+                      itemBuilder: (context, index) => TProductCardHorizontal(product: ProductModel.empty(),),
                       separatorBuilder: (context, index) => const SizedBox(width: 16,),
                       itemCount: 10
                   ),

@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:t_store/common_widgets/containers/custom_shapes/t_shimmer_effect.dart';
+import 'package:t_store/common_widgets/shimmer/t_shimmer_effect.dart';
 import 'package:t_store/core/constants/colors.dart';
 
 class TRoundedImage extends StatelessWidget {

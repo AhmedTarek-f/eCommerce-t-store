@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:t_store/common_widgets/containers/custom_shapes/t_shimmer_effect.dart';
+import 'package:t_store/common_widgets/shimmer/t_shimmer_effect.dart';
 import 'package:t_store/common_widgets/images/t_circular_image.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/image_strings.dart';
