@@ -25,7 +25,6 @@ abstract class AppRouters {
     GetPage(name: TRoutes.cart, page: ()=> const CartView()),
     GetPage(name: TRoutes.userProfile, page: ()=> const ProfileView()),
     GetPage(name: TRoutes.userAddress, page: ()=> const MyAddressView()),
-    GetPage(name: TRoutes.subCategories, page: ()=> const SubCategoriesView()),
     GetPage(name: TRoutes.store, page: ()=> const StoreView()),
     GetPage(name: TRoutes.productReviews, page: ()=> const ProductReviewView()),
     GetPage(name: TRoutes.order, page: ()=> const MyOrdersView()),

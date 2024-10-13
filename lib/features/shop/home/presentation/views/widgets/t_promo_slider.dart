@@ -31,7 +31,14 @@ class TPromoSlider extends StatelessWidget {
                   viewportFraction: 1,
                   onPageChanged: (index,_) => controller.updateImageIndex(index),
                 ),
-                items: controller.allActiveBanners.map((banner)=>TRoundedImage(imageUrl: banner.imageUrl,shimmerWidth: MediaQuery.sizeOf(context).width,shimmerHeight: 80,isNetworkImage: true,)).toList(),
+                items: controller.allActiveBanners.map((banner)=>TRoundedImage(
+                  imageUrl: banner.imageUrl,
+                  shimmerWidth: MediaQuery.sizeOf(context).width,
+                  shimmerHeight:MediaQuery.sizeOf(context).height*0.2567,
+                  isNetworkImage: true,
+                  width: MediaQuery.sizeOf(context).width ,
+                  height: MediaQuery.sizeOf(context).height*0.2567,
+                )).toList(),
               ),
               const SizedBox(height: 16,),
               Center(

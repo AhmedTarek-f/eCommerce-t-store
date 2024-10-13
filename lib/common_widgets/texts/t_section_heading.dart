@@ -22,7 +22,7 @@ class TSectionHeading extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          FittedBox(fit: BoxFit.scaleDown,child: Text(title,style: Theme.of(context).textTheme.headlineSmall!.apply(color: titleColor),maxLines: 1,overflow: TextOverflow.ellipsis,),),
+          Flexible(child: Text(title,style: Theme.of(context).textTheme.headlineSmall!.apply(color: titleColor),maxLines: 1,overflow: TextOverflow.ellipsis,)),
           if(showActionButton) TextButton(onPressed: onPressed, child: Text(buttonTitle)),
         ],
       ),
