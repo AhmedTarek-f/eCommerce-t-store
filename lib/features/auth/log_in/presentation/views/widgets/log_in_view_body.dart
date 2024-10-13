@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common_widgets/t_form_divider.dart';
 import 'package:t_store/common_widgets/t_social_buttons.dart';
-import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/features/auth/log_in/presentation/views/widgets/t_log_in_form.dart';
 import 'package:t_store/features/auth/log_in/presentation/views/widgets/t_log_in_header.dart';
 import 'package:t_store/features/auth/log_in/presentation/views_model/log_in_controller.dart';

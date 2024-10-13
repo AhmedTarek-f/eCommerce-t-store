@@ -1,9 +1,7 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/core/constants/image_strings.dart';
-import 'package:t_store/features/auth/verify_email/presentation/views/success_verification_view.dart';
 import 'package:t_store/features/auth/verify_email/presentation/views_model/verify_email_controller.dart';
 
 class VerifyEmailViewBody extends StatelessWidget {

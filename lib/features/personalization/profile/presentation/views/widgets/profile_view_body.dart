@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -8,7 +7,6 @@ import 'package:t_store/common_widgets/shimmer/t_shimmer_effect.dart';
 import 'package:t_store/common_widgets/images/t_circular_image.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/image_strings.dart';
-import 'package:t_store/features/auth/log_in/presentation/views/log_in_view.dart';
 import 'package:t_store/features/personalization/controller/user_controller.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/change_name_view.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/widgets/t_profile_menu.dart';

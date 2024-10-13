@@ -5,7 +5,6 @@ import 'package:t_store/core/utlis/loaders/t_loaders.dart';
 import 'package:t_store/core/utlis/popups/t_full_screen_loader.dart';
 import 'package:t_store/data/repositories/user/user_repository.dart';
 import 'package:t_store/features/personalization/controller/user_controller.dart';
-import 'package:t_store/features/personalization/profile/presentation/views/profile_view.dart';
 
 class ChangeNameController extends GetxController{
   static ChangeNameController get instance => Get.find();

@@ -3,7 +3,6 @@ import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_contai
 import 'package:t_store/common_widgets/images/t_circular_image.dart';
 import 'package:t_store/common_widgets/texts/t_brand_title_with_verified_icon.dart';
 import 'package:t_store/core/constants/enums.dart';
-import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/features/shop/all_brands/model/brand_model.dart';
 
 class TBrandCard extends StatelessWidget {

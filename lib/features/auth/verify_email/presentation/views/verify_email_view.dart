@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
-import 'package:t_store/features/auth/log_in/presentation/views/log_in_view.dart';
 import 'package:t_store/features/auth/verify_email/presentation/views/widgets/verify_email_view_body.dart';
 
 class VerifyEmailView extends StatelessWidget {

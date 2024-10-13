@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:t_store/core/utlis/exceptions/t_firebase_exceptions.dart';
 import 'package:t_store/core/utlis/exceptions/t_platform_exceptions.dart';
 import 'package:t_store/features/shop/all_brands/model/brand_model.dart';
-import 'package:t_store/features/shop/store/model/brand_category_model.dart';
 
 class BrandRepository extends GetxController
 {

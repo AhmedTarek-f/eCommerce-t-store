@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:t_store/common_widgets/shimmer/t_shimmer_effect.dart';
 import 'package:t_store/common_widgets/products/cart/t_cart_counter_icon.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';

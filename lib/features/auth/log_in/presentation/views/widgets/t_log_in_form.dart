@@ -4,7 +4,6 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/features/auth/log_in/presentation/views_model/log_in_controller.dart';
 import 'package:t_store/features/auth/password_configuration/presentation/views/forget_password_view.dart';
 import 'package:t_store/features/auth/sign_up/presentation/views/sign_up_view.dart';
-import 'package:t_store/features/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
 
 class TLogInForm extends StatelessWidget {
   const TLogInForm({

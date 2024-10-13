@@ -6,7 +6,6 @@ import 'package:t_store/common_widgets/texts/t_product_price_text.dart';
 import 'package:t_store/common_widgets/texts/t_product_title_text.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/core/constants/enums.dart';
-import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/features/shop/product_details/model/product_model.dart';
 import 'package:t_store/features/shop/product_details/presentation/views_model/product_controller.dart';
 

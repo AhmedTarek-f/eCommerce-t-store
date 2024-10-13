@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:t_store/features/personalization/controller/user_controller.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/widgets/change_name_form.dart';
-import 'package:t_store/features/personalization/profile/presentation/views_model/change_name_controller.dart';
 
 class ChangeNameViewBody extends StatelessWidget {
   const ChangeNameViewBody({super.key});

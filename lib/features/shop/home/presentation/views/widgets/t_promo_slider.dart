@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
-import 'package:t_store/common_widgets/shimmer/t_shimmer_effect.dart';
 import 'package:t_store/common_widgets/images/t_rounded_image.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/features/shop/home/presentation/views/widgets/t_promo_slider_shimmer.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/get_core.dart';
 import 'package:t_store/common_widgets/layouts/t_grid_layout.dart';
 import 'package:t_store/common_widgets/products/products_card/t_product_card_vertical.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';

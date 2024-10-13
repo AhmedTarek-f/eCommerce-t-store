@@ -5,7 +5,6 @@ import 'package:t_store/common_widgets/products/products_card/t_product_card_hor
 import 'package:t_store/common_widgets/shimmer/sub_category_shimmer.dart';
 import 'package:t_store/common_widgets/shimmer/t_horizontal_product_shimmer.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
-import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/features/shop/all_products/presentation/views/all_products_view.dart';
 import 'package:t_store/features/shop/home/model/category_model.dart';
 import 'package:t_store/features/shop/home/presentation/views_model/category_controller.dart';
