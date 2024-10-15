@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:t_store/features/personalization/my_address/presentation/views_model/address_controller.dart';
 
 class AddNewAddressViewBody extends StatelessWidget {
   const AddNewAddressViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final AddressController controller = AddressController.instance;
     return SingleChildScrollView(
-
         child: Padding(
           padding: EdgeInsets.only(
             right: MediaQuery.sizeOf(context).width*0.0611,
@@ -15,34 +17,152 @@ class AddNewAddressViewBody extends StatelessWidget {
             top: MediaQuery.sizeOf(context).height*0.0280,
             bottom: MediaQuery.sizeOf(context).height*0.0280,
           ),
-          child:Form(
-            child: Column(
-              children: [
-                TextFormField(decoration:  const InputDecoration(prefixIcon: Icon(Iconsax.user_copy),label: Text("Name",)),),
-                const SizedBox(height: 16,),
-                TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.mobile_copy),label: Text("Phone Number")),),
-                const SizedBox(height: 16,),
-                Row(
+          child:Obx(
+            () {
+              return Form(
+                key: controller.addressFormKey,
+                autovalidateMode: controller.autoValidateMode.value,
+                child: Column(
                   children: [
-                    Expanded(child: TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building_4_copy),label: Text("Street")),)),
-                    const SizedBox(width: 16,),
-                    Expanded(child: TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.code_copy),label: Text("PostalCode")),)),
+                    TextFormField(
+                      decoration:  const InputDecoration(prefixIcon: Icon(Iconsax.user_copy),
+                          label: Text("Name",),
+                      ),
+                      controller: controller.name,
+                      validator: (value) {
+                        if(value == null || value.isEmpty || value.trim() == ""){
+                          return "Name is required.";
+                        }
+                        else
+                        {
+                          return null;
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 16,),
+                    TextFormField(
+                      decoration: const InputDecoration(prefixIcon: Icon(Iconsax.mobile_copy),
+                          label: Text("Phone Number"),
+                      ),
+                      controller: controller.phoneNumber,
+                      validator: (value) {
+                        if(value == null || value.isEmpty || value.trim() == ""){
+                          return "Phone Number is required.";
+                        }
+                        else
+                        {
+                          return null;
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 16,),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: TextFormField(
+                              decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building_4_copy),
+                                  label: Text("Street"),
+                              ),
+                              controller: controller.street,
+                              validator: (value) {
+                                if(value == null || value.isEmpty || value.trim() == ""){
+                                  return "Street is required.";
+                                }
+                                else
+                                {
+                                  return null;
+                                }
+                              },
+                            ),
+                        ),
+                        const SizedBox(width: 16,),
+                        Expanded(
+                            child: TextFormField(
+                              decoration: const InputDecoration(prefixIcon: Icon(Iconsax.code_copy),
+                                  label: Text("PostalCode"),
+                              ),
+                              controller: controller.postalCode,
+                              validator: (value) {
+                                if(value == null || value.isEmpty || value.trim() == ""){
+                                  return "PostalCode is required.";
+                                }
+                                else
+                                {
+                                  return null;
+                                }
+                              },
+                            ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16,),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: TextFormField(
+                              decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building_copy),
+                                  label: Text("City"),
+                              ),
+                              controller: controller.city,
+                              validator: (value) {
+                                if(value == null || value.isEmpty || value.trim() == ""){
+                                  return "City is required.";
+                                }
+                                else
+                                {
+                                  return null;
+                                }
+                              },
+                            ),
+                        ),
+                        const SizedBox(width: 16,),
+                        Expanded(
+                            child: TextFormField(
+                              decoration: const InputDecoration(prefixIcon: Icon(Iconsax.activity_copy),
+                                  label: Text("State"),
+                              ),
+                              controller: controller.state,
+                              validator: (value) {
+                                if(value == null || value.isEmpty || value.trim() == ""){
+                                  return "State is required.";
+                                }
+                                else
+                                {
+                                  return null;
+                                }
+                              },
+                            ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16,),
+                    TextFormField(
+                      decoration: const InputDecoration(prefixIcon: Icon(Iconsax.global_copy),
+                          label: Text("Country"),
+                      ),
+                      controller: controller.country,
+                      validator: (value) {
+                        if(value == null || value.isEmpty || value.trim() == ""){
+                          return "Country is required.";
+                        }
+                        else
+                        {
+                          return null;
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 24,),
+                    SizedBox(
+                        width:MediaQuery.sizeOf(context).width,
+                        child: ElevatedButton(
+                            onPressed: (){controller.addNewAddress();},
+                            child: const Text("Save"),
+                        ),
+                    ),
                   ],
                 ),
-                const SizedBox(height: 16,),
-                Row(
-                  children: [
-                    Expanded(child: TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building_copy),label: Text("City")),)),
-                    const SizedBox(width: 16,),
-                    Expanded(child: TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.activity_copy),label: Text("State")),)),
-                  ],
-                ),
-                const SizedBox(height: 16,),
-                TextFormField(decoration: const InputDecoration(prefixIcon: Icon(Iconsax.global_copy),label: Text("Country")),),
-                const SizedBox(height: 24,),
-                SizedBox(width:MediaQuery.sizeOf(context).width,child: ElevatedButton(onPressed: (){}, child: const Text("Save"))),
-              ],
-            ),
+              );
+            }
           ),
         ),
     );
