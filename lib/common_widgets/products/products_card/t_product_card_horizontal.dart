@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/common_widgets/images/t_rounded_image.dart';
 import 'package:t_store/common_widgets/products/favorite_icon/t_favorite_icon.dart';
+import 'package:t_store/common_widgets/products/products_card/product_card_add_to_cart_button.dart';
 import 'package:t_store/common_widgets/texts/t_brand_title_with_verified_icon.dart';
 import 'package:t_store/common_widgets/texts/t_product_price_text.dart';
 import 'package:t_store/common_widgets/texts/t_product_title_text.dart';
@@ -102,20 +102,7 @@ class TProductCardHorizontal extends StatelessWidget {
                          ],
                        ),
                      ),
-                     Container(
-                       decoration: const BoxDecoration(
-                         color: TColors.dark,
-                         borderRadius: BorderRadius.only(
-                             topLeft: Radius.circular(12),
-                             bottomRight: Radius.circular(16)
-                         ),
-                       ),
-                       child: const SizedBox(
-                         width:38.4 ,
-                         height:38.4 ,
-                         child:  Center(child: Icon(Iconsax.add_copy,color: TColors.white,)),
-                       ),
-                     ),
+                      ProductCardAddToCartButton(product: product,),
                    ],
                  )
                 ],

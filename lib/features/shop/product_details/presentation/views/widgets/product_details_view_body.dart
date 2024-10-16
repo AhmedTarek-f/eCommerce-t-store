@@ -57,9 +57,8 @@ class ProductDetailsViewBody extends StatelessWidget {
                 const Divider(),
                 const SizedBox(height: 16,),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const TSectionHeading(title: "Reviews (199)",showActionButton: false, padding: EdgeInsets.all(0),),
+                    const Expanded(child:  TSectionHeading(title: "Reviews (199)",showActionButton: false, padding: EdgeInsets.all(0),)),
                     IconButton(
                         onPressed: (){
                           Get.to(()=> const ProductReviewView());

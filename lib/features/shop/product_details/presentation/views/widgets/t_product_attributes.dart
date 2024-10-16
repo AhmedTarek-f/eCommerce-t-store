@@ -17,7 +17,7 @@ class TProductAttributes extends StatelessWidget {
   final ProductModel product;
   @override
   Widget build(BuildContext context) {
-    final VariationController controller = Get.put(VariationController());
+    final VariationController controller = VariationController.instance;
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Obx(
       () => Column(
@@ -31,11 +31,7 @@ class TProductAttributes extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const TSectionHeading(
-                        title: "Variation",
-                        showActionButton: false,
-                        padding: EdgeInsets.zero,
-                      ),
+                      Text("Variation", style: Theme.of(context).textTheme.headlineSmall,),
                       const SizedBox(
                         width: 16,
                       ),

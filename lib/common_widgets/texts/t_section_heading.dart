@@ -20,9 +20,8 @@ class TSectionHeading extends StatelessWidget {
     return Padding(
       padding: padding ?? EdgeInsets.only(left: MediaQuery.sizeOf(context).width*0.0611),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Flexible(child: Text(title,style: Theme.of(context).textTheme.headlineSmall!.apply(color: titleColor),maxLines: 1,overflow: TextOverflow.ellipsis,)),
+          Expanded(child: Text(title,style: Theme.of(context).textTheme.headlineSmall!.apply(color: titleColor),maxLines: 1,overflow: TextOverflow.ellipsis,)),
           if(showActionButton) TextButton(onPressed: onPressed, child: Text(buttonTitle)),
         ],
       ),

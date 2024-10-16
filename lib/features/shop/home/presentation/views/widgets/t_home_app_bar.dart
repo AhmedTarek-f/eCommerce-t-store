@@ -34,12 +34,8 @@ class THomeAppBar extends StatelessWidget {
           ),
         ],
       ),
-      actions: [
-        TCartCounterIcon(
-          onPressed: (){
-            Get.to(()=>const CartView());
-          },
-        ),
+      actions: const [
+        TCartCounterIcon(),
       ],
     );
   }
