@@ -6,14 +6,16 @@ class CartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        right: MediaQuery.sizeOf(context).width*0.0611,
-        left: MediaQuery.sizeOf(context).width*0.0611,
-        top: MediaQuery.sizeOf(context).height*0.0280,
-        bottom: MediaQuery.sizeOf(context).height*0.0280,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.only(
+          right: MediaQuery.sizeOf(context).width*0.0611,
+          left: MediaQuery.sizeOf(context).width*0.0611,
+          top: MediaQuery.sizeOf(context).height*0.0280,
+          bottom: MediaQuery.sizeOf(context).height*0.0280,
+        ),
+        child: const TCartItems(),
       ),
-      child: const TCartItems(),
     );
   }
 }
