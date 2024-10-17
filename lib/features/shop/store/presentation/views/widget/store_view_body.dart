@@ -46,19 +46,20 @@ class StoreViewBody extends StatelessWidget {
                     physics:  const NeverScrollableScrollPhysics(),
                     children:  [
                       const SizedBox(height: 16,),
-                      const TSearchContainer(
-                        text: "Search in Store" ,
+                      TSearchContainer(
+                        text: "Search in Store".tr ,
                         showBorder: true,
                         padding: EdgeInsets.zero,
                         showBackGround: false,
                       ),
                       const SizedBox(height: 32,),
                       TSectionHeading(
-                        title: "Featured Brands",
+                        title: "Featured Brands".tr,
                         onPressed: (){
                           Get.to(()=> const AllBrandsView());
                           },
                         padding: EdgeInsets.zero,
+                        buttonTitle: "View all".tr,
                       ),
                       const SizedBox(height: 10.5,),
                       Obx(
@@ -68,7 +69,7 @@ class StoreViewBody extends StatelessWidget {
                               return const TBrandShimmer();
                             }
                           else if(brandController.featuredBrandsList.isEmpty) {
-                            return const Center(child: Text("No Data Found!"),);
+                            return Center(child: Text("No Data Found!".tr),);
                           }
                           else{
                             return TGridLayout(

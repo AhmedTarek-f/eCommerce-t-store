@@ -40,12 +40,13 @@ class TCategoryTab extends StatelessWidget {
               Column(
                 children: [
                   TSectionHeading(
-                      title: "You might like",
+                      title: "You might like".tr,
                     onPressed: () => Get.to(()=> AllProductsView(
                         title: category.name,
                       futureMethod: controller.fetchProductsForCategory(categoryId: category.id, limit: -1),
                     ),
                     ),
+                    buttonTitle: "View all".tr,
                   ),
                   const SizedBox(
                     height: 16,
@@ -59,7 +60,7 @@ class TCategoryTab extends StatelessWidget {
                       }
                       else if (!snapshot.hasData || snapshot.data == null || (snapshot.data?.isEmpty ?? true)) {
                         return const Center(
-                          child: Text("No Data Found"),
+                          child: Text("No Data Found!"),
                         );
                       }
                       else if (snapshot.hasError) {
