@@ -32,12 +32,12 @@ class ForgetPasswordController extends GetxController
       }
       else{
         disableAutoValidateMode();
-        TFullScreenLoader.openLoadingDialog("Processing your request...", TImages.docerAnimation);
+        TFullScreenLoader.openLoadingDialog("Processing your request...".tr, TImages.docerAnimation);
         await AuthenticationRepository.instance.sendPasswordResetEmail(email: email.text.trim());
         TFullScreenLoader.stopLoading();
         TLoaders.successSnackBar(
-            title: "Email Sent",
-            message: "Email Link Sent to Reset your Password",
+            title: "Email Sent".tr,
+            message: "Email Link Sent to Reset your Password".tr,
         );
         Get.to(()=> ResetPasswordView(email: email.text.trim(),));
       }
@@ -46,7 +46,7 @@ class ForgetPasswordController extends GetxController
     {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(
-          title: "Oh snap!",
+          title: "Oh snap!".tr,
           message: e.toString(),
       );
     }
