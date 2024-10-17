@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/features/on_boarding/presentation/views_model/on_boarding_controller.dart';
 
 class OnBoardingSkip extends StatelessWidget {
@@ -16,8 +17,8 @@ class OnBoardingSkip extends StatelessWidget {
         onPressed: (){
           controller.skipPage();
         },
-        child: const Text(
-          "Skip",
+        child: Text(
+          "Skip".tr,
         ),
       ),
     );

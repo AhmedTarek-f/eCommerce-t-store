@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/core/constants/colors.dart';
+import 'package:t_store/features/on_boarding/presentation/views_model/language_controller.dart';
 import 'package:t_store/features/on_boarding/presentation/views_model/on_boarding_controller.dart';
 
 class OnBoardingNextButton extends StatelessWidget {
@@ -10,10 +11,12 @@ class OnBoardingNextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final OnBoardingController controller = OnBoardingController.instance;
+    final LanguageController languageController = LanguageController.instance;
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Positioned(
       bottom: kBottomNavigationBarHeight,
-      right: MediaQuery.sizeOf(context).width*0.0611,
+      left:languageController.language.value == "ar"?  MediaQuery.sizeOf(context).width*0.0611 : null,
+      right: languageController.language.value == "en"? MediaQuery.sizeOf(context).width*0.0611 : null,
       child: ElevatedButton(
         onPressed: (){
           controller.nextPage();

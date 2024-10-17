@@ -19,7 +19,7 @@ class OnBoardingViewBody extends StatelessWidget {
         PageView(
           controller: controller.pageController,
           onPageChanged: (value) => controller.updatePageIndicator(value),
-          children: const [
+          children:[
             OnBoardingPage(
               onBoardingImage:TImages.onBoardingImage1,
               onBoardingTitle:TTexts.onBoardingTitle1 ,
