@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ import 'package:t_store/core/utlis/local_storage/t_local_storage.dart';
 import 'package:t_store/data/repositories/user/user_repository.dart';
 import 'package:t_store/features/auth/log_in/presentation/views/log_in_view.dart';
 import 'package:t_store/features/auth/verify_email/presentation/views/verify_email_view.dart';
+import 'package:t_store/features/on_boarding/presentation/views/language_view.dart';
 import 'package:t_store/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:t_store/features/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
 
@@ -36,6 +38,11 @@ class AuthenticationRepository extends GetxController {
     final User? user = _auth.currentUser;
     if(user !=null)
       {
+        if(deviceStorage.read("lang") != null)
+        {
+          Locale localeLang = Locale(deviceStorage.read("lang"));
+          Get.updateLocale(localeLang);
+        }
         if(user.emailVerified)
           {
             await TLocalStorage.init(user.uid);
@@ -46,8 +53,13 @@ class AuthenticationRepository extends GetxController {
         }
       }
     else{
+      if(deviceStorage.read("lang") != null)
+        {
+          Locale localeLang = Locale(deviceStorage.read("lang"));
+          Get.updateLocale(localeLang);
+        }
       deviceStorage.writeIfNull("isFirstTime", true);
-      deviceStorage.read("isFirstTime") !=true ? Get.offAll(()=> const LogInView()) : Get.offAll(() => const OnBoardingView());
+      deviceStorage.read("isFirstTime") !=true ? Get.offAll(()=> const LogInView()) : Get.offAll(() => const LanguageView());
     }
   }
 
