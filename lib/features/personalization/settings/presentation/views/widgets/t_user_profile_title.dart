@@ -32,7 +32,7 @@ class TUserProfileTitle extends StatelessWidget {
             return const TShimmerEffect(width: 80, height: 15);
           } else {
             return controller.nameChangeLoading.value?Text(
-              "Updating...",
+              "Updating...".tr,
               style: Theme.of(context)
                   .textTheme
                   .headlineSmall!
