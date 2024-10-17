@@ -26,9 +26,9 @@ class ResetPasswordViewBody extends StatelessWidget {
                 width: MediaQuery.sizeOf(context).width*0.6,
               ),
               const SizedBox(height: 32,),
-              Text("Password Reset Email Sent",style: Theme.of(context).textTheme.headlineMedium,textAlign: TextAlign.center,),
+              Text("Password Reset Email Sent".tr,style: Theme.of(context).textTheme.headlineMedium,textAlign: TextAlign.center,),
               const SizedBox(height: 16,),
-              Text("Your Account Security is Our Priority! We've Sent You a Secure Link to Safely Change Your Password and Keep Your Account Protected.",style: Theme.of(context).textTheme.labelMedium,textAlign: TextAlign.center,),
+              Text("Your Account Security is Our Priority! We've Sent You a Secure Link to Safely Change Your Password and Keep Your Account Protected.".tr,style: Theme.of(context).textTheme.labelMedium,textAlign: TextAlign.center,),
               const SizedBox(height: 32,),
 
               SizedBox(
@@ -37,7 +37,7 @@ class ResetPasswordViewBody extends StatelessWidget {
                   onPressed: (){
                     Get.offAll(()=>const LogInView());
                     },
-                  child: const Text("Done"),
+                  child: Text("Done".tr),
                 ),
               ),
               const SizedBox(height: 16,),
@@ -47,7 +47,7 @@ class ResetPasswordViewBody extends StatelessWidget {
                   onPressed: ()async{
                     await controller.resendPasswordResetEmail(email:email);
                   },
-                  child: const Text("Resend Email"),
+                  child: Text("Resend Email".tr),
                 ),
               ),
             ],

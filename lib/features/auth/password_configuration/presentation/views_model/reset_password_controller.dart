@@ -11,19 +11,19 @@ class ResetPasswordController extends GetxController
 
   Future<void> resendPasswordResetEmail({required String email}) async{
     try{
-        TFullScreenLoader.openLoadingDialog("Processing your request...", TImages.docerAnimation);
+        TFullScreenLoader.openLoadingDialog("Processing your request...".tr, TImages.docerAnimation);
         await AuthenticationRepository.instance.sendPasswordResetEmail(email: email);
         TFullScreenLoader.stopLoading();
         TLoaders.successSnackBar(
-          title: "Email Sent",
-          message: "Email Link Sent to Reset your Password",
+          title: "Email Sent".tr,
+          message: "Email Link Sent to Reset your Password".tr,
         );
     }
     catch(e)
     {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(
-        title: "Oh snap!",
+        title: "Oh Snap!".tr,
         message: e.toString(),
       );
     }
