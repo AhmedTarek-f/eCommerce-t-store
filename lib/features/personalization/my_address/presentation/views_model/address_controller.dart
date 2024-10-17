@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/core/utlis/loaders/t_loaders.dart';
 import 'package:t_store/core/utlis/popups/t_full_screen_loader.dart';
 import 'package:t_store/data/repositories/address/address_repository.dart';
 import 'package:t_store/features/personalization/my_address/model/address_model.dart';
+import 'package:t_store/features/personalization/my_address/presentation/views/add_new_address_view.dart';
+import 'package:t_store/features/personalization/my_address/presentation/views/widgets/t_single_address.dart';
 
 class AddressController extends GetxController
 {
@@ -95,6 +98,67 @@ class AddressController extends GetxController
     }
   }
 
+  Future<dynamic> selectNewAddressPopup(BuildContext context) {
+    return showModalBottomSheet(
+        context: context,
+        builder: (context) => Container(
+          padding:  const EdgeInsets.all(0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const TSectionHeading(title: "Select Address" , showActionButton: false,),
+              FutureBuilder<List<AddressModel>>(
+                  future: getAllUserAddresses(),
+                  builder: (context, snapshot) {
+                    if(snapshot.connectionState == ConnectionState.waiting){
+                      return const Center(child: CircularProgressIndicator(color: TColors.primaryColor,),);
+                    }
+                    else if(!snapshot.hasData || snapshot.data == null || (snapshot.data?.isEmpty ?? true))
+                    {
+                      return const Center(child: Text("No Data Found"),);
+                    }
+                    else if(snapshot.hasError)
+                    {
+                      return const Center(child:  Text("Something went wrong."),);
+                    }
+                    else{
+                      final List<AddressModel> addressesList = snapshot.data!;
+                      return Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 8),
+                          child: ListView.separated(
+                              itemBuilder: (_, index) {
+                                final AddressModel address = addressesList[index];
+                                return TSingleAddress(
+                                    address: address,
+                                    onTap: () async {
+                                      await selectAddress(address);
+                                      Get.back();
+                                    }
+                                );
+                              },
+                              separatorBuilder: (_, __) => const SizedBox(height: 8,),
+                              itemCount: addressesList.length
+                          ),
+                        ),
+                      );
+                    }
+                  },
+              ),
+               const SizedBox(height: 40,),
+              SizedBox(
+                width: MediaQuery.sizeOf(context).width,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 8),
+                  child: ElevatedButton(onPressed: () => Get.to(() => const AddNewAddressView()), child: const Text("Add new address")),
+                ),
+              ),
+            ],
+          ),
+        ),
+    );
+  }
+  
   void resetFormFields(){
     name.clear();
     phoneNumber.clear();

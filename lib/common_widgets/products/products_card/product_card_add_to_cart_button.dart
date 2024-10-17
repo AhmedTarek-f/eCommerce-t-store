@@ -42,7 +42,7 @@ class ProductCardAddToCartButton extends StatelessWidget {
              width:38.4 ,
              height:38.4 ,
              child: productQuantityInCart >0
-                 ? Text(productQuantityInCart.toString(),style: Theme.of(context).textTheme.bodyLarge!.apply(color: TColors.white),)
+                 ? Center(child: Text(productQuantityInCart.toString(),style: Theme.of(context).textTheme.bodyLarge!.apply(color: TColors.white),))
                  :const Center(child: Icon(Iconsax.add_copy,color: TColors.white,)),
            ),
          );

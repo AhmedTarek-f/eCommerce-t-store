@@ -10,7 +10,7 @@ class MyAddressViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AddressController controller = Get.put(AddressController());
+    final AddressController controller = AddressController.instance;
     return  SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(

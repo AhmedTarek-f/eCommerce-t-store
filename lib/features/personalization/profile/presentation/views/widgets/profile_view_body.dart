@@ -35,7 +35,6 @@ class ProfileViewBody extends StatelessWidget {
                     () {
                       final String networkImage = controller.user.value.profilePicture;
                       final String image = networkImage.isNotEmpty? networkImage : TImages.user;
-                      log(image.toString());
                       return controller.imageUploading.value?
                       const TShimmerEffect(width: 100, height: 100 ,radius: 100,) :
                       TCircularImage(image: image,width: 100,height: 100,isOverLayColor: false, isNetworkImage:networkImage.isNotEmpty ,);

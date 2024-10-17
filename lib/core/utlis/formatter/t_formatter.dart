@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 abstract class TFormatter {
   static String formatPhoneNumber(String phoneNumber)
   {
@@ -12,5 +13,9 @@ abstract class TFormatter {
     else{
       return phoneNumber;
     }
+  }
+
+  static String getFormattedDate(DateTime date, {String format = 'dd MMM yyyy'}) {
+    return DateFormat(format).format(date);
   }
 }

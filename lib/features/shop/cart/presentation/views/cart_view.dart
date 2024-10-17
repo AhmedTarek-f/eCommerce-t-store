@@ -20,7 +20,7 @@ class CartView extends StatelessWidget {
       () {
         final emptyWidget = TAnimationLoaderWidget(
             text: "Whoops! Cart is EMPTY.",
-            animation: TImages.carAnimation,
+            animation: TImages.cartAnimation,
           showAction: true,
           actionText: "Let's fill it",
           onActionPressed: ()=> Get.off(()=> const NavigationMenuView()),
@@ -28,14 +28,13 @@ class CartView extends StatelessWidget {
         return controller.cartItems.isEmpty? emptyWidget :const CartViewBody();
         },
       ),
-      // hnaaa ################################################
       bottomNavigationBar: Obx(
           ()=> controller.cartItems.isEmpty? const SizedBox() :Padding(
           padding: const EdgeInsets.only(right: 24,left:24 ,bottom: 8),
           child: ElevatedButton(onPressed: (){
             Get.to(()=> const CheckoutView());
             },
-              child:Obx(() => Text("Checkout \$${controller.totalCartPrice.value}"))),
+              child:Text("Checkout \$${controller.totalCartPrice.value}"),),
         ),
       ),
     );

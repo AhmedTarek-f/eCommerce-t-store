@@ -35,14 +35,6 @@ class ProductDetailsViewBody extends StatelessWidget {
                 if(product.productType == ProductType.variable.toString()) TProductAttributes(product: product,),
                 if(product.productType == ProductType.variable.toString()) const SizedBox(height: 16,),
                 if(product.productType == ProductType.single.toString()) const SizedBox(height: 16,),
-                SizedBox(
-                  width: MediaQuery.sizeOf(context).width,
-                    child: ElevatedButton(
-                      onPressed: (){},
-                      child: const Text("Checkout"),
-                    ),
-                ),
-                const SizedBox(height: 32,),
                 const TSectionHeading(title: "Description",showActionButton: false,padding: EdgeInsets.all(0),),
                 const SizedBox(height: 16,),
                  ReadMoreText(

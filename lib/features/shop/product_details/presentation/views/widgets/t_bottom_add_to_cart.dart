@@ -51,7 +51,7 @@ class TBottomAddToCart extends StatelessWidget {
                 ],
               ),
            ElevatedButton(
-             onPressed: controller.productQuantityInCart.value < 1? null : () => controller.addToCart(product),
+             onPressed: controller.productQuantityInCart.value < 1? (){} : () => controller.addToCart(product),
              style: ElevatedButton.styleFrom(
                padding: const EdgeInsets.all(16),
                backgroundColor: TColors.black,

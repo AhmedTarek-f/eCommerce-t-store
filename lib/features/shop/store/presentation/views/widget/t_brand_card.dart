@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/common_widgets/images/t_circular_image.dart';
 import 'package:t_store/common_widgets/texts/t_brand_title_with_verified_icon.dart';
+import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/core/constants/enums.dart';
 import 'package:t_store/features/shop/all_brands/model/brand_model.dart';
 
@@ -17,6 +18,7 @@ class TBrandCard extends StatelessWidget {
   final BrandModel brandData;
   @override
   Widget build(BuildContext context) {
+    final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: TRoundedContainer(
@@ -30,7 +32,7 @@ class TBrandCard extends StatelessWidget {
                 fit: BoxFit.fitWidth,
                 isNetworkImage: true,
                 image: brandData.image,
-                backgroundColor: Colors.transparent,
+                backgroundColor: isDarkMode ? TColors.light :Colors.transparent,
               ),
             ),
             const SizedBox(width: 8,),
