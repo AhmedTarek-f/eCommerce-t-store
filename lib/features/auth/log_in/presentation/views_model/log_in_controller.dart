@@ -63,7 +63,7 @@ class LogInController extends GetxController
       }
       else{
         disableAutoValidateMode();
-        TFullScreenLoader.openLoadingDialog("Logging you in...", TImages.docerAnimation);
+        TFullScreenLoader.openLoadingDialog("Logging you in...".tr, TImages.docerAnimation);
         final UserCredential userCredential = await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
         if(rememberMe)
         {
@@ -76,12 +76,12 @@ class LogInController extends GetxController
     }
     catch(e){
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
     }
   }
   Future<void> googleSignIn()async{
     try{
-      TFullScreenLoader.openLoadingDialog("Logging you in...", TImages.docerAnimation);
+      TFullScreenLoader.openLoadingDialog("Logging you in...".tr, TImages.docerAnimation);
       final UserCredential userCredential = await AuthenticationRepository.instance.signInWithGoogle();
       if(userCredential.additionalUserInfo?.isNewUser ?? false){
         await userController.saveGoogleUserRecord(userCredential);
@@ -91,7 +91,7 @@ class LogInController extends GetxController
     }
     catch(e){
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
     }
   }
 

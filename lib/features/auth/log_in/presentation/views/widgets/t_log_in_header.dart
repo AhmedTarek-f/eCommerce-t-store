@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 
 class TLogInHeader extends StatelessWidget {
@@ -16,9 +17,9 @@ class TLogInHeader extends StatelessWidget {
           isDark?TImages.lightAppLogo:TImages.darkAppLogo,
           height: MediaQuery.sizeOf(context).height*0.1718,
         ),
-        Text("Welcome Back,",style: Theme.of(context).textTheme.headlineMedium,),
+        Text("Welcome Back,".tr,style: Theme.of(context).textTheme.headlineMedium,),
         const SizedBox(height: 8,),
-        Text("Discover Limitless choices and Unmatched Convenience.",style: Theme.of(context).textTheme.bodyMedium,)
+        Text("Discover Limitless choices and Unmatched Convenience.".tr,style: Theme.of(context).textTheme.bodyMedium,)
       ],
     );
   }

@@ -26,17 +26,17 @@ class TLogInForm extends StatelessWidget {
                   TextFormField(
                     decoration:InputDecoration(
                       prefixIcon: const Icon(Iconsax.direct_right_copy),
-                      label: Text("E-Mail",style:Theme.of(context).textTheme.bodyMedium ,),
+                      label: Text("E-Mail".tr,style:Theme.of(context).textTheme.bodyMedium ,),
                     ),
                     controller: controller.email,
                     validator: (value) {
                       final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
                       if(value == null || value.isEmpty || value.trim() == ""){
-                        return "Email is required.";
+                        return "Email is required.".tr;
                       }
                       else if(!emailRegExp.hasMatch(value))
                       {
-                        return "Invalid email address.";
+                        return "Invalid email address.".tr;
                       }
                       else
                       {
@@ -49,7 +49,7 @@ class TLogInForm extends StatelessWidget {
                     obscureText: controller.hidePassword,
                     decoration: InputDecoration(
                         prefixIcon: const Icon(Iconsax.password_check_copy),
-                        label: Text("Password",style: Theme.of(context).textTheme.bodyMedium,),
+                        label: Text("Password".tr,style: Theme.of(context).textTheme.bodyMedium,),
                         suffixIcon:controller.hidePassword?
                         IconButton(onPressed: (){controller.hideShowPassword();}, icon: const Icon(Iconsax.eye_slash_copy)):
                         IconButton(onPressed: (){controller.hideShowPassword();}, icon: const Icon(Iconsax.eye_copy))
@@ -58,7 +58,7 @@ class TLogInForm extends StatelessWidget {
                     validator: (value) {
                       if(value == null || value.isEmpty || value.trim() == "")
                       {
-                        return "Password is required.";
+                        return "Password is required.".tr;
                       }
                       else
                       {
@@ -73,13 +73,14 @@ class TLogInForm extends StatelessWidget {
                       Row(
                         children: [
                           Checkbox(value: controller.localStorage.read("REMEMBER_ME_VALUE")??false, onChanged: (_){controller.rememberMeSignChange();}),
-                          const Text("Remember Me")
+                          Text("Remember Me".tr)
                         ],
                       ),
                       TextButton(onPressed: (){
                         Get.to(()=>const ForgetPasswordView());
                       },
-                          child: const Text("Forget Password?")),
+                          child: Text("Forget Password?".tr),
+                      ),
                     ],
                   ),
                 ],
@@ -92,7 +93,7 @@ class TLogInForm extends StatelessWidget {
               onPressed: (){
                 controller.loginWithEmailAndPassword();
               },
-              child: const Text("Sign In"),
+              child:  Text("Sign In".tr),
             ),
           ),
           const SizedBox(height: 16,),
@@ -102,7 +103,7 @@ class TLogInForm extends StatelessWidget {
               onPressed: (){
                 Get.to(()=>const SignUpView());
               },
-              child: const Text("Create Account"),
+              child:  Text("Create Account".tr),
             ),
           ),
           const SizedBox(height: 32,),
