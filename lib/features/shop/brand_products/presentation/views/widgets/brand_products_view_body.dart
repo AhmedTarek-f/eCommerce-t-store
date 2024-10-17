@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:t_store/common_widgets/products/sortable/t_sortable_products.dart';
 import 'package:t_store/features/shop/all_brands/model/brand_model.dart';
 import 'package:t_store/features/shop/all_brands/presentation/views_model/brand_controller.dart';
-import 'package:t_store/features/shop/home/presentation/views/widgets/t_vertical_product_shimmer.dart';
+import 'package:t_store/common_widgets/shimmer/t_vertical_product_shimmer.dart';
 import 'package:t_store/features/shop/product_details/model/product_model.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/t_brand_card.dart';
 

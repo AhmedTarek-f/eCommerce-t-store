@@ -19,7 +19,7 @@ class THomeAppBar extends StatelessWidget {
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Good day for shopping",style: Theme.of(context).textTheme.labelMedium!.apply(color: TColors.grey),),
+          Text("Good day for shopping".tr,style: Theme.of(context).textTheme.labelMedium!.apply(color: TColors.grey),),
           Obx(
             () {
               if(controller.profileLoading.value)

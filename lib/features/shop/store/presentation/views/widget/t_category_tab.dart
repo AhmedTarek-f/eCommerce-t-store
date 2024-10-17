@@ -5,7 +5,7 @@ import 'package:t_store/common_widgets/products/products_card/t_product_card_ver
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/features/shop/all_products/presentation/views/all_products_view.dart';
 import 'package:t_store/features/shop/home/model/category_model.dart';
-import 'package:t_store/features/shop/home/presentation/views/widgets/t_vertical_product_shimmer.dart';
+import 'package:t_store/common_widgets/shimmer/t_vertical_product_shimmer.dart';
 import 'package:t_store/features/shop/home/presentation/views_model/category_controller.dart';
 import 'package:t_store/features/shop/product_details/model/product_model.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/category_brands.dart';

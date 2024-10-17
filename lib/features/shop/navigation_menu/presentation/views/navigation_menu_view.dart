@@ -20,11 +20,11 @@ class NavigationMenuView extends StatelessWidget {
           elevation: 0,
           selectedIndex: controller.selectedIndex,
           onDestinationSelected: (value) => controller.changeSelectedIndex(value),
-          destinations: const [
-            NavigationDestination(icon: Icon(Iconsax.home_copy), label: "Home"),
-            NavigationDestination(icon: Icon(Iconsax.shop_copy), label: "Store"),
-            NavigationDestination(icon: Icon(Iconsax.heart_copy), label: "WishList"),
-            NavigationDestination(icon: Icon(Iconsax.user_copy), label: "Profile"),
+          destinations:[
+            NavigationDestination(icon: const Icon(Iconsax.home_copy), label: "Home".tr),
+            NavigationDestination(icon: const Icon(Iconsax.shop_copy), label: "Store".tr),
+            NavigationDestination(icon: const Icon(Iconsax.heart_copy), label: "WishList".tr),
+            NavigationDestination(icon: const Icon(Iconsax.user_copy), label: "Profile".tr),
           ]
       ),
       ),

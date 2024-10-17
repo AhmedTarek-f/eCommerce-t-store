@@ -9,7 +9,7 @@ import 'package:t_store/features/shop/all_products/presentation/views/all_produc
 import 'package:t_store/features/shop/home/presentation/views/widgets/t_home_app_bar.dart';
 import 'package:t_store/features/shop/home/presentation/views/widgets/t_home_categories.dart';
 import 'package:t_store/features/shop/home/presentation/views/widgets/t_promo_slider.dart';
-import 'package:t_store/features/shop/home/presentation/views/widgets/t_vertical_product_shimmer.dart';
+import 'package:t_store/common_widgets/shimmer/t_vertical_product_shimmer.dart';
 import 'package:t_store/features/shop/product_details/presentation/views_model/product_controller.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -21,20 +21,20 @@ class HomeViewBody extends StatelessWidget {
     return  SingleChildScrollView(
       child: Column(
         children: [
-          const TPrimaryHeaderContainer(
+           TPrimaryHeaderContainer(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                THomeAppBar(),
-                SizedBox(height: 32,),
+                const THomeAppBar(),
+                const SizedBox(height: 32,),
                 TSearchContainer(
-                  text: "Search in Store",
+                  text: "Search in Store".tr,
                 ),
-                SizedBox(height: 32,),
-                TSectionHeading(title: "Popular Categories",showActionButton: false,titleColor: Colors.white,),
-                SizedBox(height: 16,),
-                THomeCategories(),
-                SizedBox(height: 32,)
+                const SizedBox(height: 32,),
+                TSectionHeading(title: "Popular Categories".tr,showActionButton: false,titleColor: Colors.white,),
+                const SizedBox(height: 16,),
+                const THomeCategories(),
+                const SizedBox(height: 32,)
               ],
             ),
           ),
@@ -49,14 +49,15 @@ class HomeViewBody extends StatelessWidget {
                 children: [
                    const TPromoSlider(),
                    const SizedBox(height: 32,),
-                   TSectionHeading(title: "Popular Products",
+                   TSectionHeading(
+                     title: "Popular Products".tr,
                      onPressed: (){
                      Get.to(()=> AllProductsView(
-                       title: "Popular Products",
+                       title: "Popular Products".tr,
                        futureMethod: controller.fetchAllFeaturedProducts(),
                          ),
                        );
-                     },
+                     }, buttonTitle: "View all".tr,
                    ),
                    const SizedBox(height: 16,),
                    Obx(
@@ -67,7 +68,7 @@ class HomeViewBody extends StatelessWidget {
                            }
                          else if (controller.featuredProductsList.isEmpty)
                            {
-                             return Center(child: Text("No Data Found",style: Theme.of(context).textTheme.bodyMedium,));
+                             return Center(child: Text("No Data Found".tr,style: Theme.of(context).textTheme.bodyMedium,));
                            }
                          else{
                            return TGridLayout(

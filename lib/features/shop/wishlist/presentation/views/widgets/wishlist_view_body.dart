@@ -4,7 +4,7 @@ import 'package:t_store/common_widgets/layouts/t_grid_layout.dart';
 import 'package:t_store/common_widgets/products/products_card/t_product_card_vertical.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/core/utlis/loaders/t_animation_loader_widget.dart';
-import 'package:t_store/features/shop/home/presentation/views/widgets/t_vertical_product_shimmer.dart';
+import 'package:t_store/common_widgets/shimmer/t_vertical_product_shimmer.dart';
 import 'package:t_store/features/shop/navigation_menu/presentation/views_model/navigation_controller.dart';
 import 'package:t_store/features/shop/product_details/model/product_model.dart';
 import 'package:t_store/features/shop/product_details/presentation/views_model/favorites_controller.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common_widgets/products/sortable/t_sortable_products.dart';
 import 'package:t_store/features/shop/all_products/presentation/views_model/all_products_controller.dart';
-import 'package:t_store/features/shop/home/presentation/views/widgets/t_vertical_product_shimmer.dart';
+import 'package:t_store/common_widgets/shimmer/t_vertical_product_shimmer.dart';
 import 'package:t_store/features/shop/product_details/model/product_model.dart';
 
 class AllProductsViewBody extends StatelessWidget {
