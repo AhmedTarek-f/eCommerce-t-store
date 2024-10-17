@@ -33,10 +33,10 @@ class WishlistViewBody extends StatelessWidget {
                 else if(!snapshot.hasData || snapshot.data == null || (snapshot.data?.isEmpty ?? true))
                 {
                   return TAnimationLoaderWidget(
-                      text: "Whoops! Wishlist is Empty...",
+                      text: "Whoops! Wishlist is Empty...".tr,
                       animation: TImages.pencilAnimation,
                     showAction: true,
-                    actionText: "Let's add some",
+                    actionText: "Let's add some".tr,
                     onActionPressed: () {
                       NavigationController.instance.changeSelectedIndex(0);
                     },
@@ -44,7 +44,7 @@ class WishlistViewBody extends StatelessWidget {
                 }
                 else if(snapshot.hasError)
                 {
-                  return const Center(child:  Text("Something went wrong."),);
+                  return Center(child:  Text("Something went wrong.".tr),);
                 }
                 else{
                   final products = snapshot.data!;
