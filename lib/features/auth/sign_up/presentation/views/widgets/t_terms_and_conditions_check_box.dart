@@ -24,14 +24,14 @@ class TTermsAndConditionsCheckBox extends StatelessWidget {
           Text.rich(
             TextSpan(
               children: [
-                TextSpan(text:"I agree to ",style:Theme.of(context).textTheme.bodySmall ),
-                TextSpan(text:"Privacy Policy ",style: Theme.of(context).textTheme.bodyMedium!.apply(
+                TextSpan(text:"I agree to ".tr,style:Theme.of(context).textTheme.bodySmall ),
+                TextSpan(text:"Privacy Policy ".tr,style: Theme.of(context).textTheme.bodyMedium!.apply(
                   color: isDark? TColors.white: TColors.primary,
                   decoration:  TextDecoration.underline,
                   decorationColor: isDark?TColors.white: TColors.primary,
                 ),),
-                TextSpan(text:"and ",style: Theme.of(context).textTheme.bodySmall),
-                TextSpan(text:"Terms of use",style: Theme.of(context).textTheme.bodyMedium!.apply(
+                TextSpan(text:"and ".tr,style: Theme.of(context).textTheme.bodySmall),
+                TextSpan(text:"Terms of use".tr,style: Theme.of(context).textTheme.bodyMedium!.apply(
                   color: isDark? TColors.white: TColors.primary,
                   decoration:  TextDecoration.underline,
                   decorationColor: isDark?TColors.white: TColors.primary,

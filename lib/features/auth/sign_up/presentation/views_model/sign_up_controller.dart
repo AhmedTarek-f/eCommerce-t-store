@@ -56,14 +56,14 @@ class SignUpController extends GetxController
       else if(!checkBoxSign)
         {
           TLoaders.warningSnackBar(
-            title: "Accept Privacy Police",
-            message: "In order to create account, you must have to read and accept the Privacy policy & Terms of Use",
+            title: "Accept Privacy Policy".tr,
+            message: "In order to create account, you must have to read and accept the Privacy policy & Terms of Use".tr,
           );
           return;
         }
       else{
         disableAutoValidateMode();
-        TFullScreenLoader.openLoadingDialog("We are processing your information...", TImages.docerAnimation);
+        TFullScreenLoader.openLoadingDialog("We are processing your information...".tr, TImages.docerAnimation);
         final UserCredential userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(email.text.trim(), password.text.trim());
         final newUser = UserModel(
             id: userCredential.user!.uid,
@@ -77,20 +77,20 @@ class SignUpController extends GetxController
         final UserRepository userRepository = Get.put(UserRepository());
         await userRepository.saveUserRecord(newUser);
         TFullScreenLoader.stopLoading();
-        TLoaders.successSnackBar(title: "Congratulations",message: "Your account has been created! Verify email to continue.");
+        TLoaders.successSnackBar(title: "Congratulations".tr,message: "Your account has been created! Verify email to continue.".tr);
         Get.to(()=> VerifyEmailView(email: email.text.trim(),));
       }
     }
     catch(e){
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
     }
   }
 
   Future<void> signUpWithGoogle() async
   {
     try{
-      TFullScreenLoader.openLoadingDialog("We are processing your information...", TImages.docerAnimation);
+      TFullScreenLoader.openLoadingDialog("We are processing your information...".tr, TImages.docerAnimation);
       final UserCredential userCredential = await AuthenticationRepository.instance.signInWithGoogle();
       if(userCredential.additionalUserInfo?.isNewUser ?? false){
         await userController.saveGoogleUserRecord(userCredential);
@@ -101,7 +101,7 @@ class SignUpController extends GetxController
     catch(e)
     {
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
     }
   }
 

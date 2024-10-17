@@ -23,15 +23,15 @@ class TSignUpForm extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextFormField(
-                    decoration: const InputDecoration(
-                        prefixIcon:  Icon(Iconsax.user_copy),
-                        labelText: "First Name",
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(Iconsax.user_copy),
+                        labelText: "First Name".tr,
                     ),
                     keyboardType: TextInputType.text,
                     controller: controller.firstName,
                     validator: (value) {
                       if(value == null || value.isEmpty || value.trim() == ""){
-                        return "First Name is required.";
+                        return "First Name is required.".tr;
                       }
                       else
                         {
@@ -43,15 +43,15 @@ class TSignUpForm extends StatelessWidget {
                 const SizedBox(width: 16,),
                 Expanded(
                   child: TextFormField(
-                    decoration: const InputDecoration(
-                        prefixIcon: Icon(Iconsax.user_copy),
-                        labelText: "Last Name",
+                    decoration: InputDecoration(
+                        prefixIcon: const Icon(Iconsax.user_copy),
+                        labelText: "Last Name".tr,
                     ),
                     keyboardType: TextInputType.text,
                     controller: controller.lastName,
                     validator: (value) {
                       if(value == null || value.isEmpty || value.trim() == ""){
-                        return "Last Name is required.";
+                        return "Last Name is required.".tr;
                       }
                       else
                       {
@@ -64,15 +64,15 @@ class TSignUpForm extends StatelessWidget {
             ),
             const SizedBox(height: 16,),
             TextFormField(
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.user_edit_copy),
-                labelText: "Username",
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Iconsax.user_edit_copy),
+                labelText: "Username".tr,
               ),
               keyboardType: TextInputType.text,
               controller: controller.userName,
               validator: (value) {
                 if(value == null || value.isEmpty || value.trim() == ""){
-                  return "User Name is required.";
+                  return "User Name is required.".tr;
                 }
                 else
                 {
@@ -82,20 +82,20 @@ class TSignUpForm extends StatelessWidget {
             ),
             const SizedBox(height: 16,),
             TextFormField(
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Iconsax.direct_copy),
-                labelText: "E-Mail",
+              decoration:  InputDecoration(
+                prefixIcon: const Icon(Iconsax.direct_copy),
+                labelText: "E-Mail".tr,
               ),
               keyboardType: TextInputType.emailAddress,
               controller: controller.email,
               validator: (value) {
                 final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
                 if(value == null || value.isEmpty || value.trim() == ""){
-                  return "Email is required.";
+                  return "Email is required.".tr;
                 }
                else if(!emailRegExp.hasMatch(value))
                   {
-                    return "Invalid email address.";
+                    return "Invalid email address.".tr;
                   }
                else
                  {
@@ -105,15 +105,15 @@ class TSignUpForm extends StatelessWidget {
             ),
             const SizedBox(height: 16,),
             TextFormField(
-              decoration: const InputDecoration(
-                  prefixIcon: Icon(Iconsax.call_copy),
-                  labelText: "Phone Number",
+              decoration: InputDecoration(
+                  prefixIcon: const Icon(Iconsax.call_copy),
+                  labelText: "Phone Number".tr,
               ),
               keyboardType: TextInputType.phone,
               controller: controller.phoneNumber,
               validator: (value) {
                 if(value == null || value.isEmpty || value.trim() == ""){
-                  return "Phone Number is required.";
+                  return "Phone Number is required.".tr;
                 }
                 else
                 {
@@ -126,7 +126,7 @@ class TSignUpForm extends StatelessWidget {
               obscureText: controller.hidePassword,
               decoration: InputDecoration(
                   prefixIcon: const Icon(Iconsax.password_check_copy),
-                  labelText: "Password",
+                  labelText: "Password".tr,
                   suffixIcon: IconButton(
                     onPressed: () {
                      controller.hideShowPassword();
@@ -139,11 +139,11 @@ class TSignUpForm extends StatelessWidget {
               validator: (value) {
                 if(value == null || value.isEmpty || value.trim() == "")
                   {
-                    return "Password is required.";
+                    return "Password is required.".tr;
                   }
                 else if(value.length < 6)
                   {
-                    return "Password must be at least 6 characters long.";
+                    return "Password must be at least 6 characters long.".tr;
                   }
                 else
                 {
@@ -161,7 +161,7 @@ class TSignUpForm extends StatelessWidget {
                   onPressed: (){
                     controller.signUp();
                   },
-                  child: const Text("Create Account",)
+                  child:  Text("Create Account".tr,)
               ),
             ),
           ],

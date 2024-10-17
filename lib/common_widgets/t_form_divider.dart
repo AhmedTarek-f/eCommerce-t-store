@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/core/constants/colors.dart';
 
 class TFormDivider extends StatelessWidget {
@@ -14,7 +15,7 @@ class TFormDivider extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Flexible(child: Divider(color: isDark?TColors.darkGrey:TColors.grey,thickness: 0.5,indent: 60,endIndent: 5,)),
-        Text(dividerText,style:Theme.of(context).textTheme.labelMedium,),
+        Text(dividerText.tr,style:Theme.of(context).textTheme.labelMedium,),
         Flexible(child: Divider(color: isDark?TColors.darkGrey:TColors.grey,thickness: 0.5,indent: 5,endIndent: 60)),
       ],
     );

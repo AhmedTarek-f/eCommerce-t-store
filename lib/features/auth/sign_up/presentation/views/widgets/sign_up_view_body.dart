@@ -22,7 +22,7 @@ class SignUpViewBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Let's create your account",style: Theme.of(context).textTheme.headlineMedium,),
+            Text("Let's create your account".tr,style: Theme.of(context).textTheme.headlineMedium,),
             const SizedBox(height: 32,),
             const TSignUpForm(),
             const SizedBox(height: 32,),
