@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
-import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/features/shop/cart/presentation/views/widgets/t_cart_items.dart';
+import 'package:t_store/features/shop/checkout/presentation/views/widgets/t_billing_address_section.dart';
 import 'package:t_store/features/shop/checkout/presentation/views/widgets/t_billing_amount_section.dart';
 import 'package:t_store/features/shop/checkout/presentation/views/widgets/t_billing_payment_section.dart';
 import 'package:t_store/features/shop/checkout/presentation/views/widgets/t_coupon_code.dart';
@@ -54,37 +54,3 @@ class CheckoutViewBody extends StatelessWidget {
     );
   }
 }
-
-
-class TBillingAddressSection extends StatelessWidget {
-  const TBillingAddressSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TSectionHeading(title: "Shipping Address",padding:const EdgeInsets.all(0),buttonTitle: "Change",onPressed: (){},),
-        Text("Code with T",style: Theme.of(context).textTheme.bodyLarge,),
-        const SizedBox(height: 8,),
-        Row(
-          children: [
-            const Icon(Icons.phone,size: 16,color: Colors.grey,),
-            const SizedBox(width: 16,),
-            Text("+20 01116811765", style:  Theme.of(context).textTheme.bodyMedium,),
-          ],
-        ),
-        const SizedBox(height: 8,),
-        Row(
-          children: [
-            const Icon(Icons.location_history,size: 16,color: Colors.grey,),
-            const SizedBox(width: 16,),
-            Expanded(child: Text("El Madi - El-Gdeda - saqur kourish, Egypt", style:  Theme.of(context).textTheme.bodyMedium,softWrap: true,)),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-

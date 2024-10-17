@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:t_store/common_widgets/success_screen.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
-import 'package:t_store/core/constants/image_strings.dart';
+import 'package:t_store/core/helper/pricing_calculator.dart';
+import 'package:t_store/core/utlis/loaders/t_loaders.dart';
+import 'package:t_store/features/personalization/my_orders/presentation/views_model/order_controller.dart';
+import 'package:t_store/features/shop/cart/presentation/views_model/cart_controller.dart';
 import 'package:t_store/features/shop/checkout/presentation/views/widgets/checkout_view_body.dart';
-import 'package:t_store/features/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
 
 class CheckoutView extends StatelessWidget {
   const CheckoutView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final CartController cartController = CartController.instance;
+    final subTotal = cartController.totalCartPrice.value;
+    final totalAmount = TPricingCalculator.calculateTotalPrice(subTotal, "EG");
+    final orderController = Get.put(OrderController());
     return  Scaffold(
       appBar: TAppBar(
         title: Text("Order Review",style: Theme.of(context).textTheme.headlineSmall,),
@@ -20,21 +25,13 @@ class CheckoutView extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(right: 24,left:24 ,bottom: 8),
         child: ElevatedButton(
-            onPressed: (){
-              Get.to(()=> SuccessScreen(
-                isAnimation: false,
-                image: TImages.successfulPaymentIcon,
-                title: "Payment Success!",
-                subTitle: "Your item will be shipped soon!",
-                onPressed: (){
-                  Get.offAll(()=> const NavigationMenuView()
-                  );
-                },
-              ));
-              },
-            child: const Text("Checkout \$256.0"),
+            onPressed: subTotal >0
+                ? () async => await orderController.processOrder(totalAmount)
+                : TLoaders.warningSnackBar(title: "Empty Cart", message:"Add items in the cart in order to proceed."),
+            child: Text("Checkout \$${totalAmount.toStringAsFixed(1)}"),
         ),
       ),
     );
   }
 }
+
