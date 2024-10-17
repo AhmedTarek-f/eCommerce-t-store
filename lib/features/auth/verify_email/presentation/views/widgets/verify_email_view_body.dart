@@ -26,18 +26,18 @@ class VerifyEmailViewBody extends StatelessWidget {
               width: MediaQuery.sizeOf(context).width*0.6,
             ),
             const SizedBox(height: 32,),
-            Text("Verify your email address!",style: Theme.of(context).textTheme.headlineMedium,textAlign: TextAlign.center,),
+            Text("Verify your email address!".tr,style: Theme.of(context).textTheme.headlineMedium,textAlign: TextAlign.center,),
             const SizedBox(height: 16,),
             Text(email ?? "",style: Theme.of(context).textTheme.labelLarge,textAlign: TextAlign.center,),
             const SizedBox(height: 16,),
-            Text("Congratulations! Your Account Awaits: Verify Your Email to Start Shopping and Experience a World Unrivaled Deals and Personalized Offers.",style: Theme.of(context).textTheme.labelMedium,textAlign: TextAlign.center,),
+            Text("Congratulations! Your Account Awaits: Verify Your Email to Start Shopping and Experience a World Unrivaled Deals and Personalized Offers.".tr,style: Theme.of(context).textTheme.labelMedium,textAlign: TextAlign.center,),
             const SizedBox(height: 32,),
 
             SizedBox(
               width: MediaQuery.sizeOf(context).width,
               child: ElevatedButton(
                   onPressed: () => verifyEmailController.checkEmailVerificationStatus(),
-                  child: const Text("Continue"),
+                  child: Text("Continue".tr),
               ),
             ),
             const SizedBox(height: 16,),
@@ -45,7 +45,7 @@ class VerifyEmailViewBody extends StatelessWidget {
               width: MediaQuery.sizeOf(context).width,
               child: TextButton(
                 onPressed: () => verifyEmailController.sendEmailVerification(),
-                child: const Text("Resend Email"),
+                child: Text("Resend Email".tr),
               ),
             ),
           ],

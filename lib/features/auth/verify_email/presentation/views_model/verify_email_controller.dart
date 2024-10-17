@@ -24,11 +24,11 @@ class VerifyEmailController extends GetxController
  Future<void> sendEmailVerification()async{
     try{
       await AuthenticationRepository.instance.sendEmailVerification();
-      TLoaders.successSnackBar(title: "Email sent",message: "Please check your inbox and verify your email.");
+      TLoaders.successSnackBar(title: "Email Sent".tr,message: "Please check your inbox and verify your email.".tr);
     }
     catch(e)
    {
-     TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+     TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
    }
   }
 
@@ -46,8 +46,8 @@ class VerifyEmailController extends GetxController
               Get.off(()=>SuccessScreen(
                 isAnimation: true,
                 image: TImages.successfullyRegisterAnimation,
-                title:"Your account successfully created!",
-                subTitle: "Welcome to Your Ultimate Shopping Destination Your Account is Created, Unleash the Joy of Seamless Online Shopping!",
+                title:"Your account successfully created!".tr,
+                subTitle: "Welcome to Your Ultimate Shopping Destination Your Account is Created, Unleash the Joy of Seamless Online Shopping!".tr,
                 onPressed: ()=> AuthenticationRepository.instance.screenRedirect(),
               )
               );
@@ -63,7 +63,7 @@ class VerifyEmailController extends GetxController
       Get.off(()=>SuccessScreen(
         isAnimation: true,
         image: TImages.successfullyRegisterAnimation,
-        title:"Your account created",
+        title:"Your account created".tr,
         subTitle: "",
         onPressed: ()=> AuthenticationRepository.instance.screenRedirect(),
       )
