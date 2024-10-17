@@ -37,7 +37,7 @@ class TProductMetaData extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10.5,),
-        const TProductTitleText(title: "Green Nike Sport Shoes"),
+        TProductTitleText(title: product.title),
         const SizedBox(height: 10.5,),
 
         Row(
