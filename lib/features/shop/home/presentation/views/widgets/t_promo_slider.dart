@@ -20,7 +20,7 @@ class TPromoSlider extends StatelessWidget {
           return const TPromoSliderShimmer();
         }
         else if(controller.allActiveBanners.isEmpty){
-          return Center(child: Text("No Data Found",style:  Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white),),);
+          return Center(child: Text("No Data Found!",style:  Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white),),);
         }
         else {
           return Column(

@@ -19,7 +19,7 @@ class THomeCategories extends StatelessWidget {
           return  const TCategoryShimmer();
         }
       else if(categoryController.featuredCategories.isEmpty){
-        return Center(child: Text("No Data Found",style:  Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white),),);
+        return Center(child: Text("No Data Found!",style:  Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white),),);
       }
       else {
         return SizedBox(

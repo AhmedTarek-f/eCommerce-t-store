@@ -68,7 +68,7 @@ class HomeViewBody extends StatelessWidget {
                            }
                          else if (controller.featuredProductsList.isEmpty)
                            {
-                             return Center(child: Text("No Data Found".tr,style: Theme.of(context).textTheme.bodyMedium,));
+                             return Center(child: Text("No Data Found!".tr,style: Theme.of(context).textTheme.bodyMedium,));
                            }
                          else{
                            return TGridLayout(
