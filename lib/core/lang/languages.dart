@@ -6,6 +6,9 @@ class Languages implements Translations
   // TODO: implement keys
   Map<String, Map<String, String>> get keys => {
     "ar": {
+      "English":"إنجليزي",
+      "Arabic":"عربي",
+      "Select the language":"حدد اللغة",
       "Skip": "تخطي",
       "Choose your product" : "اختر منتجك",
       "Welcome to a World of Limitless Choices - Your Perfect Product Awaits!": "مرحبًا بكم في عالم من الاختيارات اللامحدودة - منتجك المثالي في انتظارك!",
@@ -150,6 +153,9 @@ class Languages implements Translations
 
     },
     "en": {
+      "English":"English",
+      "Arabic":"Arabic",
+      "Select the language":"Select the language",
       "Skip": "Skip",
       "Choose your product": "Choose your product",
       "Welcome to a World of Limitless Choices - Your Perfect Product Awaits!": "Welcome to a World of Limitless Choices - Your Perfect Product Awaits!",

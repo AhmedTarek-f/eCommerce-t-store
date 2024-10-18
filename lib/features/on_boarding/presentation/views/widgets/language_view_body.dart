@@ -30,15 +30,15 @@ class LanguageViewBody extends StatelessWidget {
               fit: BoxFit.contain,
           ),
           const SizedBox(height: 32,),
-          Center(child: Text("Select the language", style: Theme.of(context).textTheme.headlineSmall,)),
+          Center(child: Text("Select the language".tr, style: Theme.of(context).textTheme.headlineSmall,)),
           const SizedBox(height: 16,),
           SizedBox(
             width: MediaQuery.sizeOf(context).width,
               child: Obx(
                 ()=> ElevatedButton(
-                    onPressed: (){
+                    onPressed: ()async{
                       if(controller.language.value != "en") {
-                        controller.selectLanguage("en");
+                        await controller.selectLanguage("en");
                       }
                     },
                   style: ElevatedButton.styleFrom(
@@ -46,7 +46,7 @@ class LanguageViewBody extends StatelessWidget {
                     side: const BorderSide(color: Colors.transparent),
 
                   ),
-                    child: const Text("English"),
+                    child: Text("English".tr),
                 ),
               ),
           ),
@@ -55,16 +55,16 @@ class LanguageViewBody extends StatelessWidget {
             width: MediaQuery.sizeOf(context).width,
             child: Obx(
             () => ElevatedButton(
-                onPressed: (){
+                onPressed: ()async{
                   if(controller.language.value != "ar") {
-                    controller.selectLanguage("ar");
+                    await controller.selectLanguage("ar");
                   }
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor:controller.language.value == "ar"? TColors.primaryColor : TColors.darkerGrey,
                   side: const BorderSide(color: Colors.transparent),
                 ),
-                child: const Text("Arabic"),
+                child: Text("Arabic".tr),
               ),
             ),
           ),

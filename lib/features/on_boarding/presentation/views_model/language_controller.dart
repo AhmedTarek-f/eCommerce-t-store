@@ -8,11 +8,11 @@ class LanguageController extends GetxController
   final GetStorage _storage = GetStorage();
   RxString language = "en".obs;
 
-   void selectLanguage(String lang)
+   Future<void> selectLanguage(String lang) async
    {
      language.value = lang;
      Locale localeLang = Locale(lang);
      _storage.write("lang", lang);
-     Get.updateLocale(localeLang);
+     await Get.updateLocale(localeLang);
    }
 }
