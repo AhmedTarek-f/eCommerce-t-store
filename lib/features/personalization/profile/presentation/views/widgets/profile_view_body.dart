@@ -40,31 +40,31 @@ class ProfileViewBody extends StatelessWidget {
                       TCircularImage(image: image,width: 100,height: 100,isOverLayColor: false, isNetworkImage:networkImage.isNotEmpty ,);
                     },
                   ),
-                  TextButton(onPressed: ()async{await controller.uploadUserProfilePicture();}, child: const Text("Change Profile Picture"))
+                  TextButton(onPressed: ()async{await controller.uploadUserProfilePicture();}, child: Text("Change Profile Picture".tr))
                 ],
               ),
             ),
             const SizedBox(height: 8,),
             const Divider(),
             const SizedBox(height: 16,),
-            const TSectionHeading(title: "Profile Information" , showActionButton: false,padding: EdgeInsets.zero,),
+            TSectionHeading(title: "Profile Information".tr , showActionButton: false,padding: EdgeInsets.zero,),
             const SizedBox(height: 16,),
 
-            Obx(()=> controller.nameChangeLoading.value?TProfileMenu( title: "Name", value: "Updating...", onPressed: () {},) :TProfileMenu( title: "Name", value: controller.user.value.fullName,onPressed: (){Get.to(()=> const ChangeNameView());},)),
-            TProfileMenu( title: "UserName", value: controller.user.value.username,onPressed: (){},),
+            Obx(()=> controller.nameChangeLoading.value?TProfileMenu( title: "Name".tr, value: "Updating...".tr, onPressed: () {},) :TProfileMenu( title: "Name".tr, value: controller.user.value.fullName,onPressed: (){Get.to(()=> const ChangeNameView());},)),
+            TProfileMenu( title: "UserName".tr, value: controller.user.value.username,onPressed: (){},),
 
             const SizedBox(height: 16,),
             const Divider(),
             const SizedBox(height: 16,),
 
-            const TSectionHeading(title: "Personal Information" , showActionButton: false,padding: EdgeInsets.zero,),
+            TSectionHeading(title: "Personal Information".tr , showActionButton: false,padding: EdgeInsets.zero,),
             const SizedBox(height: 16,),
 
-            TProfileMenu( title: "User ID", value: controller.user.value.id,onPressed: (){},icon: Iconsax.copy_copy,),
-            TProfileMenu( title: "E-mail", value: controller.user.value.email,onPressed: (){},),
-            TProfileMenu( title: "Phone Number", value: controller.user.value.phoneNumber,onPressed: (){},),
-            TProfileMenu( title: "Gender", value: "Male",onPressed: (){},),
-            TProfileMenu( title: "Date of Birth", value: "7 Jun, 2001",onPressed: (){},),
+            TProfileMenu( title: "User ID".tr, value: controller.user.value.id,onPressed: (){},icon: Iconsax.copy_copy,),
+            TProfileMenu( title: "E-Mail".tr, value: controller.user.value.email,onPressed: (){},),
+            TProfileMenu( title: "Phone Number".tr, value: controller.user.value.phoneNumber,onPressed: (){},),
+            TProfileMenu( title: "Gender".tr, value: "Male".tr,onPressed: (){},),
+            TProfileMenu( title: "Date of Birth".tr, value: "7 Jun, 2001",onPressed: (){},),
 
             const Divider(),
             const SizedBox(height: 16,),
@@ -74,7 +74,7 @@ class ProfileViewBody extends StatelessWidget {
                     onPressed: ()async{
                       controller.deleteAccountWarningPopup();
                     },
-                    child: const Text("Close Account", style: TextStyle(color: Colors.red),),
+                    child: Text("Close Account".tr, style: const TextStyle(color: Colors.red),),
                 ),
             ),
           ],

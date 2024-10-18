@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/core/utlis/loaders/t_loaders.dart';
@@ -20,16 +21,20 @@ class UserController extends GetxController {
   Rx<UserModel> user = UserModel.empty().obs;
   bool hidePassword = true;
   final UserRepository userRepository = Get.put(UserRepository());
-
   final TextEditingController verifyEmail = TextEditingController();
   final TextEditingController verifyPassword = TextEditingController();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
-
+  final GetStorage _storage = GetStorage();
   @override
   void onInit() {
     super.onInit();
     fetchUserRecord();
+  }
+
+  bool isArabic() {
+    final String language = _storage.read("lang");
+    return language == "ar";
   }
 
   void applyAutoValidateMode() {
