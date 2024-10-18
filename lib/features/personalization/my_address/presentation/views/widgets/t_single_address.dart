@@ -30,7 +30,8 @@ class TSingleAddress extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  right: 5,
+                  right: controller.isArabic()? null : 5,
+                  left: controller.isArabic()? 5 : null,
                   top: 0,
                   child: Icon(
                     selectedAddress?Iconsax.tick_circle:null,

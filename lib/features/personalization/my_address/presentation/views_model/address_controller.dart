@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/core/constants/image_strings.dart';
@@ -26,6 +27,7 @@ class AddressController extends GetxController
   GlobalKey<FormState> addressFormKey = GlobalKey<FormState>();
   Rx<AutovalidateMode>  autoValidateMode = AutovalidateMode.disabled.obs;
   RxBool refreshData = true.obs;
+  final GetStorage _storage = GetStorage();
 
   Future<List<AddressModel>> getAllUserAddresses() async{
     try{
@@ -35,9 +37,13 @@ class AddressController extends GetxController
     }
     catch(e)
     {
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
       return [];
     }
+  }
+  bool isArabic() {
+    final String language = _storage.read("lang");
+    return language == "ar";
   }
 
   Future<void> selectAddress(AddressModel newSelectedAddress) async{
@@ -60,7 +66,7 @@ class AddressController extends GetxController
     }
     catch(e)
     {
-      TLoaders.errorSnackBar(title: "Error in Selection",message: e.toString());
+      TLoaders.errorSnackBar(title: "Error in Selection".tr,message: e.toString());
     }
   }
 
@@ -70,7 +76,7 @@ class AddressController extends GetxController
         autoValidateMode.value= AutovalidateMode.always;
       }
       else {
-        TFullScreenLoader.openLoadingDialog("Storing Address...", TImages.docerAnimation);
+        TFullScreenLoader.openLoadingDialog("Storing Address...".tr, TImages.docerAnimation);
         final address = AddressModel(
           id: '',
           name: name.text.trim(),
@@ -86,7 +92,7 @@ class AddressController extends GetxController
         address.id = id;
         await selectAddress(address);
         TFullScreenLoader.stopLoading();
-        TLoaders.successSnackBar(title: "Congratulations", message: "Your address has been saved successfully.");
+        TLoaders.successSnackBar(title: "Congratulations".tr, message: "Your address has been saved successfully.".tr);
         refreshData.toggle();
         resetFormFields();
         Navigator.of(Get.context!).pop();
@@ -94,7 +100,7 @@ class AddressController extends GetxController
     }
     catch(e){
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Address not found",message: e.toString());
+      TLoaders.errorSnackBar(title: "Address not found".tr,message: e.toString());
     }
   }
 
@@ -106,7 +112,7 @@ class AddressController extends GetxController
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TSectionHeading(title: "Select Address" , showActionButton: false,),
+              TSectionHeading(title: "Select address".tr , showActionButton: false,),
               FutureBuilder<List<AddressModel>>(
                   future: getAllUserAddresses(),
                   builder: (context, snapshot) {
@@ -115,11 +121,11 @@ class AddressController extends GetxController
                     }
                     else if(!snapshot.hasData || snapshot.data == null || (snapshot.data?.isEmpty ?? true))
                     {
-                      return const Center(child: Text("No Data Found!"),);
+                      return Center(child: Text("No Data Found!".tr),);
                     }
                     else if(snapshot.hasError)
                     {
-                      return const Center(child:  Text("Something went wrong."),);
+                      return Center(child:  Text("Something went wrong.".tr),);
                     }
                     else{
                       final List<AddressModel> addressesList = snapshot.data!;

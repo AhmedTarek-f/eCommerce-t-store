@@ -13,7 +13,7 @@ class MyAddressView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:  TAppBar(
-        title: Text("My Address",style: Theme.of(context).textTheme.headlineSmall,),
+        title: Text("My Address".tr,style: Theme.of(context).textTheme.headlineSmall,),
         showBackArrow: true,
       ),
       floatingActionButton: FloatingActionButton(

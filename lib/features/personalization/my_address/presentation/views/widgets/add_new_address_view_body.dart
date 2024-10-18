@@ -25,13 +25,13 @@ class AddNewAddressViewBody extends StatelessWidget {
                 child: Column(
                   children: [
                     TextFormField(
-                      decoration:  const InputDecoration(prefixIcon: Icon(Iconsax.user_copy),
-                          label: Text("Name",),
+                      decoration:   InputDecoration(prefixIcon: const Icon(Iconsax.user_copy),
+                          label: Text("Name".tr,),
                       ),
                       controller: controller.name,
                       validator: (value) {
                         if(value == null || value.isEmpty || value.trim() == ""){
-                          return "Name is required.";
+                          return "Name is required.".tr;
                         }
                         else
                         {
@@ -41,13 +41,13 @@ class AddNewAddressViewBody extends StatelessWidget {
                     ),
                     const SizedBox(height: 16,),
                     TextFormField(
-                      decoration: const InputDecoration(prefixIcon: Icon(Iconsax.mobile_copy),
-                          label: Text("Phone Number"),
+                      decoration:  InputDecoration(prefixIcon: const Icon(Iconsax.mobile_copy),
+                          label: Text("Phone Number".tr),
                       ),
                       controller: controller.phoneNumber,
                       validator: (value) {
                         if(value == null || value.isEmpty || value.trim() == ""){
-                          return "Phone Number is required.";
+                          return "Phone Number is required.".tr;
                         }
                         else
                         {
@@ -60,13 +60,13 @@ class AddNewAddressViewBody extends StatelessWidget {
                       children: [
                         Expanded(
                             child: TextFormField(
-                              decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building_4_copy),
-                                  label: Text("Street"),
+                              decoration:  InputDecoration(prefixIcon: const Icon(Iconsax.building_4_copy),
+                                  label: Text("Street".tr),
                               ),
                               controller: controller.street,
                               validator: (value) {
                                 if(value == null || value.isEmpty || value.trim() == ""){
-                                  return "Street is required.";
+                                  return "Street is required.".tr;
                                 }
                                 else
                                 {
@@ -78,13 +78,13 @@ class AddNewAddressViewBody extends StatelessWidget {
                         const SizedBox(width: 16,),
                         Expanded(
                             child: TextFormField(
-                              decoration: const InputDecoration(prefixIcon: Icon(Iconsax.code_copy),
-                                  label: Text("PostalCode"),
+                              decoration:  InputDecoration(prefixIcon: const Icon(Iconsax.code_copy),
+                                  label: Text("PostalCode".tr),
                               ),
                               controller: controller.postalCode,
                               validator: (value) {
                                 if(value == null || value.isEmpty || value.trim() == ""){
-                                  return "PostalCode is required.";
+                                  return "PostalCode is required.".tr;
                                 }
                                 else
                                 {
@@ -100,13 +100,13 @@ class AddNewAddressViewBody extends StatelessWidget {
                       children: [
                         Expanded(
                             child: TextFormField(
-                              decoration: const InputDecoration(prefixIcon: Icon(Iconsax.building_copy),
-                                  label: Text("City"),
+                              decoration:  InputDecoration(prefixIcon: const Icon(Iconsax.building_copy),
+                                  label: Text("City".tr),
                               ),
                               controller: controller.city,
                               validator: (value) {
                                 if(value == null || value.isEmpty || value.trim() == ""){
-                                  return "City is required.";
+                                  return "City is required.".tr;
                                 }
                                 else
                                 {
@@ -118,13 +118,13 @@ class AddNewAddressViewBody extends StatelessWidget {
                         const SizedBox(width: 16,),
                         Expanded(
                             child: TextFormField(
-                              decoration: const InputDecoration(prefixIcon: Icon(Iconsax.activity_copy),
-                                  label: Text("State"),
+                              decoration:  InputDecoration(prefixIcon: const Icon(Iconsax.activity_copy),
+                                  label: Text("State".tr),
                               ),
                               controller: controller.state,
                               validator: (value) {
                                 if(value == null || value.isEmpty || value.trim() == ""){
-                                  return "State is required.";
+                                  return "State is required.".tr;
                                 }
                                 else
                                 {
@@ -137,13 +137,13 @@ class AddNewAddressViewBody extends StatelessWidget {
                     ),
                     const SizedBox(height: 16,),
                     TextFormField(
-                      decoration: const InputDecoration(prefixIcon: Icon(Iconsax.global_copy),
-                          label: Text("Country"),
+                      decoration: InputDecoration(prefixIcon: const Icon(Iconsax.global_copy),
+                          label: Text("Country".tr),
                       ),
                       controller: controller.country,
                       validator: (value) {
                         if(value == null || value.isEmpty || value.trim() == ""){
-                          return "Country is required.";
+                          return "Country is required.".tr;
                         }
                         else
                         {
@@ -156,7 +156,7 @@ class AddNewAddressViewBody extends StatelessWidget {
                         width:MediaQuery.sizeOf(context).width,
                         child: ElevatedButton(
                             onPressed: (){controller.addNewAddress();},
-                            child: const Text("Save"),
+                            child: Text("Save".tr),
                         ),
                     ),
                   ],

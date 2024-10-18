@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
 import 'package:t_store/features/personalization/my_address/presentation/views/widgets/add_new_address_view_body.dart';
 
@@ -7,12 +8,12 @@ class AddNewAddressView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       appBar: TAppBar(
-        title: Text("Add new Address"),
+        title: Text("Add new Address".tr),
         showBackArrow: true,
       ),
-      body: AddNewAddressViewBody(),
+      body: const AddNewAddressViewBody(),
     );
   }
 }

@@ -29,11 +29,11 @@ class MyAddressViewBody extends StatelessWidget {
                   }
                   else if(!snapshot.hasData || snapshot.data == null || (snapshot.data?.isEmpty ?? true))
                   {
-                    return const Center(child: Text("No Data Found!"),);
+                    return Center(child: Text("No Data Found!".tr),);
                   }
                   else if(snapshot.hasError)
                   {
-                    return const Center(child:  Text("Something went wrong."),);
+                    return Center(child:  Text("Something went wrong.".tr),);
                   }
                   else {
                     final allUserAddresses = snapshot.data!;
