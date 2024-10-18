@@ -5,6 +5,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:t_store/core/theme/t_app_theme.dart';
 import 'package:t_store/core/utlis/exceptions/t_firebase_auth_exceptions.dart';
 import 'package:t_store/core/utlis/exceptions/t_firebase_exceptions.dart';
 import 'package:t_store/core/utlis/exceptions/t_format_exceptions.dart';
@@ -25,23 +26,35 @@ class AuthenticationRepository extends GetxController {
   final _auth = FirebaseAuth.instance;
   User? get authUser => _auth.currentUser;
 
-
   // Called From main.dart on app launch
   @override
   void onReady() {
     FlutterNativeSplash.remove();
     screenRedirect();
+    super.onReady();
   }
 
+  void initTheme() {
+    deviceStorage.writeIfNull("isDarkTheme", false);
+    if(deviceStorage.read("isDarkTheme")){
+      Get.changeTheme(TAppTheme.darkTheme);
+    }
+    else{
+      Get.changeTheme(TAppTheme.lightTheme);
+    }
+  }
+
+
   // Function to Show Relevant Screen
-  screenRedirect() async{
+ Future<void> screenRedirect() async{
+    initTheme();
     final User? user = _auth.currentUser;
     if(user !=null)
       {
         if(deviceStorage.read("lang") != null)
         {
           Locale localeLang = Locale(deviceStorage.read("lang"));
-          Get.updateLocale(localeLang);
+          await Get.updateLocale(localeLang);
         }
         if(user.emailVerified)
           {
@@ -56,7 +69,7 @@ class AuthenticationRepository extends GetxController {
       if(deviceStorage.read("lang") != null)
         {
           Locale localeLang = Locale(deviceStorage.read("lang"));
-          Get.updateLocale(localeLang);
+          await Get.updateLocale(localeLang);
         }
       deviceStorage.writeIfNull("isFirstTime", true);
       deviceStorage.read("isFirstTime") !=true ? Get.offAll(()=> const LogInView()) : Get.offAll(() => const LanguageView());

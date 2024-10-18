@@ -17,12 +17,15 @@ class TSettingsMenuTile extends StatelessWidget {
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Icon(icon,size: 28,color: TColors.primary,),
-      title: Text(title,style: Theme.of(context).textTheme.titleMedium,),
-      subtitle: Text(subTitle, style: Theme.of(context).textTheme.labelMedium,),
-      trailing: trailing,
+    return InkWell(
       onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: ListTile(
+        leading: Icon(icon,size: 28,color: TColors.primary,),
+        title: Text(title,style: Theme.of(context).textTheme.titleMedium,),
+        subtitle: Text(subTitle, style: Theme.of(context).textTheme.labelMedium,),
+        trailing: trailing,
+      ),
     );
   }
 }

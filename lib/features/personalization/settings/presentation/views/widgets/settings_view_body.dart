@@ -11,6 +11,7 @@ import 'package:t_store/features/personalization/my_orders/presentation/views/my
 import 'package:t_store/features/personalization/profile/presentation/views/profile_view.dart';
 import 'package:t_store/features/personalization/settings/presentation/views/widgets/t_settings_menu_title.dart';
 import 'package:t_store/features/personalization/settings/presentation/views/widgets/t_user_profile_title.dart';
+import 'package:t_store/features/personalization/settings/presentation/views_model/settings_controller.dart';
 import 'package:t_store/features/shop/cart/presentation/views/cart_view.dart';
 
 class SettingsViewBody extends StatelessWidget {
@@ -18,6 +19,7 @@ class SettingsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SettingsController settingsController = Get.put(SettingsController());
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -54,19 +56,31 @@ class SettingsViewBody extends StatelessWidget {
 
                 TSectionHeading(title: "App Settings".tr,padding:EdgeInsets.zero ,showActionButton: false,),
                 const SizedBox(height: 16,),
-                TSettingsMenuTile(
-                  icon: Iconsax.translate_copy ,
-                  title:"Language".tr,
-                  subTitle: "Set the app language to Arabic or English.".tr,
-                  trailing: Switch(value: true, onChanged: (value){},),
-                  onTap: (){},
+                Obx(
+                  ()=> TSettingsMenuTile(
+                    icon: Iconsax.translate_copy ,
+                    title:"Language".tr,
+                    subTitle: "Set the app language to Arabic or English.".tr,
+                    trailing: Switch(
+                      value: settingsController.isEnglishLang(),
+                      onChanged: (value) async{
+                        await settingsController.changeLanguage();
+                        },
+                    ),
+                  ),
                 ),
-                TSettingsMenuTile(
-                  icon: Icons.dark_mode_outlined ,
-                  title:"Theme".tr,
-                  subTitle: "Set the app Theme to Dark or Light Mode.".tr,
-                  trailing: Switch(value: false, onChanged: (value){},),
-                  onTap: (){},
+                Obx(
+                  () => TSettingsMenuTile(
+                    icon: Icons.dark_mode_outlined ,
+                    title:"Theme".tr,
+                    subTitle: "Set the app Theme to Dark or Light Mode.".tr,
+                    trailing: Switch(
+                      value: settingsController.isDarkTheme(),
+                      onChanged: (value){
+                        settingsController.changeThemeMode();
+                      },
+                    ),
+                  ),
                 ),
 
                 const SizedBox(height: 32,),
