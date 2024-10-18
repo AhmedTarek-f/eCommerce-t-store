@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/features/shop/checkout/model/payment_method_model.dart';
@@ -9,11 +10,16 @@ class CheckoutController extends GetxController {
   static CheckoutController get instance => Get.find();
 
   final Rx<PaymentMethodModel> selectedPaymentMethod = PaymentMethodModel.empty().obs;
-
+  final GetStorage _storage = GetStorage();
   @override
   void onInit() {
     selectedPaymentMethod.value = const PaymentMethodModel(image: TImages.paypal, name: "Paypal");
     super.onInit();
+  }
+
+  bool isArabic() {
+   final String language = _storage.read("lang");
+    return language == "ar";
   }
 
   final List<PaymentMethodModel> _paymentMethodsList =  const [
@@ -36,7 +42,7 @@ class CheckoutController extends GetxController {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const TSectionHeading(title: "Select Payment Method" ,showActionButton: false,),
+                TSectionHeading(title: "Select Payment Method".tr ,showActionButton: false,),
                 const SizedBox(height: 32,),
                 Column(
                   children: _paymentMethodsList.map((paymentMethod) => Padding(

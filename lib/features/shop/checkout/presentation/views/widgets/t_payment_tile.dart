@@ -28,7 +28,7 @@ class TPaymentTile extends StatelessWidget {
         child: Image.asset(paymentMethod.image,fit: BoxFit.contain,),
       ),
       title: Text(paymentMethod.name),
-      trailing: const Icon(Iconsax.arrow_right_copy),
+      trailing:controller.isArabic()?const Icon(Iconsax.arrow_left_3) : const Icon(Iconsax.arrow_right_2),
     );
   }
 }

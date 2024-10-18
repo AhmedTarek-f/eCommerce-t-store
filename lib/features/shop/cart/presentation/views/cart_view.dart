@@ -7,23 +7,26 @@ import 'package:t_store/features/shop/cart/presentation/views/widgets/cart_view_
 import 'package:t_store/features/shop/cart/presentation/views_model/cart_controller.dart';
 import 'package:t_store/features/shop/checkout/presentation/views/checkout_view.dart';
 import 'package:t_store/features/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
+import 'package:t_store/features/shop/navigation_menu/presentation/views_model/navigation_controller.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = CartController.instance;
+    final controller = Get.put(CartController());
     return  Scaffold(
-      appBar: TAppBar(title: Text("Cart",style: Theme.of(context).textTheme.headlineSmall,),showBackArrow: true,),
+      appBar: TAppBar(title: Text("My Cart".tr,style: Theme.of(context).textTheme.headlineSmall,),showBackArrow: true,),
       body: Obx(
       () {
         final emptyWidget = TAnimationLoaderWidget(
-            text: "Whoops! Cart is EMPTY.",
+            text: "Whoops! Cart is EMPTY.".tr,
             animation: TImages.cartAnimation,
           showAction: true,
-          actionText: "Let's fill it",
-          onActionPressed: ()=> Get.off(()=> const NavigationMenuView()),
+          actionText: "Let's fill it".tr,
+          onActionPressed: (){
+            Get.offAll(()=> const NavigationMenuView());
+          } ,
         );
         return controller.cartItems.isEmpty? emptyWidget :const CartViewBody();
         },
@@ -34,7 +37,7 @@ class CartView extends StatelessWidget {
           child: ElevatedButton(onPressed: (){
             Get.to(()=> const CheckoutView());
             },
-              child:Text("Checkout \$${controller.totalCartPrice.value}"),),
+              child:Text("${"Checkout".tr} \$${controller.totalCartPrice.value}"),),
         ),
       ),
     );

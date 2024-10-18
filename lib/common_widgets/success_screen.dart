@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class SuccessScreen extends StatelessWidget {
@@ -39,7 +40,7 @@ class SuccessScreen extends StatelessWidget {
                 width: MediaQuery.sizeOf(context).width,
                 child: ElevatedButton(
                   onPressed: onPressed,
-                  child: const Text("Continue"),
+                  child: Text("Continue".tr),
                 ),
               ),
             ],

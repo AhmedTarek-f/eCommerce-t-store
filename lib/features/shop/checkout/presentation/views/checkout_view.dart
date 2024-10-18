@@ -18,7 +18,7 @@ class CheckoutView extends StatelessWidget {
     final orderController = Get.put(OrderController());
     return  Scaffold(
       appBar: TAppBar(
-        title: Text("Order Review",style: Theme.of(context).textTheme.headlineSmall,),
+        title: Text("Order Review".tr,style: Theme.of(context).textTheme.headlineSmall,),
         showBackArrow: true,
       ),
       body:const CheckoutViewBody(),
@@ -27,8 +27,8 @@ class CheckoutView extends StatelessWidget {
         child: ElevatedButton(
             onPressed: subTotal >0
                 ? () async => await orderController.processOrder(totalAmount)
-                : TLoaders.warningSnackBar(title: "Empty Cart", message:"Add items in the cart in order to proceed."),
-            child: Text("Checkout \$${totalAmount.toStringAsFixed(1)}"),
+                : TLoaders.warningSnackBar(title: "The Cart Is Empty".tr, message:"Add items in the cart in order to proceed.".tr),
+            child: Text("${"Checkout".tr} \$${totalAmount.toStringAsFixed(1)}"),
         ),
       ),
     );

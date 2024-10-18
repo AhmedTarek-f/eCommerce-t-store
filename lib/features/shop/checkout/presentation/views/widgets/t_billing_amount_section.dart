@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/core/helper/pricing_calculator.dart';
 import 'package:t_store/features/shop/cart/presentation/views_model/cart_controller.dart';
 
@@ -14,7 +15,7 @@ class TBillingAmountSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Subtotal",style: Theme.of(context).textTheme.bodyMedium,),
+            Text("Subtotal".tr,style: Theme.of(context).textTheme.bodyMedium,),
             Text("\$$subTotal",style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
@@ -22,7 +23,7 @@ class TBillingAmountSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Shipping Fee",style: Theme.of(context).textTheme.bodyMedium,),
+            Text("Shipping Fee".tr,style: Theme.of(context).textTheme.bodyMedium,),
             Text("\$${TPricingCalculator.calculateShippingCost(subTotal, "EG")}",style: Theme.of(context).textTheme.labelLarge),
           ],
         ),
@@ -30,7 +31,7 @@ class TBillingAmountSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Tax Fee",style: Theme.of(context).textTheme.bodyMedium,),
+            Text("Tax Fee".tr,style: Theme.of(context).textTheme.bodyMedium,),
             Text("\$${TPricingCalculator.calculateTax(subTotal, "EG")}",style: Theme.of(context).textTheme.labelLarge),
           ],
         ),
@@ -38,7 +39,7 @@ class TBillingAmountSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Order Total",style: Theme.of(context).textTheme.bodyMedium,),
+            Text("Order Total".tr,style: Theme.of(context).textTheme.bodyMedium,),
             Text("\$${TPricingCalculator.calculateTotalPrice(subTotal, "EG").toStringAsFixed(1)}",style: Theme.of(context).textTheme.titleMedium),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/core/constants/colors.dart';
 
@@ -18,8 +19,8 @@ class TCouponCode extends StatelessWidget {
         children: [
           Expanded(
             child: TextFormField(
-              decoration: const InputDecoration(
-                hintText: "Have a promo code? Enter here",
+              decoration: InputDecoration(
+                hintText: "Have a promo code? Enter here".tr,
                 border: InputBorder.none,
                 disabledBorder: InputBorder.none,
                 errorBorder: InputBorder.none,
@@ -38,7 +39,7 @@ class TCouponCode extends StatelessWidget {
                 backgroundColor: Colors.grey.withOpacity(0.2),
                 side: BorderSide(color: Colors.grey.withOpacity(0.1)),
               ),
-              child: const Text("Apply"),
+              child: Text("Apply".tr),
             ),
           ),
         ],
