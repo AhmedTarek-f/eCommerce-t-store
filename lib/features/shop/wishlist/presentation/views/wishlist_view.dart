@@ -12,21 +12,17 @@ class WishlistView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final NavigationController controller = NavigationController.instance;
     return Scaffold(
       appBar: TAppBar(
         title: Text("WishList".tr,style: Theme.of(context).textTheme.headlineMedium,),
         actions: [
-          GetBuilder<NavigationController>(
-            builder: (NavigationController controller) {
-              return TCircularIcon(
-                icon: Iconsax.add_copy,
-                onPressed: (){
-                  controller.changeSelectedIndex(0);
-                },
-              );
+          TCircularIcon(
+            icon: Iconsax.add_copy,
+            onPressed: (){
+              controller.changeSelectedIndex(0);
             },
           ),
-
         ],
       ),
       body: const WishlistViewBody(),

@@ -9,11 +9,10 @@ class NavigationController extends GetxController
 {
   static NavigationController get instance => Get.find();
 
-  int selectedIndex =0;
+  RxInt selectedIndex =0.obs;
   void changeSelectedIndex(int value)
   {
-    selectedIndex = value;
-    update();
+    selectedIndex.value = value;
   }
   final List<Widget> screens = [
     const HomeView(),
