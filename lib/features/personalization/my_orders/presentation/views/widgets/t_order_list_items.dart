@@ -19,19 +19,19 @@ class TOrderListItems extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return TAnimationLoaderWidget(
-              text: "Whoops! No Orders Yet!",
+              text: "Whoops! No Orders Yet!".tr,
               animation: TImages.orderCompleteAnimation,
             showAction: true,
-            actionText: "Let's fill it",
+            actionText: "Let's fill it".tr,
             onActionPressed: () => Get.offAll(() => const NavigationMenuView()),
 
           );
         }
         else if (!snapshot.hasData || snapshot.data == null || snapshot.data!.isEmpty) {
-          return const Center(child: Text("No Data Found!"),);
+          return Center(child: Text("No Data Found!".tr),);
         }
         else if (snapshot.hasError) {
-          return const Center(child: Text("Something went wrong."),);
+          return Center(child: Text("Something went wrong.".tr),);
         }
         else{
           final orders = snapshot.data!;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:t_store/common_widgets/success_screen.dart';
 import 'package:t_store/core/constants/enums.dart';
 import 'package:t_store/core/constants/image_strings.dart';
@@ -21,21 +22,26 @@ class OrderController extends GetxController
   final addressController = AddressController.instance;
   final checkoutController = CheckoutController.instance;
   final _orderRepository = Get.put(OrderRepository());
-
+  final GetStorage _storage = GetStorage();
   Future<List<OrderModel>> fetchUserOrders() async {
     try {
       final userOrders = await _orderRepository.fetchUserOrders();
       return userOrders;
     }
     catch(e) {
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
       return [];
     }
   }
 
+  bool isArabic() {
+    final String language = _storage.read("lang");
+    return language == "ar";
+  }
+
   Future<void> processOrder(double totalAmount) async {
     try{
-      TFullScreenLoader.openLoadingDialog("Processing your order", TImages.pencilAnimation);
+      TFullScreenLoader.openLoadingDialog("Processing your order".tr, TImages.pencilAnimation);
 
       final userId = AuthenticationRepository.instance.authUser!.uid;
       if(userId.isEmpty) return;
@@ -58,15 +64,15 @@ class OrderController extends GetxController
       
       Get.off(() => SuccessScreen(
         image: TImages.orderCompleteAnimation,
-        title: "Payment Success!",
-        subTitle: "Your item will be shipped soon!",
+        title: "Payment Success!".tr,
+        subTitle: "Your item will be shipped soon!".tr,
         isAnimation: true,
         onPressed: () => Get.offAll(() => const NavigationMenuView()),
       )
       );
     }
     catch(e) {
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
     }
   }
 
