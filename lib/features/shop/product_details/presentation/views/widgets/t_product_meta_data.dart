@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/common_widgets/images/t_circular_image.dart';
 import 'package:t_store/common_widgets/texts/t_brand_title_with_verified_icon.dart';
@@ -42,9 +43,9 @@ class TProductMetaData extends StatelessWidget {
 
         Row(
           children: [
-            const TProductTitleText(title: "Status"),
+            TProductTitleText(title: "Status".tr),
             const SizedBox(width: 16,),
-            Text(controller.getProductStockStatus(product.stock),style: Theme.of(context).textTheme.titleMedium,)
+            Text(controller.getProductStockStatus(product.stock).tr,style: Theme.of(context).textTheme.titleMedium,)
           ],
         ),
         const SizedBox(height: 10.5,),
