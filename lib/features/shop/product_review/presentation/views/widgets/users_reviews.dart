@@ -24,7 +24,7 @@ class UsersReviews extends StatelessWidget {
             return const UsersReviewsShimmer();
           }
           else if (reviews.isEmpty) {
-            return const Center(child: Text("No reviews found for this product yet!"),);
+            return  Center(child: Text("No reviews found for this product yet!".tr),);
           }
           else{
             int userReviewIndex = reviews.indexWhere((review) => review.userName == userController.user.value.username);

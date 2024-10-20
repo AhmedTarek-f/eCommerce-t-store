@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/features/shop/product_review/presentation/views/widgets/users_reviews.dart';
 
 class ProductReviewViewBody extends StatelessWidget {
@@ -13,16 +14,17 @@ class ProductReviewViewBody extends StatelessWidget {
           bottom: MediaQuery.sizeOf(context).height * 0.0280,
           top: MediaQuery.sizeOf(context).height * 0.0280,
         ),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-                "Rating and reviews are verified and are from people who use the same type of device that you use. "),
-            SizedBox(
+                "Rating and reviews are verified and are from people who use the same type of device that you use.".tr
+            ),
+            const SizedBox(
               height: 16,
             ),
       
-            UsersReviews(),
+            const UsersReviews(),
           ],
         ),
       ),
