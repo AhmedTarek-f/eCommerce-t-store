@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common_widgets/images/t_circular_image.dart';
 import 'package:t_store/core/constants/colors.dart';
 
@@ -41,13 +42,15 @@ class TVerticalImageText extends StatelessWidget {
           ),
 
           const SizedBox(height: 8,),
-          SizedBox(
-            width:55,
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.labelMedium!.apply(color: textColor ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+          Flexible(
+            child: SizedBox(
+              width: 60,
+              child: Text(
+                title.tr,
+                style: Theme.of(context).textTheme.labelMedium!.apply(color: textColor ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ),
         ],

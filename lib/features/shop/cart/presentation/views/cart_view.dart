@@ -7,7 +7,6 @@ import 'package:t_store/features/shop/cart/presentation/views/widgets/cart_view_
 import 'package:t_store/features/shop/cart/presentation/views_model/cart_controller.dart';
 import 'package:t_store/features/shop/checkout/presentation/views/checkout_view.dart';
 import 'package:t_store/features/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
-import 'package:t_store/features/shop/navigation_menu/presentation/views_model/navigation_controller.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});

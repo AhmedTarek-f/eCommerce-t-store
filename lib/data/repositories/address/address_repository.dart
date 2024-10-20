@@ -11,6 +11,7 @@ class AddressRepository extends GetxController
   static AddressRepository get instance => Get.find();
 
   final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final AuthenticationRepository _authenticationRepository = AuthenticationRepository.instance;
 
   Future<List<AddressModel>> fetchUserAddresses() async {
     try{
@@ -73,4 +74,20 @@ class AddressRepository extends GetxController
     }
   }
 
+  Future<void> deleteUserAddress(String addressId) async {
+    try {
+      await _db.collection("Users").doc(_authenticationRepository.authUser!.uid).collection("Addresses").doc(addressId).delete();
+    }
+    on FirebaseException catch (e){
+      throw TFirebaseException(e.code).message;
+    }
+    on PlatformException catch(e)
+    {
+      throw TPlatformException(e.code).message;
+    }
+    catch (e)
+    {
+      throw "Something went wrong while deleting this Address Information. Try again Later";
+    }
+  }
 }

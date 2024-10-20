@@ -5,7 +5,6 @@ import 'package:t_store/common_widgets/products/cart/t_cart_counter_icon.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/features/personalization/controller/user_controller.dart';
-import 'package:t_store/features/shop/cart/presentation/views/cart_view.dart';
 
 class THomeAppBar extends StatelessWidget {
   const THomeAppBar({

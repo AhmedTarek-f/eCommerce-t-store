@@ -15,7 +15,6 @@ import 'package:t_store/data/repositories/user/user_repository.dart';
 import 'package:t_store/features/auth/log_in/presentation/views/log_in_view.dart';
 import 'package:t_store/features/auth/verify_email/presentation/views/verify_email_view.dart';
 import 'package:t_store/features/on_boarding/presentation/views/language_view.dart';
-import 'package:t_store/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:t_store/features/shop/navigation_menu/presentation/views/navigation_menu_view.dart';
 
 class AuthenticationRepository extends GetxController {

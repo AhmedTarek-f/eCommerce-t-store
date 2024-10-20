@@ -87,8 +87,8 @@ class ProductModel {
         date: snapshot["Date"],
         description: snapshot["Description"] ?? "",
         images: snapshot["Images"] != null ? List<String>.from(snapshot["Images"]) :[],
-        productAttributes: (snapshot["ProductAttributes"] as List<dynamic>).map((e) => ProductAttributeModel.fromJson(e)).toList(),
-        productVariations: (snapshot["ProductVariations"] as List<dynamic>).map((e)=> ProductVariationModel.fromJson(e)).toList(),
+        productAttributes: snapshot["ProductAttributes"] != null? (snapshot["ProductAttributes"] as List<dynamic>).map((e) => ProductAttributeModel.fromJson(e)).toList(): null,
+        productVariations: snapshot["ProductVariations"] != null? (snapshot["ProductVariations"] as List<dynamic>).map((e)=> ProductVariationModel.fromJson(e)).toList(): null,
       );
     }
     else {
@@ -114,8 +114,8 @@ class ProductModel {
         date: snapshot["Date"],
         description: snapshot["Description"] ?? "",
         images: snapshot["Images"] != null ? List<String>.from(snapshot["Images"]) :[],
-        productAttributes: (snapshot["ProductAttributes"] as List<dynamic>).map((e) => ProductAttributeModel.fromJson(e)).toList(),
-        productVariations: (snapshot["ProductVariations"] as List<dynamic>).map((e)=> ProductVariationModel.fromJson(e)).toList(),
+        productAttributes: snapshot["ProductAttributes"] != null ? (snapshot["ProductAttributes"] as List<dynamic>).map((e) => ProductAttributeModel.fromJson(e)).toList() : null,
+        productVariations:snapshot["ProductVariations"] !=null ? (snapshot["ProductVariations"] as List<dynamic>).map((e)=> ProductVariationModel.fromJson(e)).toList() : null,
       );
     }
     else {

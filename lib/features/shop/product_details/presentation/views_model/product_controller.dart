@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:t_store/core/constants/enums.dart';
 import 'package:t_store/core/utlis/loaders/t_loaders.dart';
 import 'package:t_store/data/repositories/product/product_repository.dart';
+import 'package:t_store/data/repositories/reviews/reviews_repository.dart';
 import 'package:t_store/features/shop/product_details/model/product_model.dart';
 
 class ProductController extends GetxController {
@@ -9,13 +11,19 @@ class ProductController extends GetxController {
 
   final RxBool isLoading = false.obs;
   final ProductRepository _productRepository = Get.put(ProductRepository());
+  final ReviewsRepository _reviewsRepository = Get.put(ReviewsRepository());
+  final GetStorage _storage = GetStorage();
+  late int reviewsLength =0;
   RxList<ProductModel> featuredProductsList = <ProductModel>[].obs;
   @override
   void onInit() {
     fetchFeaturedProducts();
     super.onInit();
   }
-
+  bool isArabic() {
+    final String language = _storage.read("lang");
+    return language == "ar";
+  }
   Future<void> fetchFeaturedProducts() async {
     try{
       isLoading.value = true;
@@ -88,5 +96,16 @@ class ProductController extends GetxController {
 
   String getProductStockStatus(int stock) {
     return stock > 0 ? "In Stock" : "Out of Stock";
+  }
+
+  Future<int> fetchReviewsLength({required String productId}) async {
+    try{
+      reviewsLength = await _reviewsRepository.fetchNumberOfReviewsForSpecificProduct(productId);
+      return reviewsLength;
+    }
+    catch(e) {
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+      return 0;
+    }
   }
 }

@@ -152,6 +152,20 @@ class Languages implements Translations
       "Female":"انثى",
       "Close Account":"إغلاق الحساب",
       "Change Profile Picture":"تغيير صورة الملف الشخصي",
+      "Search In Store":"البحث في المتجر",
+      // Starting from here should be sent from the back end apis
+      "Sport Category":"فئة الرياضة",
+      "Clothes Category":"فئة الملابس",
+      "Animal Category":"فئة الحيوانات",
+      "Furniture Category":"فئة الأثاث",
+      "Electronics Category":"فئة الالكترونيات",
+      "Sports Shoes":"احذية رياضية",
+      "Track Suits":"بدلات رياضية",
+      "Sports Equipments":"معدات رياضية",
+      "":"",
+      "":"",
+      "":"",
+      "":"",
       "":"",
 
     },
@@ -302,6 +316,17 @@ class Languages implements Translations
       "Female":"Female",
       "Close Account":"Close Account",
       "Change Profile Picture":"Change Profile Picture",
+      "Search In Store": "Search In Store",
+      // Starting from here should be sent from the back end apis
+      "Sport Category":"Sport Category",
+      "Clothes Category":"Clothes Category",
+      "Animal Category":"Animal Category",
+      "Furniture Category":"Furniture Category",
+      "Electronics Category":"Electronics Category",
+      "Sports Shoes":"Sports Shoes",
+      "Track Suits":"Track Suits",
+      "Sports Equipments":"Sports Equipments",
+      "":"",
       "":"",
     }
   };

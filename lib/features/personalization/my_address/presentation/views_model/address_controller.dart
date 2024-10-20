@@ -27,6 +27,7 @@ class AddressController extends GetxController
   GlobalKey<FormState> addressFormKey = GlobalKey<FormState>();
   Rx<AutovalidateMode>  autoValidateMode = AutovalidateMode.disabled.obs;
   RxBool refreshData = true.obs;
+  RxBool isDeleteAddressLoading = false.obs;
   final GetStorage _storage = GetStorage();
 
   Future<List<AddressModel>> getAllUserAddresses() async{
@@ -163,6 +164,16 @@ class AddressController extends GetxController
           ),
         ),
     );
+  }
+  
+  Future<void> deleteUserAddress({required String addressId}) async {
+    try{
+      await _addressRepository.deleteUserAddress(addressId);
+      TLoaders.successSnackBar(title: "Deleted address",message: "Your address has been deleted successfully.");
+    }
+    catch(e) {
+     TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+    }
   }
   
   void resetFormFields(){

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/core/utlis/loaders/t_animation_loader_widget.dart';
 import 'package:t_store/features/personalization/my_orders/model/order_model.dart';

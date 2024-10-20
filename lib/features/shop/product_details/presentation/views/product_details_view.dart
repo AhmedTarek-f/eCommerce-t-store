@@ -4,7 +4,7 @@ import 'package:t_store/features/shop/product_details/presentation/views/widgets
 import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_bottom_add_to_cart.dart';
 
 class ProductDetailsView extends StatelessWidget {
-  const ProductDetailsView({super.key, required this.product});
+  const ProductDetailsView({super.key, required this.product,});
   final ProductModel product;
   @override
   Widget build(BuildContext context) {

@@ -38,6 +38,22 @@ class TSingleAddress extends StatelessWidget {
                     color: isDarkMode? TColors.light : TColors.dark,
                   ),
                 ),
+                Positioned(
+                  right: controller.isArabic()? null : 5,
+                  left: controller.isArabic()? 5 : null,
+                  top: 40,
+                  child: InkWell(
+                    onTap: () async{
+                      await controller.deleteUserAddress(addressId: selectedAddressId);
+                    },
+                    borderRadius: BorderRadius.circular(50),
+                    child: Icon(
+                      selectedAddress?Iconsax.trash_copy:null,
+                      color: isDarkMode? TColors.light : TColors.dark,
+                      size: 28,
+                    ),
+                  ),
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

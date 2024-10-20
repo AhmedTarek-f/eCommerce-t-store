@@ -8,7 +8,6 @@ import 'package:t_store/features/personalization/profile/presentation/views/prof
 import 'package:t_store/features/personalization/settings/presentation/views/settings_view.dart';
 import 'package:t_store/features/shop/cart/presentation/views/cart_view.dart';
 import 'package:t_store/features/shop/home/presentation/views/home_view.dart';
-import 'package:t_store/features/shop/product_review/presentation/views/product_review_view.dart';
 import 'package:t_store/features/shop/store/presentation/views/store_view.dart';
 
 abstract class AppRouters {
@@ -20,7 +19,6 @@ abstract class AppRouters {
     GetPage(name: TRoutes.userProfile, page: ()=> const ProfileView()),
     GetPage(name: TRoutes.userAddress, page: ()=> const MyAddressView()),
     GetPage(name: TRoutes.store, page: ()=> const StoreView()),
-    GetPage(name: TRoutes.productReviews, page: ()=> const ProductReviewView()),
     GetPage(name: TRoutes.order, page: ()=> const MyOrdersView()),
     GetPage(name: TRoutes.onBoarding, page: ()=> const OnBoardingView()),
   ];

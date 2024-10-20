@@ -56,7 +56,7 @@ class SubCategoriesViewBody extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final subCategory = subCategories[index];
                       return FutureBuilder<List<ProductModel>>(
-                        future: null,
+                        future: controller.fetchProductsForCategory(categoryId: subCategory.id),
                         builder: (BuildContext context, AsyncSnapshot<List<ProductModel>> snapshot) {
                           if (snapshot.connectionState == ConnectionState.waiting) {
                             return const THorizontalProductShimmer();
@@ -72,10 +72,11 @@ class SubCategoriesViewBody extends StatelessWidget {
                             return  Column(
                               children: [
                                 TSectionHeading(
-                                  title: subCategory.name,
+                                  title: subCategory.name.tr,
                                   showActionButton: true,
                                   padding: const EdgeInsets.all(0),
                                   onPressed: () => Get.to(()=> AllProductsView(title: subCategory.name,futureMethod: controller.fetchProductsForCategory(categoryId: subCategory.id,limit: -1),)),
+                                  buttonTitle: "View all".tr,
                                 ),
                                 const SizedBox(height: 8,),
                                 SizedBox(

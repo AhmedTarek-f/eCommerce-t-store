@@ -38,7 +38,7 @@ class TBottomAddToCart extends StatelessWidget {
                     onPressed: ()=> controller.productQuantityInCart.value <1 ? null : controller.productQuantityInCart.value -= 1,
                   ),
                   const SizedBox(width: 16,),
-                  Text(controller.productQuantityInCart.value.toString(),style: Theme.of(context).textTheme.titleSmall,),
+                  Obx(()=> Text(controller.productQuantityInCart.value.toString(),style: Theme.of(context).textTheme.titleSmall,)),
                   const SizedBox(width: 16,),
                    TCircularIcon(
                     icon: Iconsax.add_copy,

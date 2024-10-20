@@ -3,7 +3,6 @@ import 'package:t_store/common_widgets/images/t_rounded_image.dart';
 import 'package:t_store/common_widgets/texts/t_brand_title_with_verified_icon.dart';
 import 'package:t_store/common_widgets/texts/t_product_title_text.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/features/shop/cart/model/cart_item_model.dart';
 
 class TCartItem extends StatelessWidget {

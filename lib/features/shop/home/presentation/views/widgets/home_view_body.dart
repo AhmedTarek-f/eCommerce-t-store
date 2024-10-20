@@ -11,6 +11,7 @@ import 'package:t_store/features/shop/home/presentation/views/widgets/t_home_cat
 import 'package:t_store/features/shop/home/presentation/views/widgets/t_promo_slider.dart';
 import 'package:t_store/common_widgets/shimmer/t_vertical_product_shimmer.dart';
 import 'package:t_store/features/shop/product_details/presentation/views_model/product_controller.dart';
+import 'package:t_store/features/shop/search_in_store/presentation/views/search_in_store_view.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -29,6 +30,7 @@ class HomeViewBody extends StatelessWidget {
                 const SizedBox(height: 32,),
                 TSearchContainer(
                   text: "Search in Store".tr,
+                  onTap: () => Get.to(()=> const SearchInStoreView()),
                 ),
                 const SizedBox(height: 32,),
                 TSectionHeading(title: "Popular Categories".tr,showActionButton: false,titleColor: Colors.white,),

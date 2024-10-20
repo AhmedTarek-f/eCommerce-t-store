@@ -41,6 +41,7 @@ class TProductCardVertical extends StatelessWidget {
           color: isDarkMode?TColors.darkerGrey:TColors.white,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TRoundedContainer(
               height: MediaQuery.sizeOf(context).height*0.2101,
@@ -48,7 +49,14 @@ class TProductCardVertical extends StatelessWidget {
               backGroundColor: isDarkMode? TColors.dark: TColors.light,
               child: Stack(
                 children: [
-                  TRoundedImage(imageUrl: product.thumbnail,backgroundColor: isDarkMode? TColors.dark: TColors.light, isNetworkImage: true,),
+                  Center(
+                    child: TRoundedImage(
+                      imageUrl: product.thumbnail,
+                      backgroundColor: isDarkMode?
+                      TColors.dark: TColors.light,
+                      isNetworkImage: true,
+                    ),
+                  ),
                   Positioned(
                     top: 12,
                     child: TRoundedContainer(

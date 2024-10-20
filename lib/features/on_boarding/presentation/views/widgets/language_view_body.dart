@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:t_store/common_widgets/images/t_rounded_image.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/features/on_boarding/presentation/views/on_boarding_view.dart';

@@ -5,6 +5,7 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:readmore/readmore.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/enums.dart';
+import 'package:t_store/features/shop/cart/presentation/views/cart_view.dart';
 import 'package:t_store/features/shop/product_details/model/product_model.dart';
 import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_product_attributes.dart';
 import 'package:t_store/features/shop/product_details/presentation/views/widgets/t_product_image_slider.dart';
@@ -29,6 +30,7 @@ class ProductDetailsViewBody extends StatelessWidget {
               bottom: MediaQuery.sizeOf(context).height*0.0280,
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const TRatingAndShare(),
                 TProductMetaData(product: product,),
@@ -48,12 +50,14 @@ class ProductDetailsViewBody extends StatelessWidget {
                 ),
                 const Divider(),
                 const SizedBox(height: 16,),
+                SizedBox(width:MediaQuery.sizeOf(context).width,child: ElevatedButton(onPressed: (){Get.off(()=>const CartView());}, child: Text("Checkout".tr))),
+                const SizedBox(height: 16,),
                 Row(
                   children: [
-                    const Expanded(child:  TSectionHeading(title: "Reviews (199)",showActionButton: false, padding: EdgeInsets.all(0),)),
+                    const Expanded(child:  TSectionHeading(title: "Reviews",showActionButton: false, padding: EdgeInsets.all(0),)),
                     IconButton(
                         onPressed: (){
-                          Get.to(()=> const ProductReviewView());
+                          Get.to(()=> const ProductReviewView(),arguments: product.id);
                           },
                         icon: const Icon(Iconsax.arrow_right_3_copy,size: 18,),
                     ),

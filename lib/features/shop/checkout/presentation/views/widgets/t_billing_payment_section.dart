@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/common_widgets/texts/t_section_heading.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/features/shop/checkout/presentation/views_model/checkout_controller.dart';
 
 class TBillingPaymentSection extends StatelessWidget {

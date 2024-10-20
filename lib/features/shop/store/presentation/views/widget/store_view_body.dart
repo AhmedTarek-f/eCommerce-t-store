@@ -10,6 +10,7 @@ import 'package:t_store/features/shop/all_brands/presentation/views/all_brands_v
 import 'package:t_store/features/shop/all_brands/presentation/views_model/brand_controller.dart';
 import 'package:t_store/features/shop/brand_products/presentation/views/brand_products_view.dart';
 import 'package:t_store/features/shop/home/model/category_model.dart';
+import 'package:t_store/features/shop/search_in_store/presentation/views/search_in_store_view.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/t_brand_card.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/t_category_tab.dart';
 import 'package:t_store/features/shop/store/presentation/views/widget/t_tab_bar.dart';
@@ -51,6 +52,7 @@ class StoreViewBody extends StatelessWidget {
                         showBorder: true,
                         padding: EdgeInsets.zero,
                         showBackGround: false,
+                        onTap: ()=> Get.to(() => const SearchInStoreView()),
                       ),
                       const SizedBox(height: 32,),
                       TSectionHeading(
@@ -87,7 +89,7 @@ class StoreViewBody extends StatelessWidget {
                   ),
                 ),
                  bottom: TTabBar(
-                     tabs: categories.map((category) => Tab(child: Text(category.name),)).toList(),
+                     tabs: categories.map((category) => Tab(child: Text(category.name.tr),)).toList(),
                  ),
               ),
             ];

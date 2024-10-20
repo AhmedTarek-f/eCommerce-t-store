@@ -21,7 +21,7 @@ class ImageController extends GetxController {
         images.addAll(product.images!);
       }
 
-    if(product.productVariations != null || product.productVariations!.isNotEmpty){
+    if(product.productVariations != null || (product.productVariations?.isNotEmpty ?? false)){
       images.addAll(product.productVariations!.map((variation)=> variation.image));
     }
     return images.toList();
