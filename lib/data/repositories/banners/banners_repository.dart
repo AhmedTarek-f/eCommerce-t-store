@@ -24,7 +24,7 @@ class BannersRepository extends GetxController {
     }
     catch (e)
     {
-      throw "Something went wrong, Please try again";
+      throw "Something went wrong, Please try again".tr;
     }
 
   }

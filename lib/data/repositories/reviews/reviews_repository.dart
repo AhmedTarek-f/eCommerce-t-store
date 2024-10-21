@@ -29,7 +29,7 @@ class ReviewsRepository extends GetxController {
     }
     catch(e)
     {
-      throw "Something went wrong while fetching users reviews.";
+      throw "Something went wrong while fetching users reviews.".tr;
     }
   }
 
@@ -48,7 +48,7 @@ class ReviewsRepository extends GetxController {
     }
     catch(e)
     {
-      throw "Something went wrong while adding your review. Please try again";
+      throw "Something went wrong while adding your review. Please try again".tr;
     }
 
   }
@@ -69,7 +69,7 @@ class ReviewsRepository extends GetxController {
     }
     catch(e)
     {
-      throw "Something went wrong while fetching reviews length.";
+      throw "Something went wrong while fetching reviews length.".tr;
     }
   }
 
@@ -88,7 +88,7 @@ class ReviewsRepository extends GetxController {
     }
     catch(e)
     {
-      throw "Something went wrong while deleting your review";
+      throw "Something went wrong while deleting your review".tr;
     }
 
   }

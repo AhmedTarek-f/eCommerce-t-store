@@ -24,7 +24,7 @@ class CategoryRepository extends GetxController {
     }
     catch (e)
     {
-      throw "Something went wrong, Please try again";
+      throw "Something went wrong, Please try again".tr;
     }
   }
   Future<List<CategoryModel>> getSubCategories(String categoryId) async {
@@ -42,7 +42,7 @@ class CategoryRepository extends GetxController {
     }
     catch (e)
     {
-      throw "Something went wrong, Please try again";
+      throw "Something went wrong, Please try again".tr;
     }
   }
 }

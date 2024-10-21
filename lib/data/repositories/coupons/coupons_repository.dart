@@ -26,7 +26,7 @@ class CouponsRepository extends GetxController
     }
     catch (e)
     {
-      throw "Something went wrong while fetching your coupons. Please try again later";
+      throw "Something went wrong while fetching your coupons. Please try again later".tr;
     }
   }
 
@@ -45,7 +45,7 @@ class CouponsRepository extends GetxController
     }
     catch (e)
     {
-      throw "Something went wrong while fetching your coupons. Please try again later";
+      throw "Something went wrong while fetching your coupons. Please try again later".tr;
     }
   }
 }

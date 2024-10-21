@@ -32,7 +32,7 @@ class UserRepository extends GetxController
     }
     catch(e)
     {
-      throw "something went wrong. Please try again";
+      throw "something went wrong. Please try again".tr;
     }
   }
 
@@ -62,7 +62,7 @@ class UserRepository extends GetxController
     }
     catch (e)
     {
-      throw "Something went wrong, Please try again";
+      throw "Something went wrong, Please try again".tr;
     }
   }
 
@@ -85,7 +85,7 @@ class UserRepository extends GetxController
     }
     catch (e)
     {
-      throw "Something went wrong, Please try again";
+      throw "Something went wrong, Please try again".tr;
     }
   }
 
@@ -108,7 +108,7 @@ class UserRepository extends GetxController
     }
     catch (e)
     {
-      throw "Something went wrong, Please try again";
+      throw "Something went wrong, Please try again".tr;
     }
   }
 
@@ -133,7 +133,7 @@ class UserRepository extends GetxController
     }
     catch (e)
     {
-      throw "Something went wrong, Please try again";
+      throw "Something went wrong, Please try again".tr;
     }
   }
 
@@ -155,7 +155,7 @@ class UserRepository extends GetxController
     }
     catch (e)
     {
-      throw "Something went wrong, Please try again";
+      throw "Something went wrong, Please try again".tr;
     }
   }
 

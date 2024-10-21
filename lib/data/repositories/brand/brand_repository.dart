@@ -25,7 +25,7 @@ class BrandRepository extends GetxController
     }
     catch (e)
     {
-      throw "Something went wrong, Please try again";
+      throw "Something went wrong, Please try again".tr;
     }
   }
 
@@ -50,7 +50,7 @@ class BrandRepository extends GetxController
     }
     catch (e)
     {
-      throw "Something went wrong, Please try again";
+      throw "Something went wrong, Please try again".tr;
     }
   }
 }

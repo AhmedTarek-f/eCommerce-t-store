@@ -14,7 +14,7 @@ class OrderRepository extends GetxController{
   Future<List<OrderModel>> fetchUserOrders() async {
     try{
       final userId = AuthenticationRepository.instance.authUser!.uid;
-      if(userId.isEmpty) throw "Unable to find user information. Try again in few minutes.";
+      if(userId.isEmpty) throw "Unable to find user information. Try again in few minutes.".tr;
 
       final result = await _db.collection("Users").doc(userId).collection("Orders").get();
       return result.docs.map((documentSnapshot) => OrderModel.fromSnapshot(documentSnapshot)).toList();
@@ -28,7 +28,7 @@ class OrderRepository extends GetxController{
     }
     catch (e)
     {
-      throw "Something went wrong while fetching Order Information. Try again later";
+      throw "Something went wrong while fetching Order Information. Try again later".tr;
     }
   }
 
@@ -45,7 +45,7 @@ class OrderRepository extends GetxController{
     }
     catch (e)
     {
-      throw "Something went wrong while saving Order Information. Try again later";
+      throw "Something went wrong while saving Order Information. Try again later".tr;
     }
   }
 }

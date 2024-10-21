@@ -17,7 +17,7 @@ class AddressRepository extends GetxController
     try{
       final userId = AuthenticationRepository.instance.authUser!.uid;
       if(userId.isEmpty) {
-        throw "Unable to find user information, Try again in few minutes.";
+        throw "Unable to find user information, Try again in few minutes.".tr;
       }
       else{
         final result = await _db.collection("Users").doc(userId).collection("Addresses").get();
@@ -33,7 +33,7 @@ class AddressRepository extends GetxController
     }
     catch (e)
     {
-      throw "Something went wrong while fetching Address Information. Try again Later";
+      throw "Something went wrong while fetching Address Information. Try again Later".tr;
     }
   }
 
@@ -51,7 +51,7 @@ class AddressRepository extends GetxController
     }
     catch (e)
     {
-      throw "Unable to update your address selection. Try again Later";
+      throw "Unable to update your address selection. Try again Later".tr;
     }
   }
 
@@ -70,7 +70,7 @@ class AddressRepository extends GetxController
     }
     catch (e)
     {
-      throw "Something went wrong while saving Address Information. Try again Later";
+      throw "Something went wrong while saving Address Information. Try again Later".tr;
     }
   }
 
@@ -87,7 +87,7 @@ class AddressRepository extends GetxController
     }
     catch (e)
     {
-      throw "Something went wrong while deleting this Address Information. Try again Later";
+      throw "Something went wrong while deleting this Address Information. Try again Later".tr;
     }
   }
 }
