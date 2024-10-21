@@ -6,13 +6,16 @@ class TProfileMenu extends StatelessWidget {
   const TProfileMenu({
     super.key,
     this.icon,
-    required this.onPressed,
+    this.onPressed,
     required this.title,
-    required this.value
+    required this.value,
+    this.showIcon = true,
+    this.iconOnPressed,
   });
   final IconData? icon;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed,iconOnPressed;
   final String title , value;
+  final bool showIcon;
   @override
   Widget build(BuildContext context) {
     final UserController userController = UserController.instance;
@@ -23,8 +26,14 @@ class TProfileMenu extends StatelessWidget {
         child: Row(
           children: [
             Expanded(flex:3,child: Text(title,style: Theme.of(context).textTheme.bodySmall,overflow: TextOverflow.ellipsis,)),
-            Expanded(flex:5,child: Text(value,style: Theme.of(context).textTheme.bodyMedium,overflow: TextOverflow.ellipsis,)),
-            Expanded(child: Icon(icon ?? (userController.isArabic()? Iconsax.arrow_left_2_copy :Iconsax.arrow_right_3_copy) ,size: 18,)),
+            Expanded(flex:5,child: Text(value==""? "not provided yet." : value,style: Theme.of(context).textTheme.bodyMedium,overflow: TextOverflow.ellipsis,)),
+            showIcon
+                ? Expanded(
+                child: GestureDetector(
+                  onTap: iconOnPressed,
+                    child: Icon(icon ?? (userController.isArabic()? Iconsax.arrow_left_2_copy :Iconsax.arrow_right_3_copy) ,size: 18,),
+                ),)
+                : const Expanded(child: SizedBox()),
           ],
         ),
       ),

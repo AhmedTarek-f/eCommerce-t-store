@@ -9,6 +9,8 @@ class UserModel {
   String lastName;
   String phoneNumber;
   String profilePicture;
+  String? gender;
+  DateTime? dateOfBirth;
 
   UserModel({
     required this.id,
@@ -18,6 +20,8 @@ class UserModel {
     required this.lastName,
     required this.phoneNumber,
     required this.profilePicture,
+    this.gender,
+    this.dateOfBirth,
   });
 
   String get fullName => '$firstName $lastName';
@@ -56,6 +60,8 @@ class UserModel {
       'Email': email,
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
+      'Gender':gender,
+      "DateOfBirth":dateOfBirth,
     };
   }
 
@@ -70,6 +76,8 @@ class UserModel {
       email: data['Email'] ?? "",
       phoneNumber: data['PhoneNumber'] ?? "",
       profilePicture: data['ProfilePicture'] ?? "",
+      gender: data["Gender"] ?? "",
+      dateOfBirth: data["DateOfBirth"] != null? (data["DateOfBirth"] as Timestamp).toDate(): null,
     );
   }
 }

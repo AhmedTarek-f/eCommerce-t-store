@@ -32,20 +32,18 @@ class MyCouponsViewBody extends StatelessWidget {
         }
         else {
           final coupons = snapshot.data!;
-          return Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(
-                right: MediaQuery.sizeOf(context).width*0.0611,
-                left: MediaQuery.sizeOf(context).width*0.0611,
-                top: MediaQuery.sizeOf(context).height*0.0280,
-                bottom: MediaQuery.sizeOf(context).height*0.0280,
-              ),
-              child: ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                  itemBuilder: (context, index) => MyCouponItem(coupon: coupons[index]),
-                  separatorBuilder: (context, index) => const SizedBox(height: 16,),
-                  itemCount: coupons.length
-              ),
+          return Padding(
+            padding: EdgeInsets.only(
+              right: MediaQuery.sizeOf(context).width*0.0611,
+              left: MediaQuery.sizeOf(context).width*0.0611,
+              top: MediaQuery.sizeOf(context).height*0.0280,
+              bottom: MediaQuery.sizeOf(context).height*0.0280,
+            ),
+            child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) => MyCouponItem(coupon: coupons[index]),
+                separatorBuilder: (context, index) => const SizedBox(height: 16,),
+                itemCount: coupons.length
             ),
           );
         }

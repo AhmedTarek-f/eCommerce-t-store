@@ -24,7 +24,7 @@ abstract class TLoaders {
     );
   }
 
-  static successSnackBar ({required title, message =""})
+  static successSnackBar ({required title, message ="",int secondsDuration = 3})
   {
     Get.snackbar(
       title,
@@ -34,7 +34,7 @@ abstract class TLoaders {
       colorText: TColors.white,
       backgroundColor: TColors.primary,
       snackPosition: SnackPosition.BOTTOM,
-      duration:  const Duration(seconds: 3),
+      duration:  Duration(seconds: secondsDuration),
       margin:  const EdgeInsets.all(20),
       icon: const Icon(Iconsax.warning_2_copy,color: TColors.white,),
     );

@@ -18,6 +18,9 @@ class UserController extends GetxController {
   Rx<bool> profileLoading = false.obs;
   Rx<bool> imageUploading = false.obs;
   Rx<bool> nameChangeLoading = false.obs;
+  Rx<bool> genderChangeLoading = false.obs;
+  Rx<bool> phoneNumberLoading = false.obs;
+  Rx<bool> dateOfBirthLoading = false.obs;
   Rx<UserModel> user = UserModel.empty().obs;
   bool hidePassword = true;
   final UserRepository userRepository = Get.put(UserRepository());

@@ -7,6 +7,7 @@ import 'package:t_store/core/constants/image_strings.dart';
 import 'package:t_store/core/utlis/loaders/t_loaders.dart';
 import 'package:t_store/core/utlis/popups/t_full_screen_loader.dart';
 import 'package:t_store/data/repositories/address/address_repository.dart';
+import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/features/personalization/my_address/model/address_model.dart';
 import 'package:t_store/features/personalization/my_address/presentation/views/add_new_address_view.dart';
 import 'package:t_store/features/personalization/my_address/presentation/views/widgets/t_single_address.dart';
@@ -15,6 +16,7 @@ class AddressController extends GetxController
 {
   static AddressController get instance => Get.find();
   Rx<AddressModel> selectedAddress = AddressModel.empty().obs;
+  RxList<AddressModel> allAvailableAddresses = <AddressModel>[].obs;
   final AddressRepository _addressRepository = Get.put(AddressRepository());
 
   final TextEditingController name = TextEditingController();
@@ -26,11 +28,31 @@ class AddressController extends GetxController
   final TextEditingController country = TextEditingController();
   GlobalKey<FormState> addressFormKey = GlobalKey<FormState>();
   Rx<AutovalidateMode>  autoValidateMode = AutovalidateMode.disabled.obs;
-  RxBool refreshData = true.obs;
+  RxBool isLoading = false.obs;
   RxBool isDeleteAddressLoading = false.obs;
   final GetStorage _storage = GetStorage();
 
-  Future<List<AddressModel>> getAllUserAddresses() async{
+
+  @override
+  void onInit() {
+    super.onInit();
+   if(AuthenticationRepository.instance.authUser?.uid.isNotEmpty ?? false) getAllUserAddresses();
+  }
+
+  Future<void> getAllUserAddresses() async{
+    try{
+      isLoading.value = true;
+      final allAddresses = await _addressRepository.fetchUserAddresses();
+      selectedAddress.value = allAddresses.firstWhere((selected) => selected.selectedAddress ,orElse: ()=> AddressModel.empty());
+      allAvailableAddresses.assignAll(allAddresses);
+      isLoading.value = false;
+    }
+    catch(e)
+    {
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+    }
+  }
+  Future<List<AddressModel>> getAllUserAddressesForBilling() async{
     try{
       final allAddresses = await _addressRepository.fetchUserAddresses();
       selectedAddress.value = allAddresses.firstWhere((selected) => selected.selectedAddress ,orElse: ()=> AddressModel.empty());
@@ -48,26 +70,31 @@ class AddressController extends GetxController
   }
 
   Future<void> selectAddress(AddressModel newSelectedAddress) async{
-    try{
-      Get.defaultDialog(
-        title: "",
-        onWillPop:  () async {return false;},
-        barrierDismissible:  false,
-        backgroundColor:  Colors.transparent,
-        content:  const Center(child:  CircularProgressIndicator(color: TColors.primaryColor,)),
-      );
+    if(selectedAddress.value.id == newSelectedAddress.id) {
+      return;
+    }
+    else {
+      try{
+        Get.defaultDialog(
+          title: "",
+          onWillPop:  () async {return false;},
+          barrierDismissible:  false,
+          backgroundColor:  Colors.transparent,
+          content:  const Center(child:  CircularProgressIndicator(color: TColors.primaryColor,)),
+        );
 
-      if(selectedAddress.value.id.isNotEmpty){
-        await _addressRepository.updateSelectedField(selectedAddress.value.id, false);
-      }
+        if(selectedAddress.value.id.isNotEmpty){
+          await _addressRepository.updateSelectedField(selectedAddress.value.id, false);
+        }
         newSelectedAddress.selectedAddress = true;
         selectedAddress.value = newSelectedAddress;
         await _addressRepository.updateSelectedField(selectedAddress.value.id, true);
         Get.back();
-    }
-    catch(e)
-    {
-      TLoaders.errorSnackBar(title: "Error in Selection".tr,message: e.toString());
+      }
+      catch(e)
+      {
+        TLoaders.errorSnackBar(title: "Error in Selection".tr,message: e.toString());
+      }
     }
   }
 
@@ -91,10 +118,11 @@ class AddressController extends GetxController
         );
         final id = await _addressRepository.addAddress(address);
         address.id = id;
+        allAvailableAddresses.add(address);
+        selectedAddress.value = address;
         await selectAddress(address);
         TFullScreenLoader.stopLoading();
         TLoaders.successSnackBar(title: "Congratulations".tr, message: "Your address has been saved successfully.".tr);
-        refreshData.toggle();
         resetFormFields();
         Navigator.of(Get.context!).pop();
       }
@@ -115,7 +143,7 @@ class AddressController extends GetxController
             children: [
               TSectionHeading(title: "Select address".tr , showActionButton: false,),
               FutureBuilder<List<AddressModel>>(
-                  future: getAllUserAddresses(),
+                  future: getAllUserAddressesForBilling(),
                   builder: (context, snapshot) {
                     if(snapshot.connectionState == ConnectionState.waiting){
                       return const Center(child: CircularProgressIndicator(color: TColors.primaryColor,),);
@@ -169,7 +197,10 @@ class AddressController extends GetxController
   Future<void> deleteUserAddress({required String addressId}) async {
     try{
       await _addressRepository.deleteUserAddress(addressId);
-      TLoaders.successSnackBar(title: "Deleted address",message: "Your address has been deleted successfully.");
+      allAvailableAddresses.clear();
+      await getAllUserAddresses();
+      if(allAvailableAddresses.isNotEmpty) await selectAddress(allAvailableAddresses.last);
+      TLoaders.successSnackBar(title: "Deleted address",message: "Your address has been deleted successfully.",secondsDuration: 1);
     }
     catch(e) {
      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());

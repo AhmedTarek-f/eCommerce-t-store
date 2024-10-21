@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:readmore/readmore.dart';
 import 'package:t_store/core/constants/colors.dart';
 import 'package:t_store/features/personalization/controller/user_controller.dart';
@@ -61,23 +62,29 @@ class UserReviewCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TRatingBarIndicator(rating: review.rating),
-              Text(review.reviewDate.toString(),style: Theme.of(context).textTheme.bodyMedium,),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TRatingBarIndicator(rating: review.rating),
+                Text(DateFormat('yyyy-MM-dd').format(review.reviewDate).toString(),style: Theme.of(context).textTheme.bodyMedium,),
+              ],
+            ),
           ),
-          const SizedBox(height: 16,),
-           ReadMoreText(
-            review.comment,
-            trimMode: TrimMode.Line,
-            trimLength: 2,
-            trimExpandedText: " show less",
-            trimCollapsedText: " show more",
-            moreStyle: const TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: TColors.primary),
-            lessStyle: const TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: TColors.primary),
-          ),
+          const SizedBox(height: 8,),
+           Padding(
+             padding: const EdgeInsets.all(8.0),
+             child: ReadMoreText(
+               review.comment,
+              trimMode: TrimMode.Line,
+              trimLength: 2,
+              trimExpandedText: " show less",
+              trimCollapsedText: " show more",
+              moreStyle: const TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: TColors.primary),
+              lessStyle: const TextStyle(fontSize: 14,fontWeight: FontWeight.bold,color: TColors.primary),
+                       ),
+           ),
         ],
       ),
     );

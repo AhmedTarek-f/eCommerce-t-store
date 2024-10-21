@@ -28,33 +28,38 @@ class AuthenticationRepository extends GetxController {
   // Called From main.dart on app launch
   @override
   void onReady() {
-    FlutterNativeSplash.remove();
     screenRedirect();
+    FlutterNativeSplash.remove();
     super.onReady();
   }
 
-  void initTheme() {
+  ThemeMode initTheme() {
     deviceStorage.writeIfNull("isDarkTheme", false);
     if(deviceStorage.read("isDarkTheme")){
-      Get.changeTheme(TAppTheme.darkTheme);
+      return ThemeMode.dark;
     }
     else{
-      Get.changeTheme(TAppTheme.lightTheme);
+      return ThemeMode.light;
+    }
+  }
+
+  Locale? initLanguage() {
+    if(deviceStorage.read("lang") != null)
+    {
+      Locale localeLang = Locale(deviceStorage.read("lang"));
+      return localeLang;
+    }
+    else {
+      return null;
     }
   }
 
 
   // Function to Show Relevant Screen
  Future<void> screenRedirect() async{
-    initTheme();
     final User? user = _auth.currentUser;
     if(user !=null)
       {
-        if(deviceStorage.read("lang") != null)
-        {
-          Locale localeLang = Locale(deviceStorage.read("lang"));
-          await Get.updateLocale(localeLang);
-        }
         if(user.emailVerified)
           {
             await TLocalStorage.init(user.uid);
@@ -65,11 +70,6 @@ class AuthenticationRepository extends GetxController {
         }
       }
     else{
-      if(deviceStorage.read("lang") != null)
-        {
-          Locale localeLang = Locale(deviceStorage.read("lang"));
-          await Get.updateLocale(localeLang);
-        }
       deviceStorage.writeIfNull("isFirstTime", true);
       deviceStorage.read("isFirstTime") !=true ? Get.offAll(()=> const LogInView()) : Get.offAll(() => const LanguageView());
     }

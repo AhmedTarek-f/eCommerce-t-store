@@ -36,6 +36,7 @@ class SettingsController extends GetxController
   }
 
   bool isDarkTheme() {
+    _storage.writeIfNull("isDarkTheme", false);
     final bool isDark = _storage.read("isDarkTheme");
     if(isDark) {
       isDarkMode.value = isDark;

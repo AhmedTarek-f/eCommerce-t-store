@@ -6,9 +6,16 @@ class LanguageController extends GetxController
 {
   static LanguageController get instance => Get.find();
   final GetStorage _storage = GetStorage();
-  RxString language = "en".obs;
+  RxString language = "".obs;
 
-   Future<void> selectLanguage(String lang) async
+  @override
+  void onInit() {
+    _storage.writeIfNull("lang", "en");
+    language.value = _storage.read("lang");
+    super.onInit();
+  }
+
+  Future<void> selectLanguage(String lang) async
    {
      language.value = lang;
      Locale localeLang = Locale(lang);

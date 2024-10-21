@@ -29,7 +29,7 @@ class TSingleAddress extends StatelessWidget {
             borderColor:selectedAddress? Colors.transparent: isDarkMode? TColors.darkerGrey : TColors.grey,
             child: Stack(
               children: [
-                Positioned(
+                if(selectedAddress) Positioned(
                   right: controller.isArabic()? null : 5,
                   left: controller.isArabic()? 5 : null,
                   top: 0,
@@ -38,7 +38,7 @@ class TSingleAddress extends StatelessWidget {
                     color: isDarkMode? TColors.light : TColors.dark,
                   ),
                 ),
-                Positioned(
+               if(selectedAddress) Positioned(
                   right: controller.isArabic()? null : 5,
                   left: controller.isArabic()? 5 : null,
                   top: 40,
