@@ -41,6 +41,7 @@ abstract class TImages {
   static const String cloudUpLoadingAnimation = "assets/images/animations/cloud-uploading-animation.json";
   static const String loaderAnimation = "assets/images/animations/loader-animation.json";
   static const String languageAnimation = "assets/images/animations/Animation-lang.json";
+  static const String couponAnimation = "assets/images/animations/coupons.json";
   // -- Categories
   static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";
   static const String clothIcon = "assets/icons/categories/icons8-tailors-dummy-64.png";

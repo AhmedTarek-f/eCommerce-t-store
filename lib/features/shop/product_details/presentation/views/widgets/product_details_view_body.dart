@@ -39,7 +39,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                 if(product.productType == ProductType.variable.toString()) TProductAttributes(product: product,),
                 if(product.productType == ProductType.variable.toString()) const SizedBox(height: 16,),
                 if(product.productType == ProductType.single.toString()) const SizedBox(height: 16,),
-                TSectionHeading(title: "Description".tr,showActionButton: false,padding: EdgeInsets.all(0),),
+                TSectionHeading(title: "Description".tr,showActionButton: false,padding: const EdgeInsets.all(0),),
                 const SizedBox(height: 16,),
                  ReadMoreText(
                   product.description ?? "",
@@ -56,7 +56,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                 const SizedBox(height: 16,),
                 Row(
                   children: [
-                    Expanded(child:  TSectionHeading(title: "Reviews".tr,showActionButton: false, padding: EdgeInsets.all(0),)),
+                    Expanded(child:  TSectionHeading(title: "Reviews".tr,showActionButton: false, padding: const EdgeInsets.all(0),)),
                     IconButton(
                         onPressed: (){
                           Get.to(()=> const ProductReviewView(),arguments: product.id);
