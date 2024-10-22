@@ -33,14 +33,14 @@ class FavoritesController extends GetxController
     if(!favorites.containsKey(productId)){
       favorites[productId] = true;
       saveFavoritesToStorage();
-      TLoaders.customToast(message: "Product has been added to the WishList.");
+      TLoaders.customToast(message: "Product has been added to the WishList.".tr);
     }
     else {
       TLocalStorage.instance().removeData(productId);
       favorites.remove(productId);
       saveFavoritesToStorage();
       favorites.refresh();
-      TLoaders.customToast(message: "Product has been removed from the WishList.");
+      TLoaders.customToast(message: "Product has been removed from the WishList.".tr);
     }
   }
 

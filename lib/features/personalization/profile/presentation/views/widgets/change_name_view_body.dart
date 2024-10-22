@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/widgets/change_name_form.dart';
 
 class ChangeNameViewBody extends StatelessWidget {
@@ -18,7 +19,7 @@ class ChangeNameViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                  "Use real name for easy verification. This name will appear on several pages.",
+                  "Use real name for easy verification. This name will appear on several pages.".tr,
                 style: Theme.of(context).textTheme.labelMedium,
               ),
               const SizedBox(height: 32,),

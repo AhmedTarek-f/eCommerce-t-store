@@ -23,7 +23,6 @@ class ProductReviewController extends GetxController {
   Future<void> onInit() async {
     super.onInit();
     String productId = Get.arguments as String;
-    log("The Product Id : $productId");
     isLoading.value = true;
     await fetchUsersReviews(productId: productId);
     isLoading.value = false;
@@ -36,17 +35,17 @@ class ProductReviewController extends GetxController {
       await _reviewsRepository.addReview(productReview, productId);
       await fetchUsersReviews(productId: productId);
       isLoading.value = false;
-      TLoaders.successSnackBar(title: "review",message: "Your review has been added successfully");
+      TLoaders.successSnackBar(title: "review".tr,message: "Your review has been added successfully".tr);
     }
     catch(e) {
       isLoading.value = false;
-      TLoaders.errorSnackBar(title: "Oh Snap".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap".tr,message: e.toString().tr);
     }
   }
 
   Future<void> checkUserReview({required String productId}) async{
     if(userReview.text.isEmpty || userReview.text.trim() == "") {
-      TLoaders.warningSnackBar(title: "review check",message: "You can't send an empty review. please write something and send it again.");
+      TLoaders.warningSnackBar(title: "review check".tr,message: "You can't send an empty review. please write something and send it again.".tr);
     }
     else {
       final ProductReviewModel productReview = ProductReviewModel(
@@ -71,7 +70,7 @@ class ProductReviewController extends GetxController {
       return productReviews;
     }
     catch (e) {
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
       return [];
     }
   }
@@ -79,10 +78,10 @@ class ProductReviewController extends GetxController {
   Future<void> deleteUserReview({required String productId}) async {
     try{
       await  _reviewsRepository.deleteUserReview(productId);
-      TLoaders.successSnackBar(title: "Deleted",message: "Your review has been deleted successfully.");
+      TLoaders.successSnackBar(title: "Deleted".tr,message: "Your review has been deleted successfully.".tr);
     }
     catch (e) {
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
 
   }

@@ -29,7 +29,7 @@ class OrderController extends GetxController
       return userOrders;
     }
     catch(e) {
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
       return [];
     }
   }
@@ -72,7 +72,7 @@ class OrderController extends GetxController
       );
     }
     catch(e) {
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
   }
 

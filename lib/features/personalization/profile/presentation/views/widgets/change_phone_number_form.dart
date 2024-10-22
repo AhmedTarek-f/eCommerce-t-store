@@ -16,17 +16,17 @@ class ChangePhoneNumberForm extends StatelessWidget {
           child: Column(
             children: [
               TextFormField(
-                decoration:  const InputDecoration(
-                  labelText: "Phone Number",
-                  prefixIcon: Icon(Iconsax.call_copy),
+                decoration:   InputDecoration(
+                  labelText: "Phone Number".tr,
+                  prefixIcon: const Icon(Iconsax.call_copy),
                 ),
                 controller: controller.phoneNumber,
                 validator: (value) {
                   if(value == null || value.isEmpty || value.trim() == ""){
-                    return "Phone number is required.";
+                    return "Phone number is required.".tr;
                   }
                   else if(value.length<11){
-                    return "Phone number can't be less then 11 digit.";
+                    return "Phone number can't be less than 11 digits.".tr;
                   }
                   else
                   {
@@ -38,7 +38,7 @@ class ChangePhoneNumberForm extends StatelessWidget {
               const SizedBox(height: 32,),
               SizedBox(
                 width: MediaQuery.sizeOf(context).width,
-                child: ElevatedButton(onPressed: ()async {await controller.updatePhoneNumber();}, child: const Text("Save")),
+                child: ElevatedButton(onPressed: ()async {await controller.updatePhoneNumber();}, child: Text("Save".tr)),
               ),
             ],
           )

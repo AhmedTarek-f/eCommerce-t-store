@@ -23,12 +23,12 @@ class ChangeGenderForm extends StatelessWidget {
                 controller: controller.gender,
                   onSelected: (value) {
                     if(value != null){
-                      controller.gender.text = value;
+                      controller.gender.text = value.tr;
                     }
                   },
-                  dropdownMenuEntries: const <DropdownMenuEntry<String>> [
-                    DropdownMenuEntry(value: "Male", label: "Male"),
-                    DropdownMenuEntry(value: "Female", label: "Female"),
+                  dropdownMenuEntries: <DropdownMenuEntry<String>> [
+                    DropdownMenuEntry(value: "Male", label: "Male".tr),
+                    DropdownMenuEntry(value: "Female", label: "Female".tr),
                   ]
               ),
             ],
@@ -36,7 +36,7 @@ class ChangeGenderForm extends StatelessWidget {
           SizedBox(height: MediaQuery.sizeOf(context).height*0.15,),
           SizedBox(
             width: MediaQuery.sizeOf(context).width,
-            child: ElevatedButton(onPressed: ()async {await controller.updateGender();}, child: const Text("Save")),
+            child: ElevatedButton(onPressed: ()async {await controller.updateGender();}, child: Text("Save".tr)),
           ),
         ],
       ),

@@ -24,7 +24,7 @@ class ResetPasswordController extends GetxController
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(
         title: "Oh Snap!".tr,
-        message: e.toString(),
+        message: e.toString().tr,
       );
     }
 

@@ -49,7 +49,7 @@ class AddressController extends GetxController
     }
     catch(e)
     {
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
   }
   Future<List<AddressModel>> getAllUserAddressesForBilling() async{
@@ -60,7 +60,7 @@ class AddressController extends GetxController
     }
     catch(e)
     {
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
       return [];
     }
   }
@@ -93,7 +93,7 @@ class AddressController extends GetxController
       }
       catch(e)
       {
-        TLoaders.errorSnackBar(title: "Error in Selection".tr,message: e.toString());
+        TLoaders.errorSnackBar(title: "Error in Selection".tr,message: e.toString().tr);
       }
     }
   }
@@ -122,14 +122,14 @@ class AddressController extends GetxController
         selectedAddress.value = address;
         await selectAddress(address);
         TFullScreenLoader.stopLoading();
-        TLoaders.successSnackBar(title: "Congratulations".tr, message: "Your address has been saved successfully.".tr);
+        TLoaders.successSnackBar(title: "Address Information".tr, message: "Your address has been saved successfully.".tr);
         resetFormFields();
         Navigator.of(Get.context!).pop();
       }
     }
     catch(e){
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Address not found".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Address not found".tr,message: e.toString().tr);
     }
   }
 
@@ -200,10 +200,10 @@ class AddressController extends GetxController
       allAvailableAddresses.clear();
       await getAllUserAddresses();
       if(allAvailableAddresses.isNotEmpty) await selectAddress(allAvailableAddresses.last);
-      TLoaders.successSnackBar(title: "Deleted address",message: "Your address has been deleted successfully.",secondsDuration: 1);
+      TLoaders.successSnackBar(title: "Delete address".tr,message: "Your address has been deleted successfully.".tr,secondsDuration: 1);
     }
     catch(e) {
-     TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+     TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
   }
   

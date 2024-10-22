@@ -96,9 +96,9 @@ class UserController extends GetxController {
 
     } catch (e) {
       TLoaders.warningSnackBar(
-        title: "Data not saved",
+        title: "Data not saved".tr,
         message:
-            "Something went wrong while saving your information. You can re-save your data in your profile.",
+            "Something went wrong while saving your information. You can re-save your data in your profile.".tr,
       );
     }
   }
@@ -106,29 +106,29 @@ class UserController extends GetxController {
   void deleteAccountWarningPopup() {
     Get.defaultDialog(
       contentPadding: const EdgeInsets.all(16),
-      title: "Delete Account",
+      title: "Delete Account".tr,
       middleText:
-          "Are you sure you want to delete your account permanently? This action is not reversible and all of your data will be removed permanently.",
+          "Are you sure you want to delete your account permanently? This action is not reversible and all of your data will be removed permanently.".tr,
       confirm: ElevatedButton(
         onPressed: () async{
           await deleteUserAccount();
         },
         style: ElevatedButton.styleFrom(backgroundColor: Colors.red,side: const BorderSide(color: Colors.red)),
-        child: const Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 24),
-          child: Text("Delete"),
+        child:  Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Text("Delete".tr),
         ),
       ),
       cancel: ElevatedButton(
           onPressed: () {Navigator.of(Get.overlayContext!).pop();},
-          child: const Text("Cancel"),
+          child: Text("Cancel".tr),
       ),
     );
   }
 
   Future<void> deleteUserAccount() async {
     try{
-      TFullScreenLoader.openLoadingDialog("Processing...", TImages.docerAnimation);
+      TFullScreenLoader.openLoadingDialog("Processing...".tr, TImages.docerAnimation);
       final auth = AuthenticationRepository.instance;
       final provider = auth.authUser!.providerData.map((e)=> e.providerId).first;
       if(provider.isNotEmpty)
@@ -148,7 +148,7 @@ class UserController extends GetxController {
     catch (e)
     {
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
   }
 
@@ -159,7 +159,7 @@ class UserController extends GetxController {
         update();
       }
       else{
-        TFullScreenLoader.openLoadingDialog("Processing...", TImages.docerAnimation);
+        TFullScreenLoader.openLoadingDialog("Processing...".tr, TImages.docerAnimation);
         await AuthenticationRepository.instance.reAuthenticateWithEmailAndPassword(verifyEmail.text.trim(), verifyPassword.text.trim());
         await AuthenticationRepository.instance.deleteAccount();
         TFullScreenLoader.stopLoading();
@@ -168,7 +168,7 @@ class UserController extends GetxController {
     }catch (e)
     {
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
   }
 
@@ -189,11 +189,11 @@ class UserController extends GetxController {
         await userRepository.updateSingleField(json);
         user.value.profilePicture = imageUrl;
         user.refresh();
-        TLoaders.successSnackBar(title: "Congratulations",message: "Your profile image has been updated.");
+        TLoaders.successSnackBar(title: "Profile Image".tr,message: "Your profile image has been updated.".tr);
       }
     }
     catch(e){
-      TLoaders.errorSnackBar(title: "Oh Snap!", message: "Something went wrong: $e");
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr, message: "${"Something went wrong: ".tr}${"$e".tr}");
     }
     finally{
       imageUploading.value =false;

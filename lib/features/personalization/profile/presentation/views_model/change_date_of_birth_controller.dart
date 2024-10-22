@@ -25,18 +25,18 @@ class ChangeDateOfBirthController extends GetxController{
     if (pickedDate != null && pickedDate != _selectedDate) {
       _selectedDate = pickedDate;
       // Format the date and display it in the text field
-      dateOfBirth.text = DateFormat('yyyy-MM-dd').format(pickedDate);
+      dateOfBirth.text = DateFormat('yyyy-MM-dd',).format(pickedDate);
     }
   }
   Future<void> updateDateOfBirth() async {
     if(dateOfBirth.text.isEmpty || dateOfBirth.text.trim() == "")
       {
-        TLoaders.errorSnackBar(title: "Date Of Birth" , message: "Date of birth can't be saved empty. Please pick your date of birth.");
+        TLoaders.warningSnackBar(title: "Date of birth warning".tr , message: "Date of birth can't be saved empty. Please pick your date of birth.".tr);
       }
     else{
       try{
         userController.dateOfBirthLoading.value = true;
-        TFullScreenLoader.openLoadingDialog("We are updating your information...", TImages.docerAnimation);
+        TFullScreenLoader.openLoadingDialog("We are updating your information...".tr, TImages.docerAnimation);
         Map<String, dynamic> dateOfBirthJson = {
           "DateOfBirth":_selectedDate,
         };
@@ -44,10 +44,10 @@ class ChangeDateOfBirthController extends GetxController{
         userController.user.value.dateOfBirth = _selectedDate;
         TFullScreenLoader.stopLoading();
         Get.back();
-        TLoaders.successSnackBar(title: "Congratulations",message: "Your date of birth has been updated");
+        TLoaders.successSnackBar(title: "Date of birth changed".tr,message: "Your date of birth has been updated".tr);
       }catch (e){
         TFullScreenLoader.stopLoading();
-        TLoaders.errorSnackBar(title: "Oh Snap!",message:  e.toString());
+        TLoaders.errorSnackBar(title: "Oh Snap!".tr,message:  e.toString().tr);
       }
       finally{
         userController.dateOfBirthLoading.value = false;

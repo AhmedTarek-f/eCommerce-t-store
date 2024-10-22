@@ -47,7 +47,7 @@ class ChangeNameController extends GetxController{
     else{
       try{
         userController.nameChangeLoading.value = true;
-        TFullScreenLoader.openLoadingDialog("We are updating your information...", TImages.docerAnimation);
+        TFullScreenLoader.openLoadingDialog("We are updating your information...".tr, TImages.docerAnimation);
         Map<String, dynamic> name = {
           "FirstName":firstName.text.trim(),
           "LastName":lastName.text.trim(),
@@ -57,10 +57,10 @@ class ChangeNameController extends GetxController{
         userController.user.value.lastName = lastName.text.trim();
         TFullScreenLoader.stopLoading();
         Get.back();
-        TLoaders.successSnackBar(title: "Congratulations",message: "Your name has been updated");
+        TLoaders.successSnackBar(title: "Name Changed".tr,message: "Your name has been updated".tr);
       }catch (e){
         TFullScreenLoader.stopLoading();
-        TLoaders.errorSnackBar(title: "Oh Snap!",message:  e.toString());
+        TLoaders.errorSnackBar(title: "Oh Snap!".tr,message:  e.toString().tr);
       }
       finally{
         userController.nameChangeLoading.value = false;

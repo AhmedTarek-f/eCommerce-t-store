@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/widgets/change_name_form.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/widgets/change_phone_number_form.dart';
 
@@ -19,7 +20,7 @@ class ChangePhoneNumberViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                  "Use a real phone number to contact you when your order is ready.",
+                  "Use a real phone number to contact you when your order is ready.".tr,
                 style: Theme.of(context).textTheme.labelMedium,
               ),
               const SizedBox(height: 32,),

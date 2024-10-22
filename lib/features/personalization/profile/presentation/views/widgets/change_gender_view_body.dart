@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/widgets/change_gender_form.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/widgets/change_name_form.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/widgets/change_phone_number_form.dart';
@@ -20,10 +21,10 @@ class ChangeGenderViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                  "Select your Gender.",
+                  "Select your gender.".tr,
                 style: Theme.of(context).textTheme.labelMedium,
               ),
-              const SizedBox(height: 32,),
+              const SizedBox(height: 16,),
               const ChangeGenderForm(),
             ],
               ),

@@ -28,7 +28,7 @@ class BrandController extends GetxController{
       featuredBrandsList.assignAll(allBrandsList.take(4));
     }
     catch(e) {
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
     finally{
       isLoading.value=false;
@@ -40,7 +40,7 @@ class BrandController extends GetxController{
       final List<ProductModel> products = await _productRepository.getProductsForBrand(brandId: brandId , limit: limit);
       return products;
     }catch (e){
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
       return [];
     }
   }
@@ -51,7 +51,7 @@ class BrandController extends GetxController{
       return brands;
     }
     catch(e) {
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
       return [];
     }
   }

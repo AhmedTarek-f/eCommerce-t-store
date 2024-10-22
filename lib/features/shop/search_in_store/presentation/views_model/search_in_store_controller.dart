@@ -26,7 +26,7 @@ class SearchInStoreController extends GetxController {
       isLoading.value = false;
     }catch (e) {
       isLoading.value =false;
-      TLoaders.errorSnackBar(title: "Oh Snap!", message:  e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr, message:  e.toString().tr);
     }
   }
 

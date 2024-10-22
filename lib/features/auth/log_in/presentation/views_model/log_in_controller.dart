@@ -76,7 +76,7 @@ class LogInController extends GetxController
     }
     catch(e){
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
   }
   Future<void> googleSignIn()async{
@@ -91,7 +91,7 @@ class LogInController extends GetxController
     }
     catch(e){
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
   }
 

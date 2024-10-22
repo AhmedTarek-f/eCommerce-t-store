@@ -20,7 +20,7 @@ class MyCouponsController extends GetxController
       return await _couponsRepository.fetchMyCoupons();
     }
     catch(e) {
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr , message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr , message: e.toString().tr);
       return [];
     }
   }
@@ -30,7 +30,7 @@ class MyCouponsController extends GetxController
       return await _couponsRepository.fetchMyCouponsAr();
     }
     catch(e) {
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr , message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr , message: e.toString().tr);
       return [];
     }
   }

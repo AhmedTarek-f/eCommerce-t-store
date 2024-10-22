@@ -19,7 +19,7 @@ class ChangeDateOfBirthForm extends StatelessWidget {
                 width: MediaQuery.sizeOf(context).width*0.65,
                 child: TextField(
                   decoration:  InputDecoration(
-                    hintText: controller.dateOfBirth.text.isEmpty? "Select your date of birth" : controller.dateOfBirth.text,
+                    hintText: controller.dateOfBirth.text.isEmpty? "Select your date of birth".tr : controller.dateOfBirth.text,
                     prefixIcon: const Icon(Icons.date_range_outlined),
                   ),
                   readOnly: true,
@@ -42,7 +42,7 @@ class ChangeDateOfBirthForm extends StatelessWidget {
           const SizedBox(height: 32,),
           SizedBox(
             width: MediaQuery.sizeOf(context).width,
-            child: ElevatedButton(onPressed: ()async {await controller.updateDateOfBirth();}, child: const Text("Save")),
+            child: ElevatedButton(onPressed: ()async {await controller.updateDateOfBirth();}, child: Text("Save".tr)),
           ),
         ],
       ),

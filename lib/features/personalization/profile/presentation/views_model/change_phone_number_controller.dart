@@ -55,7 +55,7 @@ class ChangePhoneNumberController extends GetxController{
         TLoaders.successSnackBar(title: "Congratulations",message: "Your phone number has been updated");
       }catch (e){
         TFullScreenLoader.stopLoading();
-        TLoaders.errorSnackBar(title: "Oh Snap!",message:  e.toString());
+        TLoaders.errorSnackBar(title: "Oh Snap!".tr,message:  e.toString().tr);
       }
       finally{
         userController.phoneNumberLoading.value = false;

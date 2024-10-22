@@ -83,7 +83,7 @@ class SignUpController extends GetxController
     }
     catch(e){
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
   }
 
@@ -101,7 +101,7 @@ class SignUpController extends GetxController
     catch(e)
     {
       TFullScreenLoader.stopLoading();
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
   }
 

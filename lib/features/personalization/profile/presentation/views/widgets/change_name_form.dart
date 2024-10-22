@@ -16,14 +16,14 @@ class ChangeNameForm extends StatelessWidget {
           child: Column(
             children: [
               TextFormField(
-                decoration:  const InputDecoration(
-                  labelText: "First Name",
-                  prefixIcon: Icon(Iconsax.user_copy),
+                decoration:   InputDecoration(
+                  labelText: "First Name".tr,
+                  prefixIcon: const Icon(Iconsax.user_copy),
                 ),
                 controller: controller.firstName,
                 validator: (value) {
                   if(value == null || value.isEmpty || value.trim() == ""){
-                    return "First Name is required.";
+                    return "First Name is required.".tr;
                   }
                   else
                   {
@@ -35,14 +35,14 @@ class ChangeNameForm extends StatelessWidget {
 
               const SizedBox(height: 16,),
               TextFormField(
-                decoration: const InputDecoration(
-                  labelText: "Last Name",
-                  prefixIcon: Icon(Iconsax.user_copy),
+                decoration:  InputDecoration(
+                  labelText: "Last Name".tr,
+                  prefixIcon: const Icon(Iconsax.user_copy),
                 ),
                 controller: controller.lastName,
                 validator: (value) {
                   if(value == null || value.isEmpty || value.trim() == ""){
-                    return "Last Name is required.";
+                    return "Last Name is required.".tr;
                   }
                   else
                   {
@@ -56,7 +56,7 @@ class ChangeNameForm extends StatelessWidget {
 
               SizedBox(
                 width: MediaQuery.sizeOf(context).width,
-                child: ElevatedButton(onPressed: ()async {await controller.updateUserName();}, child: const Text("Save")),
+                child: ElevatedButton(onPressed: ()async {await controller.updateUserName();}, child:  Text("Save".tr)),
               ),
             ],
           )

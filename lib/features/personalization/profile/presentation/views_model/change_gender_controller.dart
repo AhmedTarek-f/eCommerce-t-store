@@ -16,12 +16,12 @@ class ChangeGenderController extends GetxController{
   Future<void> updateGender() async {
 
       if(gender.text.isEmpty || gender.text.trim() == "") {
-        TLoaders.errorSnackBar(title: "Gender Selection", message: "You have to select your gender first then click on save");
+        TLoaders.warningSnackBar(title: "Gender selection warning".tr, message: "You have to select your gender first then click on save.".tr);
       }
       else{
         try{
           userController.genderChangeLoading.value = true;
-          TFullScreenLoader.openLoadingDialog("We are updating your information...", TImages.docerAnimation);
+          TFullScreenLoader.openLoadingDialog("We are updating your information...".tr, TImages.docerAnimation);
           Map<String, dynamic> genderJson = {
             "Gender":gender.text.trim(),
           };
@@ -29,10 +29,10 @@ class ChangeGenderController extends GetxController{
           userController.user.value.gender = gender.text.trim();
           TFullScreenLoader.stopLoading();
           Get.back();
-          TLoaders.successSnackBar(title: "Congratulations",message: "Your gender has been updated");
+          TLoaders.successSnackBar(title: "Gender".tr,message: "Your gender has been updated.".tr);
         }catch (e){
           TFullScreenLoader.stopLoading();
-          TLoaders.errorSnackBar(title: "Oh Snap!",message:  e.toString());
+          TLoaders.errorSnackBar(title: "Oh Snap!".tr,message:  e.toString().tr);
         }
         finally{
           userController.genderChangeLoading.value = false;

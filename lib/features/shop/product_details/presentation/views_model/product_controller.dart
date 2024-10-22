@@ -32,7 +32,7 @@ class ProductController extends GetxController {
     }
     catch(e)
     {
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
     finally{
       isLoading.value = false;
@@ -46,7 +46,7 @@ class ProductController extends GetxController {
     }
     catch(e)
     {
-      TLoaders.errorSnackBar(title: "Oh Snap!",message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
       return [];
     }
   }
@@ -104,7 +104,7 @@ class ProductController extends GetxController {
       return reviewsLength;
     }
     catch(e) {
-      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
       return 0;
     }
   }

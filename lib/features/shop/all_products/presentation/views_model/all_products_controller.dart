@@ -17,7 +17,7 @@ class AllProductsController extends GetxController {
       final products = await productRepository.fetchProductByQuery(query);
       return products;
     }catch (e) {
-      TLoaders.errorSnackBar(title: "Oh Snap!", message:  e.toString());
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr, message:  e.toString().tr);
       return [];
     }
   }
