@@ -315,6 +315,9 @@ class Languages implements Translations
       "You can't send an empty review. please write something and send it again.":"لا يمكنك إرسال تقييم فارغ. يرجى كتابة شيء ما وإرساله مرة أخرى.",
       "Deleted":"تم الحذف",
       "Your review has been deleted successfully.":"لقد تم حذف التقييم الخاص بك بنجاح.",
+      "All Brands":"جميع الماركات",
+      "Brands":"الماركات",
+      "products":"منتجات",
       "":"",
       // Starting from here should be sent from the back end apis
       "Sport Category":"فئة الرياضة",
@@ -639,7 +642,9 @@ class Languages implements Translations
       "You can't send an empty review. please write something and send it again.":"You can't send an empty review. please write something and send it again.",
       "Deleted":"Deleted",
       "Your review has been deleted successfully.":"Your review has been deleted successfully.",
-      "":"",
+      "All Brands":"All Brands",
+      "Brands":"Brands",
+      "products":"products",
       // Starting from here should be sent from the back end apis
       "Sport Category":"Sport Category",
       "Clothes Category":"Clothes Category",

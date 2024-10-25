@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/features/personalization/controller/user_controller.dart';
 
@@ -26,7 +27,7 @@ class TProfileMenu extends StatelessWidget {
         child: Row(
           children: [
             Expanded(flex:3,child: Text(title,style: Theme.of(context).textTheme.bodySmall,overflow: TextOverflow.ellipsis,)),
-            Expanded(flex:5,child: Text(value==""? "not provided yet." : value,style: Theme.of(context).textTheme.bodyMedium,overflow: TextOverflow.ellipsis,)),
+            Expanded(flex:5,child: Text(value==""? "not provided yet." : value.tr,style: Theme.of(context).textTheme.bodyMedium,overflow: TextOverflow.ellipsis,)),
             showIcon
                 ? Expanded(
                 child: GestureDetector(

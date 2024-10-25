@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:t_store/features/personalization/profile/presentation/views_model/change_gender_controller.dart';
-import 'package:t_store/features/personalization/profile/presentation/views_model/change_phone_number_controller.dart';
 
 class ChangeGenderForm extends StatelessWidget {
   const ChangeGenderForm({super.key});

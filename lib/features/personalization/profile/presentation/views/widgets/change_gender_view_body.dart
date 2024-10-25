@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/widgets/change_gender_form.dart';
-import 'package:t_store/features/personalization/profile/presentation/views/widgets/change_name_form.dart';
-import 'package:t_store/features/personalization/profile/presentation/views/widgets/change_phone_number_form.dart';
 
 class ChangeGenderViewBody extends StatelessWidget {
   const ChangeGenderViewBody({super.key});

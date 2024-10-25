@@ -15,7 +15,6 @@ import 'package:t_store/features/personalization/profile/presentation/views/chan
 import 'package:t_store/features/personalization/profile/presentation/views/change_name_view.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/change_phone_number_view.dart';
 import 'package:t_store/features/personalization/profile/presentation/views/widgets/t_profile_menu.dart';
-import 'package:t_store/features/personalization/profile/presentation/views_model/change_name_controller.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});
@@ -77,7 +76,7 @@ class ProfileViewBody extends StatelessWidget {
             ),
             TProfileMenu( title: "E-Mail".tr, value: controller.user.value.email,showIcon: false,),
             Obx(()=> controller.phoneNumberLoading.value?TProfileMenu( title: "Phone Number".tr, value: "Updating...".tr, onPressed: () {},) :TProfileMenu( title: "Phone Number".tr, value: controller.user.value.phoneNumber,onPressed: (){Get.to(()=> const ChangePhoneNumberView());},)),
-            Obx(()=> controller.genderChangeLoading.value?TProfileMenu( title: "Gender".tr, value: "Updating...".tr, onPressed: () {},) :TProfileMenu( title: "Gender".tr, value: controller.user.value.gender??"not provided yet.",onPressed: (){Get.to(()=> const ChangeGenderView());},)),
+            Obx(()=> controller.genderChangeLoading.value?TProfileMenu( title: "Gender".tr, value: "Updating...".tr, onPressed: () {},) :TProfileMenu( title: "Gender".tr, value: controller.user.value.gender?.tr??"not provided yet.",onPressed: (){Get.to(()=> const ChangeGenderView());},)),
             Obx(()=> controller.dateOfBirthLoading.value?TProfileMenu( title: "Date of Birth".tr, value: "Updating...".tr, onPressed: () {},) :TProfileMenu( title: "Date of Birth".tr, value: controller.user.value.dateOfBirth != null? DateFormat('yyyy-MM-dd').format(controller.user.value.dateOfBirth!):"not provided yet.",onPressed: (){Get.to(()=> const ChangeDateOfBirthView());},)),
             const Divider(),
             const SizedBox(height: 16,),

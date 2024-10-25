@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/core/constants/colors.dart';
-import 'package:t_store/features/personalization/my_address/model/address_model.dart';
 import 'package:t_store/features/personalization/my_address/presentation/views/widgets/t_single_address.dart';
 import 'package:t_store/features/personalization/my_address/presentation/views_model/address_controller.dart';
 
