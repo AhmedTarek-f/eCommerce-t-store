@@ -30,7 +30,7 @@ class AllBrandsViewBody extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const TSectionHeading(title: "Brands",padding: EdgeInsets.all(0),showActionButton: false,),
+            TSectionHeading(title: "Brands".tr,padding: const EdgeInsets.all(0),showActionButton: false,),
             const SizedBox(height: 32,),
             Obx(
                   () {

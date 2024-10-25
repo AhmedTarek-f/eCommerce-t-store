@@ -48,6 +48,8 @@ class TProductCardHorizontal extends StatelessWidget {
                     applyImageRadius: true,
                     backgroundColor: isDarkMode? TColors.dark:TColors.white,
                     isNetworkImage: true,
+                    shimmerHeight: MediaQuery.sizeOf(context).height*0.14,
+                    shimmerWidth: MediaQuery.sizeOf(context).width*0.3055,
                   ),
                   Positioned(
                     top: 1,
@@ -94,7 +96,7 @@ class TProductCardHorizontal extends StatelessWidget {
                        Flexible(
                          child: Column(
                            children: [
-                             if(product.productType == ProductType.single.toString() && product.salePrice < 0)
+                             if(product.productType == ProductType.single.toString() && product.salePrice > 0)
                                Padding(
                                  padding: const EdgeInsets.only(left: 8.0),
                                  child:  Text(

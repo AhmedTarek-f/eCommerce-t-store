@@ -29,7 +29,8 @@ class BrandRepository extends GetxController
     }
   }
 
-  Future<List<BrandModel>> getBrandsForCategory(String categoryId) async {
+  Future<List<BrandModel>> getBrandsForCategory(
+      {required String categoryId, int limit = 2}) async {
     try{
       final QuerySnapshot<Map<String, dynamic>> querySnapshot = await _db.collection("BrandCategory").where("CategoryId",isEqualTo: categoryId).get();
       List<String> brandsIdList = querySnapshot.docs.map((doc) => doc["BrandId"] as String).toList();
@@ -37,7 +38,7 @@ class BrandRepository extends GetxController
       //  Same but in two steps
       // final List<BrandCategoryModel> categoryBrandIds = querySnapshot.docs.map((data) => BrandCategoryModel.fromSnapshot(data)).toList();
       // List<String> brandsIdList = categoryBrandIds.map((brandIds) => brandIds.brandId).toList();
-      final brandsQuery = await _db.collection("Brands").where(FieldPath.documentId , whereIn:brandsIdList ).limit(2).get();
+      final brandsQuery = await _db.collection("Brands").where(FieldPath.documentId , whereIn:brandsIdList ).limit(limit).get();
       final List<BrandModel> brands = brandsQuery.docs.map((brand) => BrandModel.fromSnapshot(brand)).toList();
       return brands;
     }

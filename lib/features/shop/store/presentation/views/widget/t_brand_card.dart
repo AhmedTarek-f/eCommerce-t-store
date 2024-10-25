@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
 import 'package:t_store/common_widgets/images/t_circular_image.dart';
 import 'package:t_store/common_widgets/texts/t_brand_title_with_verified_icon.dart';
@@ -43,7 +44,7 @@ class TBrandCard extends StatelessWidget {
                 children: [
                   TBrandTitleWithVerifiedIcon(title: brandData.name,brandTextSize: TextSizes.large,),
                   Text(
-                    "${brandData.productsCount} products",
+                    "${brandData.productsCount} ${"products".tr}",
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   )

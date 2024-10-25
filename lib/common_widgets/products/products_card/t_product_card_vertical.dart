@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/common_widgets/containers/custom_shapes/t_rounded_container.dart';
@@ -55,6 +56,8 @@ class TProductCardVertical extends StatelessWidget {
                       backgroundColor: isDarkMode?
                       TColors.dark: TColors.light,
                       isNetworkImage: true,
+                      shimmerWidth: MediaQuery.sizeOf(context).width*0.3819,
+                      shimmerHeight: MediaQuery.sizeOf(context).height*0.1750,
                     ),
                   ),
                   Positioned(
@@ -93,7 +96,7 @@ class TProductCardVertical extends StatelessWidget {
                 Flexible(
                   child: Column(
                     children: [
-                      if(product.productType == ProductType.single.toString() && product.salePrice < 0)
+                      if(product.productType == ProductType.single.toString() && product.salePrice > 0)
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
                           child:  Text(

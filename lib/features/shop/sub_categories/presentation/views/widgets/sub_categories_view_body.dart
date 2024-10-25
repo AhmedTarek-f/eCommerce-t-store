@@ -45,6 +45,7 @@ class SubCategoriesViewBody extends StatelessWidget {
                     width: MediaQuery.sizeOf(context).width,
                     height: MediaQuery.sizeOf(context).height*0.2567,
                     isNetworkImage: true,
+                    fit: BoxFit.cover,
                   ),
                   const SizedBox(height: 32,),
                   ListView.separated(

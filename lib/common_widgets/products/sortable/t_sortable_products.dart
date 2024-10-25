@@ -20,8 +20,8 @@ class TSortableProducts extends StatelessWidget {
       children: [
         DropdownButtonFormField(
           decoration: const InputDecoration(prefixIcon: Icon(Iconsax.sort_copy)),
-          items: ["Name".tr, "Higher Price".tr, "Lower Price".tr, "Sale".tr, "Newest".tr, "Popularity".tr,]
-              .map((searchItem) => DropdownMenuItem(value: searchItem,child: Text(searchItem),),).toList(),
+          items: ["Name", "Higher Price", "Lower Price", "Sale", "Newest", "Popularity",]
+              .map((searchItem) => DropdownMenuItem(value: searchItem,child: Text(searchItem.tr),),).toList(),
           onChanged: (value){
             controller.sortProducts(value!);
           },

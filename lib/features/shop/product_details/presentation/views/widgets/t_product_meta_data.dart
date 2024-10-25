@@ -57,6 +57,7 @@ class TProductMetaData extends StatelessWidget {
               width: 32,
               height: 32,
               overlayColor: isDarkMode? TColors.white:TColors.black,
+              fit: BoxFit.contain,
             ),
             const SizedBox(width: 4,),
             TBrandTitleWithVerifiedIcon(title: product.brand?.name ?? "",brandTextSize: TextSizes.medium,),

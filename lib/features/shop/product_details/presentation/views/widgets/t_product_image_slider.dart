@@ -43,7 +43,7 @@ class TProductImageSlider extends StatelessWidget {
                         child: CachedNetworkImage(
                           imageUrl: image,
                           height: 400,
-                          progressIndicatorBuilder: (context, url, progress) => CircularProgressIndicator(value: progress.progress,color: TColors.primary,),
+                          progressIndicatorBuilder: (context, url, progress) => Center(child: CircularProgressIndicator(value: progress.progress,color: TColors.primary,)),
                           errorWidget: (context, url, error) => const Center(child:  Icon(Icons.error)),
                         ),
                       );

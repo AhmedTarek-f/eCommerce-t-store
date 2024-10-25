@@ -60,4 +60,14 @@ class CategoryController extends GetxController {
       return [];
     }
   }
+  Future<List<ProductModel>> fetchAllProductsForCategory({required String categoryId, int limit =4}) async {
+    try{
+      final categoryProducts = await _productRepository.getAllProductsForCategory(categoryId: categoryId,limit: limit);
+      return categoryProducts;
+    }
+    catch(e) {
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
+      return [];
+    }
+  }
 }

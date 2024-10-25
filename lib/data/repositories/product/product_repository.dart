@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:t_store/core/utlis/exceptions/t_firebase_exceptions.dart';
 import 'package:t_store/core/utlis/exceptions/t_platform_exceptions.dart';
 import 'package:t_store/features/shop/product_details/model/product_model.dart';
+import 'package:t_store/features/shop/store/model/category_products_model.dart';
 
 class ProductRepository extends GetxController {
   static ProductRepository get instance => Get.find();
@@ -135,6 +136,27 @@ class ProductRepository extends GetxController {
 
       final List<ProductModel> products = querySnapshot.docs.map((product) => ProductModel.fromSnapshot(product)).toList();
       return products;
+    }
+    on FirebaseException catch (e){
+      throw TFirebaseException(e.code).message;
+    }
+    on PlatformException catch(e)
+    {
+      throw TPlatformException(e.code).message;
+    }
+    catch (e)
+    {
+      throw "Something went wrong, Please try again".tr;
+    }
+  }
+
+  Future<List<ProductModel>> getAllProductsForCategory({required String categoryId , int limit =-1}) async {
+    try{
+      final snapshot = limit == -1? await _db.collection("CategoryProducts").where("CategoryId",isEqualTo: categoryId).get() :await _db.collection("CategoryProducts").where("CategoryId",isEqualTo: categoryId).limit(limit).get();
+      final List<CategoryProductsModel> categoryProductsList = snapshot.docs.map((categoryProduct) => CategoryProductsModel.fromSnapshot(categoryProduct)).toList();
+      final List<String> productsIdList = categoryProductsList.map((productId) => productId.productId).toList();
+      final productsSnapshot = await _db.collection("Products").where(FieldPath.documentId, whereIn: productsIdList).get();
+      return productsSnapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
     }
     on FirebaseException catch (e){
       throw TFirebaseException(e.code).message;

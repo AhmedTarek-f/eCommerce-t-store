@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:t_store/common_widgets/shimmer/list_of_horizontal_product_shimmer.dart';
@@ -11,7 +10,6 @@ class SubCategoryShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(MediaQuery.sizeOf(context).height.toString());
     return Column(
       children: [
         TShimmerEffect(width: MediaQuery.sizeOf(context).width, height: MediaQuery.sizeOf(context).height*0.2567),

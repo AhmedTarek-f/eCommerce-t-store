@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:t_store/common_widgets/t_app_bar/t_app_bar.dart';
 import 'package:t_store/features/shop/all_brands/presentation/views/widgets/all_brands_view_body.dart';
 
@@ -9,7 +10,7 @@ class AllBrandsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TAppBar(
-        title: Text("All Brands",style: Theme.of(context).textTheme.headlineSmall,),
+        title: Text("All Brands".tr,style: Theme.of(context).textTheme.headlineSmall,),
         showBackArrow: true,
       ),
       body: const AllBrandsViewBody(),
