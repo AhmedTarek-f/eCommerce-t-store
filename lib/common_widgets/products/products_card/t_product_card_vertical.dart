@@ -71,7 +71,8 @@ class TProductCardVertical extends StatelessWidget {
                   ),
                   Positioned(
                     top: 0,
-                    right: 0,
+                    right: controller.isArabic() ? null : 0,
+                    left: controller.isArabic() ? 0 : null,
                     child: TFavoriteIcon(productId: product.id,),
                   )
                 ],
