@@ -12,16 +12,16 @@ class TOverAllProductRating extends StatelessWidget {
     final ProductReviewController reviewController = ProductReviewController.instance;
     return Row(
       children: [
-        Expanded(flex: 3, child: Text(reviewController.totalRating.toString(),style: Theme.of(context).textTheme.displayLarge,)),
+        Expanded(flex: 3, child: FittedBox(fit: BoxFit.scaleDown, child: Text(reviewController.totalRating.toString(),style: Theme.of(context).textTheme.displayLarge,maxLines: 1,))),
          Expanded(
           flex: 7,
           child: Column(
             children: [
-              TRatingProgressIndicator(text: "5",value: reviewController.rating5,),
-              TRatingProgressIndicator(text: "4",value: reviewController.rating4,),
-              TRatingProgressIndicator(text: "3",value: reviewController.rating3,),
-              TRatingProgressIndicator(text: "2",value: reviewController.rating2,),
-              TRatingProgressIndicator(text: "1",value: reviewController.rating1,),
+              TRatingProgressIndicator(text: "5",value: double.parse(reviewController.rating5.toString()) ,),
+              TRatingProgressIndicator(text: "4",value: double.parse(reviewController.rating4.toString()),),
+              TRatingProgressIndicator(text: "3",value: double.parse(reviewController.rating3.toString()),),
+              TRatingProgressIndicator(text: "2",value: double.parse(reviewController.rating2.toString()),),
+              TRatingProgressIndicator(text: "1",value: double.parse(reviewController.rating1.toString()),),
             ],
           ),
         )

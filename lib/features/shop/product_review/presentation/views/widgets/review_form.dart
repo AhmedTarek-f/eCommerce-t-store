@@ -45,22 +45,27 @@ class ReviewForm extends StatelessWidget {
             itemSize: 24,
           ),
         ),
-        TextField(
-          controller: controller.userReview,
-          decoration: InputDecoration(
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: isDarkMode ? Colors.white : Colors.black),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            hintText: "Add your review".tr,
-            hintStyle: const TextStyle(color: TColors.darkGrey,fontSize: 14),
-            contentPadding: const EdgeInsets.only(left: 24,bottom:16 ,right:16 ,top:16 ),
-          ),
-          onChanged: (value) {
-            controller.userReview.text = value;
-          },
-          maxLines: null,
+        Form(
+          key: controller.reviewKey,
+            child: TextFormField(
+              controller: controller.userReview,
+              decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: isDarkMode ? Colors.white : Colors.black),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                hintText: "Add your review".tr,
+                hintStyle: const TextStyle(color: TColors.darkGrey,fontSize: 14),
+                contentPadding: const EdgeInsets.only(left: 24,bottom:16 ,right:16 ,top:16 ),
+              ),
+              onSaved: (value){
+                if(value != null){
+                  controller.userReview.text = value;
+                }
+              },
+              maxLines: null,
+            )
         ),
         Row(
           mainAxisSize: MainAxisSize.max,

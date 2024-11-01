@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:t_store/core/utlis/loaders/t_loaders.dart';
@@ -10,13 +12,14 @@ class ProductReviewController extends GetxController {
   static ProductReviewController get instance => Get.find();
   final ReviewsRepository _reviewsRepository = ReviewsRepository.instance;
   final UserController _userController = UserController.instance;
+  final GlobalKey<FormState> reviewKey = GlobalKey<FormState>();
   RxList<ProductReviewModel> reviewsList = <ProductReviewModel>[].obs;
-  double rating5=0.0,rating4=0.0,rating3=0.0,rating2=0.0,rating1 =0.0;
+  int rating5=0,rating4=0,rating3=0,rating2=0,rating1 =0;
   double totalRating = 0.0;
 
   RxDouble rating = 1.0.obs;
   RxBool isLoading = false.obs;
-  TextEditingController userReview = TextEditingController();
+  late final TextEditingController userReview;
 
   @override
   Future<void> onInit() async {
@@ -25,7 +28,7 @@ class ProductReviewController extends GetxController {
     isLoading.value = true;
     await fetchUsersReviews(productId: productId);
     isLoading.value = false;
-    userReview.text = "";
+    userReview = TextEditingController();
   }
 
   Future<void> addUserReview({required ProductReviewModel productReview , required String productId}) async {
@@ -47,6 +50,7 @@ class ProductReviewController extends GetxController {
       TLoaders.warningSnackBar(title: "review check".tr,message: "You can't send an empty review. please write something and send it again.".tr);
     }
     else {
+      reviewKey.currentState!.save();
       final ProductReviewModel productReview = ProductReviewModel(
         userName: _userController.user.value.username,
         userImage: _userController.user.value.profilePicture,
@@ -96,11 +100,11 @@ class ProductReviewController extends GetxController {
     ratingsWith3 = reviewsList.where((review) => review.rating == 3.0).toList();
     ratingsWith2 = reviewsList.where((review) => review.rating == 2.0).toList();
     ratingsWith1 = reviewsList.where((review) => review.rating == 1.0).toList();
-    rating1= ratingsWith1.length/reviewsList.length;
-    rating2= ratingsWith2.length/reviewsList.length;
-    rating3= ratingsWith3.length/reviewsList.length;
-    rating4= ratingsWith4.length/reviewsList.length;
-    rating5= ratingsWith5.length/reviewsList.length;
+    rating1= ratingsWith1.length;
+    rating2= ratingsWith2.length;
+    rating3= ratingsWith3.length;
+    rating4= ratingsWith4.length;
+    rating5= ratingsWith5.length;
     totalRating = ((rating1*1)+(rating2*2)+(rating3*3)+(rating4*4)+(rating5*5)) / reviewsList.length;
   }
 

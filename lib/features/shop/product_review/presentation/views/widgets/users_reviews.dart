@@ -24,7 +24,15 @@ class UsersReviews extends StatelessWidget {
             return const UsersReviewsShimmer();
           }
           else if (reviews.isEmpty) {
-            return  Center(child: Text("No reviews found for this product yet!".tr),);
+            return  Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("No reviews found for this product yet!".tr),
+                const ReviewDivider(),
+                ReviewForm(productId: productId,),
+                const ReviewDivider(),
+              ],
+            );
           }
           else{
             int userReviewIndex = reviews.indexWhere((review) => review.userName == userController.user.value.username);
