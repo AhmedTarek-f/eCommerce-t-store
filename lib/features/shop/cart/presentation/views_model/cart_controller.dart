@@ -86,6 +86,8 @@ class CartController extends GetxController {
     Get.defaultDialog(
       title:  "Remove Product".tr,
       middleText:  "Are you sure you want to remove this product?".tr,
+      textConfirm: "Remove".tr,
+      textCancel: "Cancel".tr,
       onConfirm: (){
         cartItems.removeAt(index);
         updateCart();

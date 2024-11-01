@@ -8,6 +8,7 @@ import 'package:t_store/core/utlis/loaders/t_loaders.dart';
 import 'package:t_store/core/utlis/popups/t_full_screen_loader.dart';
 import 'package:t_store/data/repositories/authentication/authentication_repository.dart';
 import 'package:t_store/data/repositories/order/order_repository.dart';
+import 'package:t_store/features/personalization/my_address/model/address_model.dart';
 import 'package:t_store/features/personalization/my_address/presentation/views_model/address_controller.dart';
 import 'package:t_store/features/personalization/my_orders/model/order_model.dart';
 import 'package:t_store/features/shop/cart/presentation/views_model/cart_controller.dart';
@@ -41,11 +42,13 @@ class OrderController extends GetxController
 
   Future<void> processOrder(double totalAmount) async {
     try{
-      TFullScreenLoader.openLoadingDialog("Processing your order".tr, TImages.pencilAnimation);
-
+      final addressData = addressController.selectedAddress.value;
       final userId = AuthenticationRepository.instance.authUser!.uid;
       if(userId.isEmpty) return;
-
+      else if(addressData.selectedAddress == false || addressData.name.isEmpty || addressData.phoneNumber.isEmpty){
+        return TLoaders.warningSnackBar(title: "Billing address check!".tr,message: "please check you have provided your billing address.".tr);
+      }
+      TFullScreenLoader.openLoadingDialog("Processing your order".tr, TImages.pencilAnimation);
       final order = OrderModel(
           id: UniqueKey().toString(),
           userId: userId,
