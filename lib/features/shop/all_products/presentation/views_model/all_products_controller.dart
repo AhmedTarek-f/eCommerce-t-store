@@ -30,10 +30,24 @@ class AllProductsController extends GetxController {
         products.sort((a, b) => a.title.compareTo(b.title));
         break;
       case "Higher Price":
-        products.sort((a, b) => b.price.compareTo(a.price));
+        products.sort((a, b) {
+          if(a.salePrice>0 && b.salePrice>0){
+            return b.salePrice.compareTo(a.salePrice);
+          }
+          else {
+            return b.price.compareTo(a.price);
+          }
+        } );
         break;
       case "Lower Price":
-        products.sort((a, b) =>a.price.compareTo(b.price));
+        products.sort((a, b) {
+          if(a.salePrice>0 && b.salePrice>0){
+            return a.salePrice.compareTo(b.salePrice);
+          }
+          else {
+            return a.price.compareTo(b.price);
+          }
+        });
         break;
       case "Newest":
         products.sort((a, b) =>a.date!.compareTo(b.date!));
