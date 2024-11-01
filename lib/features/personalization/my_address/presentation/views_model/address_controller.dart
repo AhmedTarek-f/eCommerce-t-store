@@ -36,7 +36,7 @@ class AddressController extends GetxController
   @override
   void onInit() {
     super.onInit();
-   if(AuthenticationRepository.instance.authUser?.uid.isNotEmpty ?? false) getAllUserAddresses();
+    if(AuthenticationRepository.instance.authUser?.uid.isNotEmpty ?? false) getAllUserAddresses();
   }
 
   Future<void> getAllUserAddresses() async{
@@ -104,7 +104,7 @@ class AddressController extends GetxController
         autoValidateMode.value= AutovalidateMode.always;
       }
       else {
-        TFullScreenLoader.openLoadingDialog("Storing Address...".tr, TImages.docerAnimation);
+        addressFormKey.currentState!.save();
         final address = AddressModel(
           id: '',
           name: name.text.trim(),
@@ -121,10 +121,9 @@ class AddressController extends GetxController
         allAvailableAddresses.add(address);
         selectedAddress.value = address;
         await selectAddress(address);
-        TFullScreenLoader.stopLoading();
-        TLoaders.successSnackBar(title: "Address Information".tr, message: "Your address has been saved successfully.".tr);
         resetFormFields();
-        Navigator.of(Get.context!).pop();
+        TLoaders.successSnackBar(title: "Address Information".tr, message: "Your address has been saved successfully.".tr);
+        Navigator.of(Get.overlayContext!).pop();
       }
     }
     catch(e){
@@ -134,66 +133,79 @@ class AddressController extends GetxController
   }
 
   Future<dynamic> selectNewAddressPopup(BuildContext context) {
-    return showModalBottomSheet(
-        context: context,
-        builder: (context) => Container(
-          padding:  const EdgeInsets.all(0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TSectionHeading(title: "Select address".tr , showActionButton: false,),
-              FutureBuilder<List<AddressModel>>(
-                  future: getAllUserAddressesForBilling(),
-                  builder: (context, snapshot) {
-                    if(snapshot.connectionState == ConnectionState.waiting){
-                      return const Center(child: CircularProgressIndicator(color: TColors.primaryColor,),);
-                    }
-                    else if(!snapshot.hasData || snapshot.data == null || (snapshot.data?.isEmpty ?? true))
-                    {
-                      return Center(child: Text("No Data Found!".tr),);
-                    }
-                    else if(snapshot.hasError)
-                    {
-                      return Center(child:  Text("Something went wrong.".tr),);
-                    }
-                    else{
-                      final List<AddressModel> addressesList = snapshot.data!;
-                      return Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 8),
-                          child: ListView.separated(
-                              itemBuilder: (_, index) {
-                                final AddressModel address = addressesList[index];
-                                return TSingleAddress(
-                                    address: address,
-                                    onTap: () async {
-                                      await selectAddress(address);
-                                      Get.back();
-                                    }
-                                );
-                              },
-                              separatorBuilder: (_, __) => const SizedBox(height: 8,),
-                              itemCount: addressesList.length
-                          ),
-                        ),
-                      );
-                    }
-                  },
+    return  showModalBottomSheet(
+      context: context,
+      builder: (context) => Container(
+        padding:  const EdgeInsets.all(0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TSectionHeading(title: "Select address".tr , showActionButton: false,),
+            FutureBuilder<List<AddressModel>>(
+              future: getAllUserAddressesForBilling(),
+              builder: (context, snapshot) {
+                if(snapshot.connectionState == ConnectionState.waiting){
+                  return Expanded(child: const Center(child: CircularProgressIndicator(color: TColors.primaryColor,),));
+                }
+                else if(!snapshot.hasData || snapshot.data == null || (snapshot.data?.isEmpty ?? true))
+                {
+                  return Expanded(child: Center(child: Text("No Data Found!".tr),));
+                }
+                else if(snapshot.hasError)
+                {
+                  return Expanded(child: Center(child:  Text("Something went wrong.".tr),));
+                }
+                else{
+                  final List<AddressModel> addressesList = snapshot.data!;
+                  allAvailableAddresses.clear();
+                  allAvailableAddresses.assignAll(addressesList);
+                  return Obx(
+                      (){
+                         if(allAvailableAddresses.isEmpty)
+                        {
+                        return Expanded(child: Center(child: Text("No Data Found!".tr),));
+                        }
+                         else{
+                           return Expanded(
+                             child: Padding(
+                               padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 8),
+                               child: ListView.separated(
+                                   itemBuilder: (_, index) {
+                                     final AddressModel address = allAvailableAddresses[index];
+                                     return TSingleAddress(
+                                         address: address,
+                                         onTap: () async {
+                                           await selectAddress(address);
+                                           Get.back();
+                                         }
+                                     );
+                                   },
+                                   separatorBuilder: (_, __) => const SizedBox(height: 8,),
+                                   itemCount: allAvailableAddresses.length
+                               ),
+                             ),
+                           );
+                         }
+                      },
+                  );
+                }
+              },
+            ),
+            SizedBox(
+              width: MediaQuery.sizeOf(context).width,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 8),
+                child: ElevatedButton(
+                    onPressed: () => Get.to(() => const AddNewAddressView()),
+                    child: const Text("Add new address")),
               ),
-               const SizedBox(height: 40,),
-              SizedBox(
-                width: MediaQuery.sizeOf(context).width,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 8),
-                  child: ElevatedButton(onPressed: () => Get.to(() => const AddNewAddressView()), child: const Text("Add new address")),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
+      ),
     );
   }
-  
+
   Future<void> deleteUserAddress({required String addressId}) async {
     try{
       await _addressRepository.deleteUserAddress(addressId);
@@ -203,10 +215,10 @@ class AddressController extends GetxController
       TLoaders.successSnackBar(title: "Delete address".tr,message: "Your address has been deleted successfully.".tr,secondsDuration: 1);
     }
     catch(e) {
-     TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
+      TLoaders.errorSnackBar(title: "Oh Snap!".tr,message: e.toString().tr);
     }
   }
-  
+
   void resetFormFields(){
     name.clear();
     phoneNumber.clear();

@@ -25,9 +25,7 @@ class CheckoutView extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(right: 24,left:24 ,bottom: 8),
         child: ElevatedButton(
-            onPressed: subTotal >0
-                ? () async => await orderController.processOrder(totalAmount)
-                : TLoaders.warningSnackBar(title: "The Cart Is Empty".tr, message:"Add items in the cart in order to proceed.".tr),
+            onPressed: subTotal >0 ? () async => await orderController.processOrder(totalAmount) : TLoaders.warningSnackBar(title: "The Cart Is Empty".tr, message:"Add items in the cart in order to proceed.".tr),
             child: Text("${"Checkout".tr} \$${totalAmount.toStringAsFixed(1)}"),
         ),
       ),

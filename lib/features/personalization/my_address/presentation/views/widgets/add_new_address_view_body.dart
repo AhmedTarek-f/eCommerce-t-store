@@ -38,6 +38,11 @@ class AddNewAddressViewBody extends StatelessWidget {
                           return null;
                         }
                       },
+                      onSaved: (value){
+                        if(value!= null){
+                          controller.name.text = value;
+                        }
+                      },
                     ),
                     const SizedBox(height: 16,),
                     TextFormField(
@@ -52,6 +57,11 @@ class AddNewAddressViewBody extends StatelessWidget {
                         else
                         {
                           return null;
+                        }
+                      },
+                      onSaved: (value){
+                        if(value!= null){
+                          controller.phoneNumber.text = value;
                         }
                       },
                     ),
@@ -73,6 +83,11 @@ class AddNewAddressViewBody extends StatelessWidget {
                                   return null;
                                 }
                               },
+                              onSaved: (value){
+                                if(value!= null){
+                                  controller.street.text = value;
+                                }
+                              },
                             ),
                         ),
                         const SizedBox(width: 16,),
@@ -89,6 +104,11 @@ class AddNewAddressViewBody extends StatelessWidget {
                                 else
                                 {
                                   return null;
+                                }
+                              },
+                              onSaved: (value){
+                                if(value!= null){
+                                  controller.postalCode.text = value;
                                 }
                               },
                             ),
@@ -113,6 +133,11 @@ class AddNewAddressViewBody extends StatelessWidget {
                                   return null;
                                 }
                               },
+                              onSaved: (value){
+                                if(value!= null){
+                                  controller.city.text = value;
+                                }
+                              },
                             ),
                         ),
                         const SizedBox(width: 16,),
@@ -129,6 +154,11 @@ class AddNewAddressViewBody extends StatelessWidget {
                                 else
                                 {
                                   return null;
+                                }
+                              },
+                              onSaved: (value){
+                                if(value!= null){
+                                  controller.state.text = value;
                                 }
                               },
                             ),
@@ -150,12 +180,19 @@ class AddNewAddressViewBody extends StatelessWidget {
                           return null;
                         }
                       },
+                      onSaved: (value){
+                        if(value!= null){
+                          controller.country.text = value;
+                        }
+                      },
                     ),
                     const SizedBox(height: 24,),
                     SizedBox(
                         width:MediaQuery.sizeOf(context).width,
                         child: ElevatedButton(
-                            onPressed: (){controller.addNewAddress();},
+                            onPressed: ()async{
+                              await controller.addNewAddress();
+                              },
                             child: Text("Save".tr),
                         ),
                     ),
