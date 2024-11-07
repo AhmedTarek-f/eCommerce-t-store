@@ -30,23 +30,15 @@ T Store is a complete E-commerce application developed using Flutter, offering a
 
 • Wishlist Management: View and manage favorite products.
 
-## Profile View
-
-• Edit Profile: Easily update profile details.
-
-• Account Settings: Navigate through settings, including:
-
-  • My Addresses: Add or delete delivery addresses.
-  
-  • My Cart: Access the cart for a list of added items.
-  
-  • My Orders: View order history.
-  
-  • My Coupons: See available coupons for discounts.
-  
-• App Settings: Toggle between light and dark themes, and switch languages (English/Arabic).
-
-• Logout: Securely log out of the application.
+### Profile View
+- **Edit Profile**: Easily update profile details.
+- **Account Settings**: Navigate through settings, including:
+  - **My Addresses**: Add or delete delivery addresses.
+  - **My Cart**: Access the cart for a list of added items.
+  - **My Orders**: View order history.
+  - **My Coupons**: See available coupons for discounts.
+- **App Settings**: Toggle between light and dark themes, and switch languages (English/Arabic).
+- **Logout**: Securely log out of the application.
 
 ## Cart and Checkout
 
