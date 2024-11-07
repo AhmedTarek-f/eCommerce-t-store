@@ -4,33 +4,29 @@ T Store is a complete E-commerce application developed using Flutter, offering a
 
 ## Features ✨
 
-## Authentication  
+### Authentication  
 
-• Email and Gmail Login: Sign up and log in using email/password or a Gmail account.  
+- **Email and Gmail Login**: Sign up and log in using email/password or a Gmail account.  
+- **Email Verification**: Email verification is required before accessing the home screen.  
 
-• Email Verification: Email verification is required before accessing the home screen.  
+### Home View  
 
-## Home View  
+- **Search Products**: Easily search for products through a dedicated search screen.  
+- **Popular Categories**: A horizontally scrollable list of categories (e.g., Sports, Clothes), leading to category-specific product pages.  
+- **Popular Products**: Displays the top four popular products for quick access.  
 
-• Search Products: Easily search for products through a dedicated search screen.  
+### Store View  
 
-• Popular Categories: A horizontally scrollable list of categories (e.g., Sports, Clothes), leading to category-specific product pages.  
+- **Featured Brands & Categories**: Explore featured brands and product categories through a visually appealing, scrollable layout.
+- **Product Details**: View product details, add items to wishlist or cart, and access user reviews.
+- **Product Reviews**: See all user reviews for a product and add your own review.  
 
-• Popular Products: Displays the top four popular products for quick access.  
+### Wishlist View  
 
-## Store View  
-
-• Featured Brands & Categories: Explore featured brands and product categories through a visually appealing, scrollable layout.
-
-• Product Details: View product details, add items to wishlist or cart, and access user reviews.
-
-• Product Reviews: See all user reviews for a product and add your own review.  
-
-## Wishlist View  
-
-• Wishlist Management: View and manage favorite products.
+- **Wishlist Management**: View and manage favorite products.
 
 ### Profile View
+
 - **Edit Profile**: Easily update profile details.
 - **Account Settings**: Navigate through settings, including:
   - **My Addresses**: Add or delete delivery addresses.
@@ -40,31 +36,24 @@ T Store is a complete E-commerce application developed using Flutter, offering a
 - **App Settings**: Toggle between light and dark themes, and switch languages (English/Arabic).
 - **Logout**: Securely log out of the application.
 
-## Cart and Checkout
+### Cart and Checkout
 
-• Cart Management: View and edit items in the cart.
-
-• Checkout Process: Apply discount codes, select a shipping address, and choose a payment method (Stripe integration).
+- **Cart Management**: View and edit items in the cart.
+- **Checkout Process**: Apply discount codes, select a shipping address, and choose a payment method (Stripe integration).
 
 ## Technologies Used 🛠️
 
-• Flutter: Used to build a cross-platform, responsive UI.
-
-• GetX: Efficient state management for a reactive experience.
-
-• Get Storage: Local storage for managing wishlist items.
-
-• MVVM Pattern: Ensures a clean, organized, and maintainable code structure.
-
-• Firebase Auth: Handles secure user authentication.
-
-• Firebase Firestore: Backend database for real-time data storage.
-
-• Firebase Storage: Stores and retrieves user-uploaded images.
-
-• Stripe Payment Gateway: Secure payment processing during checkout.
+- **Flutter**: Used to build a cross-platform, responsive UI.
+- **GetX**: Efficient state management for a reactive experience.
+- **Get Storage**: Local storage for managing wishlist items.
+- **MVVM Pattern**: Ensures a clean, organized, and maintainable code structure.
+- **Firebase Auth**: Handles secure user authentication.
+- **Firebase Firestore**: Backend database for real-time data storage.
+- **Firebase Storage**: Stores and retrieves user-uploaded images.
+- **Stripe Payment Gateway**: Secure payment processing during checkout.
 
 ## Download 📥
 
-• Get the T Store app on your device:
+Get the T Store app on your device:
+
 - [Download for Android](https://drive.google.com/file/d/1lmMuVODiUlBQv-k0XK6S7umURD6bxy6y/view?usp=drive_link)
