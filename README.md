@@ -1,4 +1,4 @@
-![28](https://github.com/user-attachments/assets/70fa6030-eb30-4c57-b6dd-10e4b7ff3406)# T Store App 🛍️
+# T Store App 🛍️
 
 T Store is a complete E-commerce application developed using Flutter, offering a smooth shopping experience with features such as authentication, product browsing, wishlist, cart, checkout, and profile management. The app supports both light and dark themes and offers multi-language support (English and Arabic).
 
